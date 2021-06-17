@@ -11,13 +11,10 @@ export class ApiService {
 
     constructor(private http: HttpClient) { }
 
-    public loadCountries() {
-        return this.http.get(this.config.COUNTRY_ALL);
+    public loadPodcasts() {
+        return this.http.get(this.config.WEBSITE_PODCASTS);
     }
 
-    public loadCountryByCode(code:string) {
-        return this.http.get(this.config.COUNTRY_ALPHA_CODE + code);
-    }
 
 }
 
