@@ -1,0 +1,24 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./out-tsc/app",
+        "baseUrl": "./",
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "target": "es2015",
+        "types": ["node"]
+    },
+    "include": [
+        "src/main.server.ts"
+    ],
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts",
+        "server.ts"
+    ],
+    "angularCompilerOptions": {
+        "entryModule": "src/app/app.server.module#AppServerModule",
+        "enableIvy": false
+    }
+}

@@ -1,0 +1,25 @@
+<div class="container p-2">
+
+    <div class="card">
+        <div class="card-title">
+            <h1 class="p-2 text-primary">{{ product ? product.name : 'Loading...' }}</h1>
+        </div>
+        <div class="card-body" *ngIf="product">
+            <p>
+                <b>Name: </b>
+                {{ product.name }}
+            </p>
+            <p>
+                <b>Alpha to code: </b>
+                {{ product.alpha2Code }}
+            </p>
+            <p>
+                <b>population: </b>
+                {{ product.population | number }}
+            </p>
+
+            <button type="button" class="mt-3 btn btn-outline-primary" routerLink="/">Return Home</button>
+        </div>
+    </div>
+
+</div>
