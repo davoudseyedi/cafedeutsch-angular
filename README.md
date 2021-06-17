@@ -63,8 +63,3 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - [x] Server side rendering
 - [x] Dockerize
 - [ ] Transfer state
-
-### Authors
-* **Farhad Ghasemi** ([Farhadd7](https://gitlab.com/Farhadd7))
-* **Mahdi Safari** ([meemsafari](https://gitlab.com/meemsafari))
-# sample-angular
