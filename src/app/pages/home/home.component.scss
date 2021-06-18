@@ -1,0 +1,32 @@
+@import "../../../assets/scss/variables";
+
+#hero{
+  background-image:url('/assets/img/hero/hero-1-min.jpeg') ;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  padding: 4rem 0;
+  .hero-desc{
+    margin-top: 6rem;
+    min-height: 620px;
+  }
+}
+
+#about{
+  padding: 4rem 0;
+  p{
+    color: #6D727C;
+    font-family: "Rubik", Sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+  }
+  h2{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30px;
+  }
+  h4{
+    color: #000;
+  }
+}

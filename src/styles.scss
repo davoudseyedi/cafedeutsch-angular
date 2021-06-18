@@ -1,5 +1,6 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import './assets/scss/variables.scss';
+@import './assets/fonts/rubik/style.scss';
 @import './assets/scss/mixins.scss';
 @import './assets/scss/components.scss';
 
@@ -8,4 +9,29 @@ html, body {
   padding: 0;
   margin: 0;
   font-size: 16px;
+  background-color: #f6fafc;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-blend-mode: normal;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  -ms-background-size: auto;
+  -o-background-size: auto;
+  background-size: auto;
+  font-family: "Rubik", Sans-serif;
 }
+
+.title {
+  color: #061020;
+
+  font-size: 72px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 72px;
+  letter-spacing: -2.4px;
+  text-shadow: 0px 0px 0px rgb(0 0 0 / 30%);
+}
+
+
+
