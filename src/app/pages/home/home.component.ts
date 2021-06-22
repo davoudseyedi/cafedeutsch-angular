@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
     private loadPodcasts() {
         this.api
-            .loadPodcasts()
+            .loadFeaturedPodcasts()
             .subscribe({
                 next: this.onLoadPodcastsSuccess.bind(this),
                 error: this.onLoadPodcastsError.bind(this)

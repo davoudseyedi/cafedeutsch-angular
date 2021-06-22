@@ -1,0 +1,45 @@
+@import "../../../assets/scss/variables";
+
+#cover{
+  margin-top: 87px;
+  background-color: $gray-medium;
+  margin-bottom: 3rem;
+  &.text{
+    text-align: center;
+    padding: 3rem 0;
+  }
+  &.image{
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 6rem 0;
+    &::before{
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    h1.podcast-title{
+      color: $white;
+    }
+    h4.podcast-category{
+      padding: 5px 15px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 0.2em;
+      text-align: center;
+      text-transform: uppercase;
+      display: inline-block;
+      z-index: 99999;
+      background: $warning;
+      color: #fff;
+      font-size: 11px;
+      border-radius: 20px;
+    }
+  }
+}

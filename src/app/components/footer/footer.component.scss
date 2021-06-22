@@ -1,4 +1,11 @@
+@import "../../../assets/scss/variables";
+
 footer {
   width: 100%;
   overflow: hidden;
+  background-color: $gray-medium;
+  p,li{
+    font-size: 14px;
+    line-height: 2;
+  }
 }

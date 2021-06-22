@@ -3,7 +3,6 @@
 @import './assets/fonts/rubik/style.scss';
 @import './assets/scss/mixins.scss';
 @import './assets/scss/components.scss';
-
 // Global Styles
 html, body {
   padding: 0;
@@ -22,10 +21,11 @@ html, body {
   font-family: "Rubik", Sans-serif;
 }
 
-.title {
-  color: #061020;
 
-  font-size: 72px;
+
+h1 {
+  color: $text-dark;
+  font-size: 4.5rem;
   font-weight: 700;
   font-style: normal;
   line-height: 72px;
@@ -33,5 +33,61 @@ html, body {
   text-shadow: 0px 0px 0px rgb(0 0 0 / 30%);
 }
 
+h2 {
+  font-size: 2.25rem;
+  line-height: 42px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+}
+h3 {
+  font-size: 1.876rem;
+  line-height: 42px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+}
+h4 {
+  font-size: 1.25rem;
+  line-height: 42px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+}
+h5 {
+  font-size: 1rem;
+  line-height: 42px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+}
+h6 {
+  font-size: 0.875px;
+  line-height: 42px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+}
+
+p{
+
+  color: $text-medium;
+  font-family: "Rubik", Sans-serif;
+  font-size: 1.25rem;
+  line-height: 27px;
+}
+
+
+
+.podcast-body{
+  p{
+    font-size: 14px;
+  }
+}
 
 

@@ -1,0 +1,20 @@
+<div id="cover" class="{{type}}" style="background-image: url('{{ bg }}');">
+  <div class="container">
+
+    <!--    Text  -->
+    <div *ngIf="type == 'text'" class="row justify-content-center">
+      <div class="col-12">
+        <h1>{{ title }}</h1>
+      </div>
+    </div>
+
+    <!--    Image -->
+    <div *ngIf="type == 'image'" class="row justify-content-first">
+      <div class="col-12 col-md-8">
+        <h4 class="podcast-category">Level {{ category }}</h4>
+        <h1 class="podcast-title">{{ title }}</h1>
+      </div>
+    </div>
+
+  </div>
+</div>

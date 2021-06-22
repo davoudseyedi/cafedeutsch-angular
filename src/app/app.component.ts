@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from "@angular/router";
-import { MetaService } from "./services/meta.service";
+import { NavigationEnd, Router } from '@angular/router';
+import { MetaService } from './services/meta.service';
 
 @Component({
     selector: 'app-root',

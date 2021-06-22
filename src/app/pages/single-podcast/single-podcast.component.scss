@@ -1,0 +1,17 @@
+@import "../../../assets/scss/variables";
+
+.podcast-player{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #040d1c;
+  color: $white;
+  z-index: 99;
+}
+
+::ng-deep{
+  .mat-slider-ticks{
+    background: #fff !important;
+  }
+}

@@ -1,1 +1,37 @@
-<p>single-podcast works!</p>
+<app-cover [type]="'image'" [category]="podcast.category" [title]="podcast.title" [bg]="podcast.image"></app-cover>
+
+<div id="podcast">
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <p [innerHTML]="podcast.body"></p>
+      </div>
+      <div class="col-4">
+<!--        <div [innerHTML]="podcast.audio"></div>-->
+
+
+      </div>
+    </div>
+
+    </div>
+  <div class="podcast-player pt-3 pb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <h4 class="text-white">{{ podcast.title }}</h4>
+        </div>
+        <div class="col-12 col-md-6">
+          <ngx-audio-player [playlist]="playlist"  [autoPlay]="false"
+                            muted="muted"
+                            [displayTitle]="false"
+                            [displayVolumeControls]="displayVolumeControls"
+                            [displayRepeatControls]="displayRepeatControls"
+                            [disablePositionSlider]="disablePositionSlider"
+                            [displayDuration]="displayDuration">
+
+          </ngx-audio-player>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

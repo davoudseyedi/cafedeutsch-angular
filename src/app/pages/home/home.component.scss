@@ -30,3 +30,27 @@
     color: #000;
   }
 }
+
+#featured{
+  .podcast-item{
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 35px 0px rgb(22 12 96 / 9%);
+
+  }
+}
+
+#support{
+  padding: 4rem 0;
+ .desc{
+   padding-top: 6rem;
+ }
+  h2{
+    color: #071129;
+    font-family: "Rubik", Sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 78px;
+  }
+}

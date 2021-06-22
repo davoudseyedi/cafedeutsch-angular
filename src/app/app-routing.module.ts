@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     component: SinglePodcastComponent,
-    path: 'podcast/:id'
+    path: 'podcasts/:id'
   },
   {
     component: ContactComponent,

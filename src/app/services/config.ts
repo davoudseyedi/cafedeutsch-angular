@@ -4,7 +4,8 @@ export class Config {
     public static readonly API = Config.SITE_URL + '/api';
 
 
-    public static readonly WEBSITE_PODCASTS = Config.API + '/podcasts';
+    public static readonly WEBSITE_ALL_PODCASTS = Config.API + '/podcasts';
+    public static readonly WEBSITE_FEATURED_PODCASTS = Config.API + '/featured-podcasts';
 
 
     /**
