@@ -29,7 +29,9 @@
         left: -5px;
         opacity: 0;
       }
-      &:hover::before{
+      &:hover::before,
+      &:focus::before,
+      &.active::before{
         opacity: 1;
       }
     }

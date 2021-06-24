@@ -1,9 +1,49 @@
 @import "../../../assets/scss/variables";
 
+#subscribe{
+  transform: translateY(95px);
+  .wrap{
+    background: url('/assets/img/formbg.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 33px 40px;
+    box-shadow: 0 0 35px 0px rgb(22 12 96 / 9%);
+    border-radius: 10px;
+  }
+  .form-group{
+    position: relative;
+    display: flex;
+    margin-top: 2rem;
+    input[type="text"]{
+      color: #6d727c;
+      border-radius: 25px;
+      border: 1px solid #ecf2f7;
+      padding: 10px 20px;
+      width: 100%;
+      padding-right: 150px;
+      height: 50px;
+    }
+    button{
+      background: #000;
+      color: #fff;
+      border-radius: 25px;
+      height: 50px;
+      padding: 10px 40px;
+      text-transform: uppercase;
+      position: absolute;
+      right: 0;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+  }
+
+}
 footer {
   width: 100%;
   overflow: hidden;
   background-color: $gray-medium;
+  padding-top: 8rem;
   p,li{
     font-size: 14px;
     line-height: 2;

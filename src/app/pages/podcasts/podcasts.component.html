@@ -7,17 +7,17 @@
           <div class="row">
             <div class="col-md-6">
               <div class="img">
-                <a routerLink="/podcasts/{{ item.nid[0].value }}">
-                  <img src="{{ item.field_podcast_image[0].url }}" alt="{{ item.field_podcast_image[0].alt }}" class="img-fluid" >
+                <a routerLink="/podcasts/{{ item.nid }}">
+                  <img src="{{ item.field_podcast_image }}" alt="{{ item.title }}" class="img-fluid" >
                 </a>
               </div>
             </div>
             <div class="col-md-6">
               <div class="desc">
                 <div class="podcast-title">
-                  <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{ item.nid[0].value }}">{{ item.title[0].value }}</a></h4>
+                  <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{ item.nid }}">{{ item.title }}</a></h4>
                 </div>
-                <div class="podcast-body" [innerHTML]="item.body[0].processed | slice:0 : 100"></div>
+                <div class="podcast-body" [innerHTML]="item.body | slice:0 : 100"></div>
                 <div class="view-more">
                   <a routerLink="/podcasts/{{ item.nid[0].value }}" class="text-dark text-uppercase">View more</a>
                 </div>

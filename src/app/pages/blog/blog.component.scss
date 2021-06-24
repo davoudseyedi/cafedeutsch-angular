@@ -1,0 +1,39 @@
+@import '../../../assets/scss/variables';
+
+#blogs{
+  .content{
+    article{
+      padding: 20px;
+      background: $white;
+      border-radius: 10px;
+      box-shadow: 0 0px 35px 0 rgb(22 12 96 / 9%) !important;
+      margin-bottom: 2rem;
+      .blog-item{
+        .image-wrapper{
+          margin-bottom: 2rem;
+          img{
+            border-radius: 10px;
+          }
+        }
+        .content-wrapper{
+          .category{
+            padding: 5px 15px;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: 0.2em;
+            text-align: center;
+            text-transform: uppercase;
+            display: inline-block;
+            z-index: 99999;
+            background: $text-dark2;
+            color: $white;
+            font-size: 11px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+          }
+        }
+
+      }
+    }
+  }
+}

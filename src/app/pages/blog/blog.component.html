@@ -1,1 +1,63 @@
 <app-cover [type]="'text'" [title]="'Blog'"></app-cover>
+<div id="blogs">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8 col-xs-12">
+        <div class="content teaser">
+          <article id="post-{{ i+1 }}" *ngFor="let item of blogs;let i = index">
+            <div class="blog-item">
+              <div class="image-wrapper">
+                <a routerLink="/blog/{{ item.nid }}">
+                  <img src="{{ item.field_image }}" alt="{{ item.title }}" class="img-fluid" />
+                </a>
+              </div>
+              <div class="content-wrapper">
+                <a href="#" class="category">{{ item.field_blog_category_export }}</a>
+                <h2><a class="text-dark" routerLink="/blog/{{ item.nid }}">{{ item.title }}</a></h2>
+
+                <div class="text-12" [innerHTML]="item.body | slice: 0: 200"></div>
+                <hr>
+                <div class="view-more">
+                  <a class="text-uppercase text-12 text-dark" routerLink="/blog/{{ item.nid }}">Learn more</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-12 col-md-4 col-xs-12">
+        <div id="search" class="mb-2">
+          <form action="">
+            <input type="text" name="search" class="form-control" placeholder="search the blog...">
+          </form>
+        </div>
+        <div id="categories">
+          <h5 class="text-uppercase font-weight-normal">Categories</h5>
+          <ul class="ul-list">
+            <li>Branding</li>
+            <li>Marketing</li>
+            <li>Web</li>
+            <li>Society</li>
+            <li>Podcast</li>
+          </ul>
+        </div>
+        <hr>
+        <div id="recent-post" *ngif="false">
+          <div class="container">
+            <div class="row">
+              <div class="col-3">
+
+              </div>
+              <div class="col-9">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -10,8 +10,22 @@
   z-index: 99;
 }
 
-::ng-deep{
-  .mat-slider-ticks{
+:host ::ng-deep{
+  .mat-slider-ticks,.mat-slider-thumb{
     background: #fff !important;
+  }
+  .mat-slider-ticks{
+    opacity: 1;
+  }
+  .mat-icon{
+    svg{
+      fill: $white
+    }
+  }
+  .mat-button{
+    background-color: $warning;
+    &.volume{
+      background-color: #040d1c;
+    }
   }
 }

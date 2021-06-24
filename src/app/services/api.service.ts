@@ -6,21 +6,30 @@ import { Config } from "./config";
 
 export class ApiService {
 
-    public config = Config;
+  public config = Config;
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    public loadAllPodcasts() {
-        return this.http.get(this.config.WEBSITE_ALL_PODCASTS);
-    }
+  //Podcasts
 
-    public loadFeaturedPodcasts() {
-        return this.http.get(this.config.WEBSITE_FEATURED_PODCASTS);
-    }
-    public getPodcast(id) {
-        return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '/' + id);
-    }
+  public loadAllPodcasts() {
+    return this.http.get(this.config.WEBSITE_ALL_PODCASTS);
+  }
 
+  public loadFeaturedPodcasts() {
+    return this.http.get(this.config.WEBSITE_FEATURED_PODCASTS);
+  }
+
+  public getPodcast(id) {
+    return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '/' + id);
+  }
+
+
+  //Blog
+
+  public loadAllBlogss() {
+    return this.http.get(this.config.WEBSITE_ALL_BLOGS);
+  }
 
 }
 

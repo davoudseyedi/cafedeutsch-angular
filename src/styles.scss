@@ -90,4 +90,47 @@ p{
   }
 }
 
+.ul-list{
+  padding: 0;
+  list-style: none;
+  li{
+    position:relative;
+    color: $text-light!important;
+    padding-left: 1rem;
+    line-height: 2.5;
+    font-size: 0.875rem ;
+    text-transform: uppercase;
+    &::before {
+      line-height: 20px;
+      position: absolute;
+      left: 0px;
+      content: '';
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      background: $warning;
+      border-radius: 50%;
+      margin-top: -2.5px;
+      -webkit-transition: left .25s ease;
+      -moz-transition: left .25s ease;
+      transition: left .25s ease;
+    }
+  }
+}
 
+.text-12{
+  font-size: 0.75rem;
+}
+.text-14{
+  font-size: 0.875rem;
+}
+.text-16{
+  font-size: 1rem
+}
+
+.content-wrapper{
+  p{
+    font-size: 0.875rem;
+    color: $text-light;
+  }
+}
