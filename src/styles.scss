@@ -1,8 +1,15 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import './assets/scss/variables.scss';
 @import './assets/fonts/rubik/style.scss';
+@import "./assets/fonts/fontawesome/scss/fontawesome.scss";
+@import "./assets/fonts/fontawesome/scss/solid.scss";
+@import "./assets/fonts/fontawesome/scss/brands.scss";
+@import "./assets/fonts/fontawesome/scss/regular.scss";
 @import './assets/scss/mixins.scss';
 @import './assets/scss/components.scss';
+
+
+
 // Global Styles
 html, body {
   padding: 0;
@@ -80,6 +87,16 @@ p{
   font-family: "Rubik", Sans-serif;
   font-size: 1.25rem;
   line-height: 27px;
+}
+
+a{
+  text-decoration: none;
+  &:hover{
+    color: $warning !important;
+    > i{
+      color: $warning !important;
+    }
+  }
 }
 
 
