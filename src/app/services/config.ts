@@ -15,6 +15,10 @@ export class Config {
   //Blogs Api's
   public static readonly WEBSITE_ALL_BLOGS = Config.API + '/blogs';
 
+  //Contact Webform Api
+  public static readonly WEBSITE_WEBFORM = Config.SITE_URL + '/webform_rest/submit';
+
+
 
   /**
    * Defaults

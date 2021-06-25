@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
     }
 
     private onLoadPodcastsError(error) {
-        console.error('Error: ');
         console.error(error);
     }
 }

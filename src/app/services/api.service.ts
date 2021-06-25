@@ -31,5 +31,10 @@ export class ApiService {
     return this.http.get(this.config.WEBSITE_ALL_BLOGS);
   }
 
+  //Contact
+  public postContact(webform){
+    return this.http.post(this.config.WEBSITE_WEBFORM,webform);
+  }
+
 }
 

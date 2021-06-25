@@ -42,4 +42,29 @@
       border-radius: 20px;
     }
   }
+  &.image2{
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    padding: 6rem 0;
+    text-align: center;
+    &::before{
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    h1.podcast-title{
+      color: $white;
+    }
+    p.podcast-subtitle{
+      color: $white;
+    }
+
+  }
 }

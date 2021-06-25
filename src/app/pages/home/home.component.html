@@ -4,7 +4,7 @@
       <div class="row justify-content-first">
 
         <div class="col-md-6 col-xs-12">
-          <div class="hero-desc animate__animated animate__backInLeft animate__delay-1s">
+          <div class="hero-desc">
             <div class="wrap" data-id="88fa2b2" data-element_type="widget" data-widget_type="heading.default">
               <div class="wrap-container">
                 <h1 class="title">
@@ -24,10 +24,10 @@
   <div id="about">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-xs-12 animate__animated animate__backInLeft animate__delay-1s">
+        <div class="col-md-6 col-xs-12">
           <img src="/assets/img/hero/about-cd.png" alt="about us" class="img-fluid">
         </div>
-        <div class="col-md-6 col-xs-12 animate__animated animate__backInRight animate__delay-1s">
+        <div class="col-md-6 col-xs-12">
           <div class="about-wrap">
             <span class="text-uppercase">WELCOME!</span>
             <h2>
@@ -37,9 +37,9 @@
             <p>
               podcasts are now big business. In this post-Serial audio world, journalists, celebrities, academics and yes, anyone else who owns a mixing desk and a microphone, now has a regular show. The quality is generally very high but some efforts can still be hit and miss with dozens of podcasts popping up around the same themes or TV shows.
             </p>
-            <button class="btn btn-dark">
+            <a class="btn btn-dark" routerLink="/contact">
               Get in touch
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@
                  </div>
                  <div class="podcast-body" [innerHTML]="item.body | slice:0 : 100"></div>
                  <div class="view-more">
-                   <a routerLink="/podcasts/{{ item.nid[0].value }}" class="text-dark text-uppercase">View more</a>
+                   <a routerLink="/podcasts/{{ item.nid }}" class="text-dark text-uppercase">View more</a>
                  </div>
                </div>
               </div>

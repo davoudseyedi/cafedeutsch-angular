@@ -15,6 +15,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { NotifierModule } from 'angular-notifier';
+
 
 
 
@@ -42,7 +44,7 @@ import { SingleBlogComponent } from './pages/single-blog/single-blog.component';
     PodcastsComponent,
     ContactComponent,
     BlogComponent,
-    SingleBlogComponent,
+    SingleBlogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'main-app' }),
@@ -51,7 +53,8 @@ import { SingleBlogComponent } from './pages/single-blog/single-blog.component';
     AppRoutingModule,
     HttpClientModule,
     PipeModule,
-    NgxAudioPlayerModule
+    NgxAudioPlayerModule,
+    NotifierModule
   ],
   providers: [
     ApiService,
