@@ -10,6 +10,9 @@
   .hero-desc{
     margin-top: 6rem;
     min-height: 620px;
+    @media (max-width: 667px){
+      min-height: auto !important;
+    }
   }
 }
 
@@ -43,8 +46,14 @@
 
 #support{
   padding: 4rem 0;
+  @media (max-width: 667px){
+    padding-bottom: 0;
+  }
  .desc{
    padding-top: 6rem;
+   @media (max-width: 667px){
+     padding-top: 0rem;
+   }
  }
   h2{
     color: #071129;
@@ -52,6 +61,11 @@
     font-size: 50px;
     font-weight: 700;
     line-height: 78px;
+  }
+  a.btn{
+    @media (max-width: 667px){
+      width: 100%;
+    }
   }
 }
 

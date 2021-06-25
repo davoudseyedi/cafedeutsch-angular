@@ -1,16 +1,32 @@
-<div class="navbar-header d-flex flex-column flex-md-row align-items-center p-3 px-md-4 ">
+<nav class="navbar navbar-expand-lg d-flex justify-content-between navbar-light bg-light">
+  <div class="container">
+    <div class="navbar-brand site-branding mr-md-auto">
+      <a class="d-flex align-items-center text-dark text-decoration-none" routerLink="/">
+        <img src="/assets/img/logo.png" alt="Cafe Deutsch" width="50" class="logo">
+        <h4 class="ml-2">Cafe Deutsch</h4>
+      </a>
 
-  <div class="site-branding my-0 mr-auto d-flex align-items-center">
-    <a class="" routerLink="/">
-      <img src="/assets/img/logo.png" alt="Cafe Deutsch" width="50" class="logo">
-    </a>
-    <h4 class="ml-2">Cafe Deutsch</h4>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span>
+      <span class="fa fa-times"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/podcasts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Podcasts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Contact</a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <nav class="navbar my-2 my-md-0 mr-md-3 p-0">
-    <a class="p-2 text-dark" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-    <a class="p-2 text-dark" routerLink="/podcasts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Podcasts</a>
-    <a class="p-2 text-dark" routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Blog</a>
-    <a class="p-2 text-dark" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Contact</a>
-  </nav>
-  <a class="btn btn-dark" href="#">Sign up</a>
-</div>
+</nav>
+<!--<a class="btn btn-dark" href="#">Sign up</a>-->

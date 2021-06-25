@@ -8,14 +8,16 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { PipeModule } from './pipes/pipe.module';
 import { ComponentModule } from './components/component.module';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { NotifierModule } from 'angular-notifier';
+
 
 // Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-import { NgxAudioPlayerModule } from 'ngx-audio-player';
-import { NotifierModule } from 'angular-notifier';
+
 
 
 

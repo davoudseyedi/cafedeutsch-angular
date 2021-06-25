@@ -9,6 +9,8 @@ import {MetaService} from '../../services/meta.service';
 })
 export class BlogComponent implements OnInit {
 
+  public loading = false;
+
   public blogs = [];
 
   constructor(private api: ApiService,
@@ -22,6 +24,9 @@ export class BlogComponent implements OnInit {
   }
 
   private loadBlogs() {
+
+    this.loading = true;
+
     this.api
       .loadAllBlogss()
       .subscribe({
@@ -31,12 +36,12 @@ export class BlogComponent implements OnInit {
   }
 
   private onLoadBlogsSuccess(response) {
-    console.log(response);
+    this.loading = false;
     this.blogs = response;
   }
 
   private onLoadBlogsError(error) {
-    console.error('Error: ');
+    this.loading = false;
     console.error(error);
   }
 

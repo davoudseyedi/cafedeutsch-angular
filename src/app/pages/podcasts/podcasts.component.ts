@@ -9,6 +9,8 @@ import {MetaService} from '../../services/meta.service';
 })
 export class PodcastsComponent implements OnInit {
 
+  public loading = false;
+
   public podcasts = [];
 
   constructor(private api: ApiService,
@@ -22,6 +24,9 @@ export class PodcastsComponent implements OnInit {
   }
 
   private loadPodcasts() {
+
+    this.loading = true;
+
     this.api
       .loadAllPodcasts()
       .subscribe({
@@ -31,12 +36,12 @@ export class PodcastsComponent implements OnInit {
   }
 
   private onLoadPodcastsSuccess(response) {
-    console.log(response);
+    this.loading = false;
     this.podcasts = response;
   }
 
   private onLoadPodcastsError(error) {
-    console.error('Error: ');
+    this.loading = false;
     console.error(error);
   }
 

@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-8 col-xs-12">
-        <div class="content teaser">
+        <div class="content teaser" *ngIf="!loading">
           <article id="post-{{ i+1 }}" *ngFor="let item of blogs;let i = index">
             <div class="blog-item">
               <div class="image-wrapper">
@@ -23,6 +23,11 @@
               </div>
             </div>
           </article>
+        </div>
+        <div class="row" *ngIf="loading">
+          <div class="col-12 text-center pt-5">
+            <app-loading [type]="1"></app-loading>
+          </div>
         </div>
       </div>
 

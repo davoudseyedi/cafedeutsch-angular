@@ -3,40 +3,46 @@ import { ApiService } from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 
 export class HomeComponent implements OnInit {
 
-    public podcasts = [];
+  public loading = false;
 
-    constructor(private api: ApiService,
-                private metaService: MetaService) { }
+  public podcasts = [];
 
-    public ngOnInit() {
-        this.metaService.setTitle();
-        this.metaService.clearMetaTags();
+  constructor(private api: ApiService,
+              private metaService: MetaService) { }
 
-        this.loadPodcasts();
-    }
+  public ngOnInit() {
+    this.metaService.setTitle();
+    this.metaService.clearMetaTags();
 
-    private loadPodcasts() {
-        this.api
-            .loadFeaturedPodcasts()
-            .subscribe({
-                next: this.onLoadPodcastsSuccess.bind(this),
-                error: this.onLoadPodcastsError.bind(this)
-            });
-    }
+    this.loadPodcasts();
+  }
 
-    private onLoadPodcastsSuccess(response) {
-        console.log(response);
-        this.podcasts = response;
-    }
+  private loadPodcasts() {
 
-    private onLoadPodcastsError(error) {
-        console.error(error);
-    }
+    this.loading = true;
+
+    this.api
+      .loadFeaturedPodcasts()
+      .subscribe({
+        next: this.onLoadPodcastsSuccess.bind(this),
+        error: this.onLoadPodcastsError.bind(this)
+      });
+  }
+
+  private onLoadPodcastsSuccess(response) {
+    this.loading = false;
+    this.podcasts = response;
+  }
+
+  private onLoadPodcastsError(error) {
+    this.loading = false;
+    console.error(error);
+  }
 }

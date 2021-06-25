@@ -3,14 +3,14 @@
 <div id="contact">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-6 col-md-4 col-xs-12">
+      <div class="col-12 col-md-4 col-xs-12">
         <div class="contact-left">
           <h5 class="text-uppercase font-weight-normal">Get in touch</h5>
           <h3>Contact us</h3>
           <p>The quality is generally very high but some efforts can still be hit and miss with dozens of podcasts popping up around the same themes or TV shows.</p>
         </div>
       </div>
-      <div class="col-12 col-md-7 offset-1 col-xs-12">
+      <div class="col-12 col-md-7 offset-md-1 col-xs-12">
         <div class="contact-right">
           <h5 class="text-uppercase font-weight-normal">CONTACT FORM</h5>
           <h3>Drop Us A Line</h3>
@@ -25,7 +25,7 @@
                   {{ webformModelError.name }}
                 </div>
               </div>
-              <div class="form-group col-6 col-md-6">
+              <div class="form-group col-12 col-md-6">
                 <input type="text" [(ngModel)]="webformModel.email" name="email" class="form-control" placeholder="Enter Your Email"
                        (keyup)="webformModelError.email = ''" [class.is-invalid]="webformModelError.email" />
                 <div class="invalid-feedback" *ngIf="webformModelError.email">
@@ -45,7 +45,9 @@
             </div>
             <div class="form-row">
               <div class="action">
-                <button class="btn btn-dark" (click)="postContact()">Send Message</button>
+                <app-btn [className]="'btn btn-dark'" (click)="postContact()" [loading]="btnLoading" [disabled]="btnLoading">
+                  Send Message
+                </app-btn>
               </div>
             </div>
           </form>

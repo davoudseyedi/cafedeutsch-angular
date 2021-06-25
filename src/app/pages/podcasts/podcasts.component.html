@@ -1,7 +1,7 @@
 <app-cover [type]="'text'" [title]="'Podcasts'"></app-cover>
 <div id="podcasts">
   <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="!loading">
       <div class="col-md-6 col-xs-12" *ngFor="let item of podcasts">
         <div class="podcast-item mb-3">
           <div class="row">
@@ -25,6 +25,11 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="loading">
+      <div class="col-12 text-center pt-5">
+        <app-loading [type]="1"></app-loading>
       </div>
     </div>
   </div>

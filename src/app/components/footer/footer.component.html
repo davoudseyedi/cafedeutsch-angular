@@ -7,10 +7,15 @@
           <p>Get notified about updates and be the first to get early access to new episodes.</p>
         </div>
         <div class="col-12 col-md-6 col-xs-12">
-          <form action="">
+          <form>
             <div class="form-group">
-              <input type="text" name="subscribe" class="form-control" placeholder="Enter your Email">
-              <button class="btn btn-dark">Subscribe</button>
+              <input type="text" [(ngModel)]="subscribeModel.email" name="email" class="form-control" placeholder="Enter your Email"  (keyup)="subscribeModelError.email = ''" [class.is-invalid]="subscribeModelError.email" />
+              <div class="invalid-feedback" *ngIf="subscribeModelError.email">
+                {{ subscribeModelError.email }}
+              </div>
+              <app-btn [className]="'btn btn-dark'" (click)="subscribe()" [loading]="btnLoading" [disabled]="btnLoading">
+                Subscribe
+              </app-btn>
             </div>
           </form>
         </div>
@@ -68,12 +73,12 @@
     </div>
     <div class="footer-bottom">
       <div class="row">
-        <div class="col-6 col-md-6 col-xs-6">
+        <div class="col-8 col-md-6 col-xs-8">
           <div class="copyright">
             <small class="d-block mb-3 text-muted">© 2017-2021 - Cafedeutsch.net</small>
           </div>
         </div>
-        <div class="col-6 col-md-6 col-xs-6 text-right">
+        <div class="col-4 col-md-6 col-xs-4 text-right">
           <span class="rights text-gray text-12 text-muted">All right Reserved.</span>
         </div>
       </div>

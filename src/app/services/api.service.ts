@@ -32,7 +32,7 @@ export class ApiService {
   }
 
   //Contact
-  public postContact(webform){
+  public postWebform(webform){
     return this.http.post(this.config.WEBSITE_WEBFORM,webform);
   }
 

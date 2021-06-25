@@ -11,6 +11,8 @@ import { NotifierService } from 'angular-notifier';
 })
 export class ContactComponent implements OnInit {
 
+  public btnLoading = false;
+
   public background = '/assets/img/contact.jpg';
   public subTitle = 'Through customized & effective business coaching and consulting we provide more\n' +
     'profit, happiness, and freedom for business owners who truly care about people.\n' +
@@ -42,6 +44,8 @@ export class ContactComponent implements OnInit {
 
   public postContact(){
 
+    this.btnLoading = true;
+
     let webform = {
       "webform_id" : 'contact',
       "name" : this.webformModel.name,
@@ -50,7 +54,7 @@ export class ContactComponent implements OnInit {
     }
 
     this.api
-      .postContact(webform)
+      .postWebform(webform)
       .subscribe({
         next: this.onLoadContactSuccess.bind(this),
         error: this.onLoadContactError.bind(this)
@@ -58,13 +62,23 @@ export class ContactComponent implements OnInit {
   }
 
   private onLoadContactSuccess(response) {
-    console.log(response);
+
+    this.btnLoading = false;
     this.notifier.notify('success', 'Your message has send successfully!');
 
   }
 
-  private onLoadContactError(error) {
-    this.notifier.notify('error', error.error.message);
+  private onLoadContactError(res) {
+
+    this.btnLoading = false;
+
+    this.webformModelError = {
+      name: res.error.error.name,
+      email: res.error.error.email,
+      message: res.error.error.message,
+    }
+
+    this.notifier.notify('error', res.error.message);
   }
 
 }

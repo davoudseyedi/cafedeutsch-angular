@@ -155,3 +155,27 @@ a{
     color: $white;
   }
 }
+
+#subscribe{
+  button{
+    background: #000;
+    color: #fff;
+    border-radius: 25px;
+    height: 50px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    position: absolute;
+    right: 0;
+    top:0;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s;
+
+    @media (max-width: 667px){
+      position: relative;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+  }
+}
