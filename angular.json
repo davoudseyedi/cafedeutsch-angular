@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cafedeutsch-angular": {
+    "cafedeutsch-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -73,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cafedeutsch-angular:build"
+            "browserTarget": "cafedeutsch-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cafedeutsch-angular:build:production"
+              "browserTarget": "cafedeutsch-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cafedeutsch-angular:build"
+            "browserTarget": "cafedeutsch-app:build"
           }
         },
         "test": {
@@ -121,11 +121,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cafedeutsch-angular:serve"
+            "devServerTarget": "cafedeutsch-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cafedeutsch-angular:serve:production"
+              "devServerTarget": "cafedeutsch-app:serve:production"
             }
           }
         },
@@ -141,7 +141,7 @@
       }
     }
   },
-  "defaultProject": "cafedeutsch-angular",
+  "defaultProject": "cafedeutsch-app",
   "cli": {
     "analytics": false
   }
