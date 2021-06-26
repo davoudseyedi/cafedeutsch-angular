@@ -1,11 +1,11 @@
 
 export class Config {
-  public static readonly SITE_URL = 'http://cafedeutsch.lan';
+  public static readonly SITE_URL = 'https://core.cafedeutsch.net';
   public static readonly API = Config.SITE_URL + '/api';
 
 
 
-  public static readonly ANCHOR_API = 'https://api.rss2json.com/v1/api.json';
+  // public static readonly ANCHOR_API = 'https://api.rss2json.com/v1/api.json';
 
 
   //Podcasts Api's
