@@ -1,4 +1,4 @@
-<app-cover [type]="'text'" [title]="'Podcasts'"></app-cover>
+<app-cover [type]="'text'" [title]="'اپیزودها'"></app-cover>
 <div id="podcasts">
   <div class="container">
     <div class="row" *ngIf="!loading">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="podcast-body" [innerHTML]="item.body | slice:0 : 100"></div>
                 <div class="view-more">
-                  <a routerLink="/podcasts/{{ item.nid }}" class="text-dark text-uppercase">View more</a>
+                  <a routerLink="/podcasts/{{ item.nid }}" class="text-dark text-uppercase">بیشتر بخوانید</a>
                 </div>
               </div>
             </div>

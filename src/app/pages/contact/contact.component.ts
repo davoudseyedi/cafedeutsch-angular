@@ -14,9 +14,7 @@ export class ContactComponent implements OnInit {
   public btnLoading = false;
 
   public background = '/assets/img/contact.jpg';
-  public subTitle = 'Through customized & effective business coaching and consulting we provide more\n' +
-    'profit, happiness, and freedom for business owners who truly care about people.\n' +
-    '\n';
+  public subTitle = '                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز';
 
   public webformModel = {
     name: '',

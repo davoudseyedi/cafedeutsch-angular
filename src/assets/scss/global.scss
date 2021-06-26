@@ -6,6 +6,8 @@ html, body {
   margin: 0;
   font-size: 16px;
   background-color: #f6fafc;
+  direction: rtl;
+  text-align: right;
   background-position: left top;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -15,14 +17,13 @@ html, body {
   -ms-background-size: auto;
   -o-background-size: auto;
   background-size: auto;
-  font-family: 'iran-yekan',"Rubik", Sans-serif;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
 }
-
 
 
 h1 {
   color: $text-dark;
-  font-size: 4.5rem;
+  font-size: 3rem;
   font-weight: 700;
   font-style: normal;
   line-height: 72px;
@@ -45,6 +46,7 @@ h3 {
   font-weight: 700;
   letter-spacing: -0.025em;
   color: $text-dark;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
 }
 h4 {
   font-size: 1.25rem;
@@ -53,6 +55,7 @@ h4 {
   font-weight: 700;
   letter-spacing: -0.025em;
   color: $text-dark;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
 }
 h5 {
   font-size: 1rem;
@@ -61,6 +64,7 @@ h5 {
   font-weight: 700;
   letter-spacing: -0.025em;
   color: $text-dark;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
 }
 h6 {
   font-size: 0.875px;
@@ -69,19 +73,32 @@ h6 {
   font-weight: 700;
   letter-spacing: -0.025em;
   color: $text-dark;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
 }
 
 p{
   color: $text-medium;
-  font-family: "Rubik", Sans-serif;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
   font-size: 1rem;
   line-height: 27px;
 }
+
+
+
+.rtl {
+  direction: rtl!important;
+}
+
+.ltr {
+  direction: ltr!important;
+}
+
 
 a{
   text-decoration: none;
   &:hover{
     color: $warning !important;
+    text-decoration: none;
     > i{
       color: $warning !important;
     }
@@ -95,21 +112,23 @@ a{
     font-size: 14px;
   }
 }
-
+.list-unstyled{
+  padding-right: 0;
+}
 .ul-list{
   padding: 0;
   list-style: none;
   li{
     position:relative;
     color: $text-light!important;
-    padding-left: 1rem;
+    padding-right: 1rem;
     line-height: 2.5;
     font-size: 0.875rem ;
     text-transform: uppercase;
     &::before {
       line-height: 20px;
       position: absolute;
-      left: 0px;
+      right: 0px;
       content: '';
       top: 50%;
       width: 5px;
@@ -154,7 +173,7 @@ a{
     padding: 10px 40px;
     text-transform: uppercase;
     position: absolute;
-    right: 0;
+    left: 0;
     top:0;
     font-size: 13px;
     font-weight: 500;

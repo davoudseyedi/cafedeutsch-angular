@@ -1,32 +1,32 @@
-<app-cover [type]="'image2'" [title]="'Contact'" [bg]="background" [subtitle]="subTitle"></app-cover>
+<app-cover [type]="'image2'" [title]="'تماس با ما'" [bg]="background" [subtitle]="subTitle"></app-cover>
 
 <div id="contact">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-4 col-xs-12">
         <div class="contact-left">
-          <h5 class="text-uppercase font-weight-normal">Get in touch</h5>
-          <h3>Contact us</h3>
-          <p>The quality is generally very high but some efforts can still be hit and miss with dozens of podcasts popping up around the same themes or TV shows.</p>
+          <h5 class="text-uppercase font-weight-normal">ارتباط با ما</h5>
+          <h3>تماس با ما</h3>
+          <p>                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
         </div>
       </div>
       <div class="col-12 col-md-7 offset-md-1 col-xs-12">
         <div class="contact-right">
-          <h5 class="text-uppercase font-weight-normal">CONTACT FORM</h5>
-          <h3>Drop Us A Line</h3>
-          <p>Your email address will not be published. Required fields are marked *</p>
+          <h5 class="text-uppercase font-weight-normal">فرم تماس</h5>
+          <h3>یک خط برای ما بنویسید</h3>
+          <p>انتقادات و پیشنهادات شما ما را در ایجاد پادکست بهتر کمک می کند</p>
 
           <form  class="mt-2">
             <div class="form-row">
               <div class="form-group col-12 col-md-6">
-                <input type="text" [(ngModel)]="webformModel.name" name="name" class="form-control" placeholder="Enter Your Name"
+                <input type="text" [(ngModel)]="webformModel.name" name="name" class="form-control" placeholder="نام و نام خانوادگی"
                        (keyup)="webformModelError.name = ''" [class.is-invalid]="webformModelError.name" />
                 <div class="invalid-feedback" *ngIf="webformModelError.name">
                   {{ webformModelError.name }}
                 </div>
               </div>
               <div class="form-group col-12 col-md-6">
-                <input type="text" [(ngModel)]="webformModel.email" name="email" class="form-control" placeholder="Enter Your Email"
+                <input type="text" [(ngModel)]="webformModel.email" name="email" class="form-control" placeholder="پست الکترونیکی"
                        (keyup)="webformModelError.email = ''" [class.is-invalid]="webformModelError.email" />
                 <div class="invalid-feedback" *ngIf="webformModelError.email">
                   {{ webformModelError.email }}
@@ -37,7 +37,7 @@
               <div class="form-group col-12">
                 <textarea name="message" [(ngModel)]="webformModel.message" id="message" cols="30" rows="5"
                           (keyup)="webformModelError.message = ''" [class.is-invalid]="webformModelError.message"
-                          class="form-control" placeholder="Enter Your Message"></textarea>
+                          class="form-control" placeholder="پیام شما"></textarea>
                 <div class="invalid-feedback" *ngIf="webformModelError.message">
                   {{ webformModelError.message }}
                 </div>
@@ -46,7 +46,7 @@
             <div class="form-row">
               <div class="action">
                 <app-btn [className]="'btn btn-dark'" (click)="postContact()" [loading]="btnLoading" [disabled]="btnLoading">
-                  Send Message
+                  ارسال پیام
                 </app-btn>
               </div>
             </div>

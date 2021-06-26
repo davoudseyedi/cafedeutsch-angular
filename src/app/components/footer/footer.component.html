@@ -3,18 +3,18 @@
     <div class="wrap">
       <div class="row">
         <div class="col-12 col-md-6 col-xs-12">
-          <h3>Sign up for our newsletter!</h3>
-          <p>Get notified about updates and be the first to get early access to new episodes.</p>
+          <h3>خبرنامه پادکست های Cafedeutsch</h3>
+          <p>با ثبت ایمیل خود می توانید از اپیزودهای جدید ما مطلع شوید</p>
         </div>
         <div class="col-12 col-md-6 col-xs-12">
           <form>
             <div class="form-group">
-              <input type="text" [(ngModel)]="subscribeModel.email" name="email" class="form-control" placeholder="Enter your Email"  (keyup)="subscribeModelError.email = ''" [class.is-invalid]="subscribeModelError.email" />
+              <input type="text" [(ngModel)]="subscribeModel.email" name="email" class="form-control" placeholder="ایمیل خود را وارد کنید"  (keyup)="subscribeModelError.email = ''" [class.is-invalid]="subscribeModelError.email" />
               <div class="invalid-feedback" *ngIf="subscribeModelError.email">
                 {{ subscribeModelError.email }}
               </div>
               <app-btn [className]="'btn btn-dark'" (click)="subscribe()" [loading]="btnLoading" [disabled]="btnLoading">
-                Subscribe
+                اشتراک
               </app-btn>
             </div>
           </form>
@@ -31,32 +31,30 @@
           <!--         <img class="mb-2" src="/assets/img/sample.png" alt="" width="80" height="80">-->
           <h3>Cafe Deutsch</h3>
           <p>
-            Interacting with your audience
-            creating new relationships, nurturing
-            existing ones, and responding to
-            feedback.         </p>
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+          </p>
 
         </div>
         <div class="col-12 col-md-3">
-          <h5 class="text-uppercase">Quick Links</h5>
+          <h5 class="text-uppercase">دسترسی سریع</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" routerLink="/">Home</a></li>
-            <li><a class="text-muted" routerLink="/podcasts">Podcasts</a></li>
-            <li><a class="text-muted" routerLink="/blog">Blog</a></li>
-            <li><a class="text-muted" routerLink="/contact">Contact</a></li>
+            <li><a class="text-muted" routerLink="/">صفحه اصلی</a></li>
+            <li><a class="text-muted" routerLink="/podcasts">اپیزود ها</a></li>
+            <li><a class="text-muted" routerLink="/blog">بلاگ</a></li>
+            <li><a class="text-muted" routerLink="/contact">تماس با ما</a></li>
           </ul>
         </div>
         <div class="col-12 col-md-3">
-          <h5 class="text-uppercase">Resources</h5>
+          <h5 class="text-uppercase">منابع</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">About us</a></li>
-            <li><a class="text-muted" href="#">Contact</a></li>
-            <li><a class="text-muted" href="#">Donate</a></li>
-            <li><a class="text-muted" href="#">Conditions & Agreements</a></li>
+            <li><a class="text-muted" href="#">درباره ما</a></li>
+            <li><a class="text-muted" href="#">تماس با ما</a></li>
+            <li><a class="text-muted" href="#">حامی ما باشید</a></li>
+            <li><a class="text-muted" href="#">قوانین</a></li>
           </ul>
         </div>
         <div class="col-12 col-md-3">
-          <h5 class="text-uppercase">Get in touch</h5>
+          <h5 class="text-uppercase">ارتباط با ما</h5>
           <ul class="list-unstyled text-small">
             <li><a class="text-muted" href="mailto:info@cafedeutsch.net">info@cafedeutsch.net</a></li>
 <!--            <li><a class="text-muted" href="#">@cafedeutsch</a></li>-->
@@ -73,12 +71,12 @@
     </div>
     <div class="footer-bottom">
       <div class="row">
-        <div class="col-8 col-md-6 col-xs-8">
+        <div class="col-7 col-md-6 col-xs-7">
           <div class="copyright">
             <small class="d-block mb-3 text-muted">© 2017-2021 - Cafedeutsch.net</small>
           </div>
         </div>
-        <div class="col-4 col-md-6 col-xs-4 text-right">
+        <div class="col-5 col-md-6 col-xs-5 text-right">
           <span class="rights text-gray text-12 text-muted">All right Reserved.</span>
         </div>
       </div>
