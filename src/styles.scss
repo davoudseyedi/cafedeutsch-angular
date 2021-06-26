@@ -1,181 +1,19 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import './assets/scss/variables.scss';
+@import '~angular-notifier/styles.scss';
+
+// Fonts
 @import './assets/fonts/rubik/style.scss';
+@import './assets/fonts/iran-yekan/style.scss';
+
+// Fontawesome
 @import "./assets/fonts/fontawesome/scss/fontawesome.scss";
 @import "./assets/fonts/fontawesome/scss/solid.scss";
 @import "./assets/fonts/fontawesome/scss/brands.scss";
 @import "./assets/fonts/fontawesome/scss/regular.scss";
+
+// custom Styles
+@import './assets/scss/variables.scss';
 @import './assets/scss/mixins.scss';
 @import './assets/scss/components.scss';
-@import '~angular-notifier/styles.scss';
+@import './assets/scss/global.scss';
 
-
-
-// Global Styles
-html, body {
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-  background-color: #f6fafc;
-  background-position: left top;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-blend-mode: normal;
-  -webkit-background-size: auto;
-  -moz-background-size: auto;
-  -ms-background-size: auto;
-  -o-background-size: auto;
-  background-size: auto;
-  font-family: "Rubik", Sans-serif;
-}
-
-
-
-h1 {
-  color: $text-dark;
-  font-size: 4.5rem;
-  font-weight: 700;
-  font-style: normal;
-  line-height: 72px;
-  letter-spacing: -2.4px;
-  text-shadow: 0px 0px 0px rgb(0 0 0 / 30%);
-}
-
-h2 {
-  font-size: 2.25rem;
-  line-height: 42px;
-  text-transform: none;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: $text-dark;
-}
-h3 {
-  font-size: 1.876rem;
-  line-height: 42px;
-  text-transform: none;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: $text-dark;
-}
-h4 {
-  font-size: 1.25rem;
-  line-height: 42px;
-  text-transform: none;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: $text-dark;
-}
-h5 {
-  font-size: 1rem;
-  line-height: 42px;
-  text-transform: none;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: $text-dark;
-}
-h6 {
-  font-size: 0.875px;
-  line-height: 42px;
-  text-transform: none;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: $text-dark;
-}
-
-p{
-  color: $text-medium;
-  font-family: "Rubik", Sans-serif;
-  font-size: 1rem;
-  line-height: 27px;
-}
-
-a{
-  text-decoration: none;
-  &:hover{
-    color: $warning !important;
-    > i{
-      color: $warning !important;
-    }
-  }
-}
-
-
-
-.podcast-body{
-  p{
-    font-size: 14px;
-  }
-}
-
-.ul-list{
-  padding: 0;
-  list-style: none;
-  li{
-    position:relative;
-    color: $text-light!important;
-    padding-left: 1rem;
-    line-height: 2.5;
-    font-size: 0.875rem ;
-    text-transform: uppercase;
-    &::before {
-      line-height: 20px;
-      position: absolute;
-      left: 0px;
-      content: '';
-      top: 50%;
-      width: 5px;
-      height: 5px;
-      background: $warning;
-      border-radius: 50%;
-      margin-top: -2.5px;
-      -webkit-transition: left .25s ease;
-      -moz-transition: left .25s ease;
-      transition: left .25s ease;
-    }
-  }
-}
-
-.text-12{
-  font-size: 0.75rem;
-}
-.text-14{
-  font-size: 0.875rem;
-}
-.text-16{
-  font-size: 1rem
-}
-
-.content-wrapper{
-  p{
-    color: $text-light;
-  }
-}
-.notifier__notification{
-  p{
-    color: $white;
-  }
-}
-
-#subscribe{
-  button{
-    background: #000;
-    color: #fff;
-    border-radius: 25px;
-    height: 50px;
-    padding: 10px 40px;
-    text-transform: uppercase;
-    position: absolute;
-    right: 0;
-    top:0;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.3s;
-
-    @media (max-width: 667px){
-      position: relative;
-      width: 100%;
-      margin-top: 1rem;
-    }
-
-  }
-}
