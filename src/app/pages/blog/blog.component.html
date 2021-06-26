@@ -33,21 +33,8 @@
 
       <!-- Sidebar -->
       <div class="col-12 col-md-4 col-xs-12">
-        <div id="search" class="mb-2">
-          <form action="">
-            <input type="text" name="search" class="form-control" placeholder="search the blog...">
-          </form>
-        </div>
-        <div id="categories">
-          <h5 class="text-uppercase font-weight-normal">Categories</h5>
-          <ul class="ul-list">
-            <li>Branding</li>
-            <li>Marketing</li>
-            <li>Web</li>
-            <li>Society</li>
-            <li>Podcast</li>
-          </ul>
-        </div>
+        <app-search-sidebar></app-search-sidebar>
+        <app-blog-categories></app-blog-categories>
         <hr>
         <div id="recent-post" *ngif="false">
           <div class="container">

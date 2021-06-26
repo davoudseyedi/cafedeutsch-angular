@@ -1,1 +1,17 @@
-<p>single-blog works!</p>
+<app-cover [type]="'image'" [category]="blog.category" [title]="blog.title" [bg]="blog.image"></app-cover>
+
+<div id="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <p [innerHTML]="blog.body"></p>
+      </div>
+      <div class="col-4">
+        <!--  ToDO: you can insert here embeded audioplayer -->
+        <app-search-sidebar></app-search-sidebar>
+        <app-blog-categories></app-blog-categories>
+      </div>
+    </div>
+
+  </div>
+</div>

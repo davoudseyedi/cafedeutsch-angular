@@ -1,11 +1,11 @@
 
 <div class="main-wrapper">
-    <app-header></app-header>
+    <app-header *ngIf="hideHeader"></app-header>
 
     <div class="content-wrapper">
         <router-outlet></router-outlet>
     </div>
 
-    <app-footer></app-footer>
+    <app-footer *ngIf="hideHeader"></app-footer>
 </div>
 <notifier-container></notifier-container>

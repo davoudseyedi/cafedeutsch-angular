@@ -7,6 +7,8 @@ import {SinglePodcastComponent} from './pages/single-podcast/single-podcast.comp
 import {ContactComponent} from './pages/contact/contact.component';
 import {BlogComponent} from './pages/blog/blog.component';
 import {SingleBlogComponent} from './pages/single-blog/single-blog.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+
 
 
 const routes: Routes = [
@@ -36,8 +38,8 @@ const routes: Routes = [
     path: 'blog/:id'
   },
   {
-    path: '**',
-    redirectTo: ''
+    component: NotFoundComponent,
+    path: '**'
   }
 ];
 

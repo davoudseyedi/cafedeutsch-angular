@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { CoverComponent } from './cover/cover.component';
 import { LoadingComponent } from "./loading/loading.component";
 import { ButtonDirective } from "./button/button.component";
+import { BlogCategoriesComponent } from './blog-categories/blog-categories.component';
+import { SearchSidebarComponent } from './search-sidebar/search-sidebar.component';
 
 
 
@@ -23,13 +25,17 @@ export function playerFactory() {
   declarations: [
     CoverComponent,
     LoadingComponent,
-    ButtonDirective
+    ButtonDirective,
+    BlogCategoriesComponent,
+    SearchSidebarComponent
   ],
   exports: [
     CoverComponent,
     LottieModule,
     LoadingComponent,
-    ButtonDirective
+    ButtonDirective,
+    BlogCategoriesComponent,
+    SearchSidebarComponent
   ],
   imports: [
     CommonModule,

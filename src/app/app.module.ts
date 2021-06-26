@@ -20,8 +20,6 @@ import { HomeComponent } from './pages/home/home.component';
 
 
 
-
-
 // Services
 import { ApiService } from './services/api.service';
 import { CustomInterceptor } from './interceptor/custom.interceptor';
@@ -35,6 +33,7 @@ import { PodcastsComponent } from './pages/podcasts/podcasts.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { SingleBlogComponent } from './pages/single-blog/single-blog.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,8 @@ import { SingleBlogComponent } from './pages/single-blog/single-blog.component';
     PodcastsComponent,
     ContactComponent,
     BlogComponent,
-    SingleBlogComponent
+    SingleBlogComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'main-app' }),

@@ -27,8 +27,13 @@ export class ApiService {
 
   //Blog
 
-  public loadAllBlogss() {
+  public loadAllBlogs() {
     return this.http.get(this.config.WEBSITE_ALL_BLOGS);
+  }
+
+
+  public getPost(id) {
+    return this.http.get(this.config.WEBSITE_ALL_BLOGS + '/' + id);
   }
 
   //Contact

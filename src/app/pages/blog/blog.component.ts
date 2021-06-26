@@ -28,7 +28,7 @@ export class BlogComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .loadAllBlogss()
+      .loadAllBlogs()
       .subscribe({
         next: this.onLoadBlogsSuccess.bind(this),
         error: this.onLoadBlogsError.bind(this)

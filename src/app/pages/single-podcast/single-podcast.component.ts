@@ -62,17 +62,6 @@ export class SinglePodcastComponent implements OnInit {
 
   private makePodcastItem(data){
 
-    // for(let i = 0; i < data.length; i++){
-    //   this.podcast = {
-    //     nid: data[i].nid,
-    //     title: data[i].title[0].value,
-    //     body: data[i].body[0].processed,
-    //     created: data[i].created[0].value,
-    //     image: data[i].field_podcast_image[0].url,
-    //     category: data[i].field_podcast_category[0],
-    //   };
-    // }
-
     this.podcast = {
           nid: data[0].nid,
           title: data[0].title,
