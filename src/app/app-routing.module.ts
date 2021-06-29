@@ -8,6 +8,7 @@ import {ContactComponent} from './pages/contact/contact.component';
 import {BlogComponent} from './pages/blog/blog.component';
 import {SingleBlogComponent} from './pages/single-blog/single-blog.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import {PodcastsCategoryComponent} from './pages/podcasts-category/podcasts-category.component';
 
 
 
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     component: SingleBlogComponent,
     path: 'blog/:id'
+  },
+  {
+    component: PodcastsCategoryComponent,
+    path: 'podcasts-category/:id'
   },
   {
     component: NotFoundComponent,

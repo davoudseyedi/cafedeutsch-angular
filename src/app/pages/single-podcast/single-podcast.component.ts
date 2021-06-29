@@ -73,7 +73,7 @@ export class SinglePodcastComponent implements OnInit {
         };
     this.playlist = [{
       title: this.podcast.title,
-      link: 'http://cafedeutsch.lan' + this.podcast.audio,
+      link: 'http://core.cafedeutsch.net' + this.podcast.audio,
       artist: 'Dawid'
     }];
   }

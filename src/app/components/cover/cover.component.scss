@@ -1,12 +1,16 @@
 @import "../../../assets/scss/variables";
 
 #cover{
-  margin-top: 87px;
-  background-color: $gray-medium;
+  //margin-top: 87px;
+  padding-top: 10rem!important;
+  background-color: $primary;
   margin-bottom: 3rem;
   &.text{
     text-align: center;
     padding: 3rem 0;
+    h1{
+      color: $white
+    }
   }
   &.image{
     position: relative;
@@ -22,7 +26,7 @@
       left: 0;
       top: 0;
       bottom: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.85);
     }
     h1.podcast-title{
       color: $white;

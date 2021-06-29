@@ -23,7 +23,7 @@ html, body {
 
 h1 {
   color: $text-dark;
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 700;
   font-style: normal;
   line-height: 72px;
@@ -93,14 +93,20 @@ p{
   direction: ltr!important;
 }
 
+.btn-dark{
+  background-color: $primary !important;
+}
+.text-dark{
+  color: $text-dark !important;
+}
 
 a{
   text-decoration: none;
   &:hover{
-    color: $warning !important;
+    color: $red-color !important;
     text-decoration: none;
     > i{
-      color: $warning !important;
+      color: $red-color !important;
     }
   }
 }
@@ -133,7 +139,7 @@ a{
       top: 50%;
       width: 5px;
       height: 5px;
-      background: $warning;
+      background: $orange-color;
       border-radius: 50%;
       margin-top: -2.5px;
       -webkit-transition: left .25s ease;

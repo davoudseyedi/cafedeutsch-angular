@@ -3,12 +3,16 @@
 #subscribe{
   transform: translateY(95px);
   .wrap{
-    background: url('/assets/img/formbg.png') no-repeat;
+    //background: url('/assets/img/formbg.png') no-repeat;
+    background-color: $red-color;
     background-size: cover;
     background-position: center;
     padding: 33px 40px;
     box-shadow: 0 0 35px 0px rgb(22 12 96 / 9%);
     border-radius: 10px;
+    h3,p{
+      color: $white;
+    }
     @media (max-width: 667px){
       background-position: 0 0;
       padding: 30px 15px;
@@ -35,10 +39,14 @@
 footer {
   width: 100%;
   overflow: hidden;
-  background-color: $gray-medium;
+  background-color: $primary;
   padding-top: 8rem;
-  p,li{
+  h5,h3{
+    color: $white;
+  }
+  p,li,a,span{
     font-size: 14px;
     line-height: 2;
+    color: $white;
   }
 }

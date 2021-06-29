@@ -1,25 +1,41 @@
 @import "../../../assets/scss/variables";
 
 #hero{
-  background-image:url('/assets/img/hero/hero-1-min.jpeg') ;
+  //background-image:url('/assets/img/hero/hero-1-min.jpeg') ;
+  //background-color: $primary;
+  background-image: linear-gradient(70deg, $primary,#333);
   background-position: 0px 0px;
   background-repeat: no-repeat;
   background-size: cover;
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
   padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
   .hero-desc{
     margin-top: 6rem;
-    min-height: 620px;
+    min-height:auto;
     @media (max-width: 667px){
       min-height: auto !important;
+    }
+    h1,p{
+      color: $white;
     }
   }
 }
 
 #about{
   padding: 4rem 0;
+  background-color: $white;
+  .about-label{
+    background: $red-color;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    display: inline-block;
+    color: $white;
+  }
   p{
-    color: #6D727C;
+    color: $text-dark;
     //font-family: "Rubik", Sans-serif;
     font-size: 18px;
     line-height: 30px;
@@ -30,11 +46,18 @@
     line-height: 30px;
   }
   h4{
-    color: #000;
+    color: $text-dark ;
   }
 }
 
 #featured{
+  padding: 4rem 0;
+  background-color: $yellow-dark-color;
+  .featured-header{
+    h2 ,a {
+      color: $white !important;
+    }
+  }
   .podcast-item{
     padding: 20px;
     background: #fff;
@@ -42,6 +65,7 @@
     box-shadow: 0 0 35px 0px rgb(22 12 96 / 9%);
 
   }
+
 }
 
 #support{

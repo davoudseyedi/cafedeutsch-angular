@@ -41,5 +41,10 @@ export class ApiService {
     return this.http.post(this.config.WEBSITE_WEBFORM,webform);
   }
 
+  //Podcast Category
+  public getPodcastsOfCategory(termID){
+    return this.http.get(this.config.WEBSITE_PODCAST_CATEGORY + '/' + termID);
+  }
+
 }
 
