@@ -9,6 +9,7 @@ import {BlogComponent} from './pages/blog/blog.component';
 import {SingleBlogComponent} from './pages/single-blog/single-blog.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {PodcastsCategoryComponent} from './pages/podcasts-category/podcasts-category.component';
+import {BlogCategoryComponent} from './pages/blog-category/blog-category.component';
 
 
 
@@ -36,19 +37,15 @@ const routes: Routes = [
   },
   {
     component: SingleBlogComponent,
-    path: 'blog/:id'
-  },
-  {
-    component: SingleBlogComponent,
-    path: 'blog/:id/:slug'
-  },
-  {
-    component: PodcastsCategoryComponent,
-    path: 'podcasts/:id'
+    path: 'blog/:cat/:id/:slug'
   },
   {
     component: PodcastsCategoryComponent,
     path: 'podcasts/:id/:slug'
+  },
+  {
+    component: BlogCategoryComponent,
+    path: 'blog/:id/:slug'
   },
   {
     component: NotFoundComponent,
@@ -57,7 +54,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

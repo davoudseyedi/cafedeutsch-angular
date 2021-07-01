@@ -18,6 +18,9 @@ export class SingleBlogComponent implements OnInit {
     created: '',
     image: '',
     category: '',
+    category_id: '',
+    slug: '',
+    term_slug: ''
   };
 
   constructor(private api: ApiService,
@@ -51,6 +54,9 @@ export class SingleBlogComponent implements OnInit {
       created: data[0].created,
       image: data[0].field_image,
       category: data[0].field_blog_category,
+      category_id: data[0].category_id,
+      slug: data[0].slug,
+      term_slug: data[0].term_slug
     };
   }
 

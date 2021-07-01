@@ -1,10 +1,10 @@
-<app-cover [type]="'text'" [title]="'بلاگ'"></app-cover>
-<div id="blogs">
+<app-cover [type]="'text'" [title]="categoryLabel"></app-cover>
+<div id="blog-category">
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-8 col-xs-12">
         <div class="content teaser" *ngIf="!loading">
-          <article id="post-{{ i+1 }}" *ngFor="let item of blogs;let i = index">
+          <article id="post-{{ i+1 }}" *ngFor="let item of blog;let i = index">
             <div class="blog-item">
               <div class="image-wrapper">
                 <a routerLink="/blog{{ item.term_slug }}/{{ item.nid }}{{ item.slug }}">
@@ -12,7 +12,7 @@
                 </a>
               </div>
               <div class="content-wrapper">
-                <a routerLink="/blog/{{ item.category_id }}{{ item.term_slug }}" class="category">{{ item.field_blog_category_export }}</a>
+                <a routerLink="/blog/{{ item.category_id }}{{ item.term_slug }}" class="category">{{ item.field_blog_category }}</a>
                 <h2><a class="text-dark" routerLink="/blog{{ item.term_slug }}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h2>
 
                 <div class="text-12" [innerHTML]="item.body | slice: 0: 200"></div>

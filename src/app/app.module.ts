@@ -35,6 +35,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { SingleBlogComponent } from './pages/single-blog/single-blog.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PodcastsCategoryComponent } from './pages/podcasts-category/podcasts-category.component';
+import { BlogCategoryComponent } from './pages/blog-category/blog-category.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PodcastsCategoryComponent } from './pages/podcasts-category/podcasts-ca
     BlogComponent,
     SingleBlogComponent,
     NotFoundComponent,
-    PodcastsCategoryComponent
+    PodcastsCategoryComponent,
+    BlogCategoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'main-app' }),

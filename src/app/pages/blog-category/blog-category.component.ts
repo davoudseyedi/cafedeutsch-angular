@@ -4,14 +4,14 @@ import {MetaService} from '../../services/meta.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-podcasts-category',
-  templateUrl: './podcasts-category.component.html',
-  styleUrls: ['./podcasts-category.component.scss']
+  selector: 'app-blog-category',
+  templateUrl: './blog-category.component.html',
+  styleUrls: ['./blog-category.component.scss']
 })
-export class PodcastsCategoryComponent implements OnInit {
+export class BlogCategoryComponent implements OnInit {
 
   public loading = false;
-  public podcasts = [];
+  public blog = [];
 
   public categoryLabel = '';
 
@@ -23,6 +23,7 @@ export class PodcastsCategoryComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.metaService.setTitle();
     this.metaService.clearMetaTags();
 
@@ -31,29 +32,31 @@ export class PodcastsCategoryComponent implements OnInit {
 
     });
 
-    this.loadPodcastsCategory();
+    this.loadBlogCategory();
+
   }
 
-  private loadPodcastsCategory() {
+  private loadBlogCategory() {
 
     this.loading = true;
 
     this.api
-      .getPodcastsOfCategory(this.id)
+      .getBlogOfCategory(this.id)
       .subscribe({
-        next: this.onLoadPodcastsSuccess.bind(this),
-        error: this.onLoadPodcastsError.bind(this)
+        next: this.onLoadBlogSuccess.bind(this),
+        error: this.onLoadBlogError.bind(this)
       });
   }
 
-  private onLoadPodcastsSuccess(response) {
+  private onLoadBlogSuccess(response) {
     this.loading = false;
-    this.podcasts = response;
+    this.blog = response;
 
-    this.categoryLabel = 'سطح ' + response[0].field_podcast_category;
+    this.categoryLabel = response[0].field_blog_category;
+
   }
 
-  private onLoadPodcastsError(error) {
+  private onLoadBlogError(error) {
     this.loading = false;
     console.error(error);
   }

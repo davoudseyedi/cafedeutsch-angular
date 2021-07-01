@@ -19,8 +19,9 @@ export class Config {
   // Contact Webform Api
   public static readonly WEBSITE_WEBFORM = Config.SITE_URL + '/webform_rest/submit';
 
-  // Podcast-Category
+  // Category
   public static readonly WEBSITE_PODCAST_CATEGORY = Config.API + '/podcast-category';
+  public static readonly WEBSITE_BLOG_CATEGORY = Config.API + '/blog-category';
 
 
 
