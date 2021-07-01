@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     component: SinglePodcastComponent,
-    path: 'podcasts/:id'
+    path: 'podcasts/:cat/:id/:slug'
   },
   {
     component: ContactComponent,
@@ -39,8 +39,16 @@ const routes: Routes = [
     path: 'blog/:id'
   },
   {
+    component: SingleBlogComponent,
+    path: 'blog/:id/:slug'
+  },
+  {
     component: PodcastsCategoryComponent,
-    path: 'podcasts-category/:id'
+    path: 'podcasts/:id'
+  },
+  {
+    component: PodcastsCategoryComponent,
+    path: 'podcasts/:id/:slug'
   },
   {
     component: NotFoundComponent,

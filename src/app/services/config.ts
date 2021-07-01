@@ -8,14 +8,15 @@ export class Config {
   // public static readonly ANCHOR_API = 'https://api.rss2json.com/v1/api.json';
 
 
-  //Podcasts Api's
+  // Podcasts Api's
   public static readonly WEBSITE_ALL_PODCASTS = Config.API + '/podcasts';
   public static readonly WEBSITE_FEATURED_PODCASTS = Config.API + '/featured-podcasts';
+  public static readonly WEBSITE_PROMOTED_PODCASTS = Config.API + '/newest-podcast';
 
-  //Blogs Api's
+  // Blogs Api's
   public static readonly WEBSITE_ALL_BLOGS = Config.API + '/blogs';
 
-  //Contact Webform Api
+  // Contact Webform Api
   public static readonly WEBSITE_WEBFORM = Config.SITE_URL + '/webform_rest/submit';
 
   // Podcast-Category

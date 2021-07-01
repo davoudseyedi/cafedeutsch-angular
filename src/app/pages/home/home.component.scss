@@ -8,17 +8,32 @@
   background-repeat: no-repeat;
   background-size: cover;
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-  padding: 4rem 0;
+  padding: 10rem 0 4rem;
   position: relative;
   overflow: hidden;
+  .img{
+    border-radius: 20px;
+    overflow: hidden;
+  }
   .hero-desc{
-    margin-top: 6rem;
+    //margin-top: 6rem;
     min-height:auto;
     @media (max-width: 667px){
       min-height: auto !important;
     }
     h1,p{
       color: $white;
+    }
+
+    .podcast-cat{
+      a{
+        background: $orange;
+        color: $white!important;
+        display: inline-block;
+        line-height: 1;
+        padding: 5px;
+        border-radius: 4px;
+      }
     }
   }
 }
@@ -55,7 +70,7 @@
   background-color: $yellow-dark-color;
   .featured-header{
     h2 ,a {
-      color: $white !important;
+      color: $primary !important;
     }
   }
   .podcast-item{
@@ -63,7 +78,17 @@
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 0 35px 0px rgb(22 12 96 / 9%);
+    .podcast-cat{
+      a{
+        background: $orange;
+        color: $white!important;
+        display: inline-block;
+        line-height: 1;
+        padding: 5px;
+        border-radius: 4px;
+      }
 
+    }
   }
 
 }
@@ -92,5 +117,32 @@
     }
   }
 }
+
+
+:host ::ng-deep{
+  .mat-card{
+    background: #191919;
+    margin-top: 4rem !important;
+    padding: 1rem !important;
+  }
+  .mat-slider-ticks,.mat-slider-thumb{
+    background: #fff !important;
+  }
+  .mat-slider-ticks{
+    opacity: 1;
+  }
+  .mat-icon{
+    svg{
+      fill: $white
+    }
+  }
+  .mat-button{
+    background-color: transparent;
+    &.volume{
+      background-color: transparent;
+    }
+  }
+}
+
 
 

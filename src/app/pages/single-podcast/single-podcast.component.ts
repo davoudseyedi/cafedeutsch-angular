@@ -33,6 +33,7 @@ export class SinglePodcastComponent implements OnInit {
     created: '',
     image: '',
     category: '',
+    category_id: '',
     audio: ''
   };
 
@@ -69,12 +70,13 @@ export class SinglePodcastComponent implements OnInit {
           created: data[0].created,
           image: data[0].field_podcast_image,
           category: data[0].field_podcast_category,
+          category_id: data[0].category_id,
           audio: data[0].field_podcast
         };
     this.playlist = [{
       title: this.podcast.title,
       link: 'http://core.cafedeutsch.net' + this.podcast.audio,
-      artist: 'Dawid'
+      artist: 'داود سیدی'
     }];
   }
 

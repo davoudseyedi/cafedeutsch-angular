@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Config } from "./config";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Config } from './config';
 
 @Injectable()
 
@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  //Podcasts
+  // Podcasts
 
   public loadAllPodcasts() {
     return this.http.get(this.config.WEBSITE_ALL_PODCASTS);
@@ -20,12 +20,16 @@ export class ApiService {
     return this.http.get(this.config.WEBSITE_FEATURED_PODCASTS);
   }
 
+  public loadPromotedPodcasts() {
+    return this.http.get(this.config.WEBSITE_PROMOTED_PODCASTS);
+  }
+
   public getPodcast(id) {
     return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '/' + id);
   }
 
 
-  //Blog
+  // Blog
 
   public loadAllBlogs() {
     return this.http.get(this.config.WEBSITE_ALL_BLOGS);
@@ -36,12 +40,12 @@ export class ApiService {
     return this.http.get(this.config.WEBSITE_ALL_BLOGS + '/' + id);
   }
 
-  //Contact
+  // Contact
   public postWebform(webform){
-    return this.http.post(this.config.WEBSITE_WEBFORM,webform);
+    return this.http.post(this.config.WEBSITE_WEBFORM, webform);
   }
 
-  //Podcast Category
+  // Podcast Category
   public getPodcastsOfCategory(termID){
     return this.http.get(this.config.WEBSITE_PODCAST_CATEGORY + '/' + termID);
   }

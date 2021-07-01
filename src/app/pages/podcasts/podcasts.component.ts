@@ -5,13 +5,15 @@ import {MetaService} from '../../services/meta.service';
 @Component({
   selector: 'app-podcasts',
   templateUrl: './podcasts.component.html',
-  styleUrls: ['./podcasts.component.scss']
+  styleUrls: ['./podcasts.component.scss'],
 })
 export class PodcastsComponent implements OnInit {
 
   public loading = false;
 
   public podcasts = [];
+
+  public slug = '';
 
   constructor(private api: ApiService,
               private metaService: MetaService) { }

@@ -11,6 +11,7 @@ export class CoverComponent implements OnInit {
   @Input() public title: any;
   @Input() public subtitle: any;
   @Input() public category: any;
+  @Input() public categoryID: any;
   @Input() public bg: any;
 
 

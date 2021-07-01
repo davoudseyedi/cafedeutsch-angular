@@ -1,24 +1,46 @@
 <div id="home">
   <div id="hero">
     <div class="container">
-      <div class="row justify-content-end">
+     <div class="newest" *ngIf="!loading">
+       <div class="row justify-content-end" *ngFor="let item of newest">
+         <div class="col-12 col-md-6 col-xs-12">
+           <div class="img">
+             <a routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}">
+               <img src="{{ item.field_podcast_image }}" alt="{{ item.title }}" class="img-fluid" >
+             </a>
+           </div>
+         </div>
+         <div class="col-12 col-md-6 col-xs-12">
+           <div class="hero-desc">
+             <div class="wrap" data-id="88fa2b2" data-element_type="widget" data-widget_type="heading.default">
+               <div class="wrap-container">
+                 <h1 class="podcast-title">
+                   <a  class="text-white" routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a>
+                 </h1>
+                 <div class="podcast-cat">
+                   <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category_id }}/{{ item.field_podcast_category }}">سطح {{ item.field_podcast_category }}</a></h5>
+                 </div>
+                 <div class="podcast-body" [innerHTML]="item.body"></div>
 
-        <div class="col-md-6 col-xs-12">
-          <div class="hero-desc">
-            <div class="wrap" data-id="88fa2b2" data-element_type="widget" data-widget_type="heading.default">
-              <div class="wrap-container">
-                <h1 class="title">
-                  Cafe Deutsch <br>
-                  اولین میزبان پادکست های <br>
-                  آموزش زبان آلمانی
-                </h1>
-                <p>
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد.
-                </p>
-              </div>
+                 <ngx-audio-player [playlist]="playlist"  [autoPlay]="false"
+                                   muted="muted"
+                                   [displayTitle]="false"
+                                   [displayVolumeControls]="displayVolumeControls"
+                                   [displayRepeatControls]="displayRepeatControls"
+                                   [disablePositionSlider]="disablePositionSlider"
+                                   [displayDuration]="displayDuration">
 
-            </div>
-          </div>
+                 </ngx-audio-player>
+               </div>
+
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+      <div class="row" *ngIf="loading">
+        <div class="col-12 text-center pt-5">
+          <app-loading [type]="1"></app-loading>
         </div>
       </div>
     </div>
@@ -65,23 +87,31 @@
         <div class="col-md-6 col-xs-12" *ngFor="let item of podcasts">
           <div class="podcast-item mb-3">
             <div class="row">
-              <div class="col-12 col-md-6">
+              <div class="col-6 col-md-6">
                 <div class="img mb-md-0 mb-2">
-                  <a routerLink="/podcasts/{{ item.nid }}">
+                  <a routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}">
                     <img src="{{ item.field_podcast_image }}" alt="{{ item.title }}" class="img-fluid" >
                   </a>
                 </div>
               </div>
-              <div class="col-12 col-md-6">
+              <div class="col-6 col-md-6">
                <div class="desc">
                  <div class="podcast-title">
-                   <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{ item.nid }}">{{ item.title }}</a></h4>
+                   <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
+                 </div>
+                 <div class="podcast-cat">
+                   <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category_id }}/{{ item.field_podcast_category }}">سطح git{{ item.field_podcast_category }}</a></h5>
                  </div>
                  <div class="podcast-body" [innerHTML]="item.body | slice:0 : 100"></div>
-                 <div class="view-more">
-                   <a routerLink="/podcasts/{{ item.nid }}" class="text-dark text-uppercase">بیشتر بخوانید</a>
+                 <div class="view-more d-none d-md-block d-xs-none">
+                   <a routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">بیشتر بخوانید</a>
                  </div>
                </div>
+              </div>
+              <div class="col-12 d-block d-md-none d-xs-block">
+                <div class="view-more">
+                  <a routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">بیشتر بخوانید</a>
+                </div>
               </div>
             </div>
           </div>
