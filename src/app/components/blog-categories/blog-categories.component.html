@@ -1,10 +1,12 @@
 <div id="categories">
   <h5 class="text-uppercase font-weight-normal">دسته بندی ها</h5>
-  <ul class="ul-list">
-    <li>آموزشی</li>
-    <li>معرفی فیلم و سریال</li>
-    <li>معرفی موزیک</li>
-    <li>فرهنگی</li>
-    <li>تاریخی</li>
+  <ul class="ul-list" *ngFor="let item of categories">
+
+    <li>
+      <a class="text-dark" href="/blog/{{ item.tid }}{{ item.term_slug }}">
+        {{ item.name }}
+      </a>
+    </li>
+
   </ul>
 </div>

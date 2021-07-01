@@ -54,5 +54,11 @@ export class ApiService {
   public getBlogOfCategory(termID){
     return this.http.get(this.config.WEBSITE_BLOG_CATEGORY + '/' + termID);
   }
+
+  // BLOG TAXONOMIES LIST
+  public getBlogCategoriesList(){
+    return this.http.get(this.config.WEBSITE_BLOG_CATEGORY_LIST);
+  }
+
 }
 

@@ -9,6 +9,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class SingleBlogComponent implements OnInit {
 
+  public loading = false;
+
   public id;
 
   public blog = {
@@ -37,6 +39,8 @@ export class SingleBlogComponent implements OnInit {
   }
 
   public loadSinglePost(){
+    this.loading = true;
+
     this.api
       .getPost(this.id)
       .subscribe({
@@ -62,13 +66,14 @@ export class SingleBlogComponent implements OnInit {
 
   private onLoadPostSuccess(response) {
 
-    console.log(response);
+    this.loading = false;
     this.makePostItem(response);
   }
 
 
   private onLoadPostError(error) {
-    console.error('Error: ');
+    this.loading = false;
+
     console.error(error);
   }
 }

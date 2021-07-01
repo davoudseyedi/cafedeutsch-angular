@@ -23,6 +23,10 @@ export class Config {
   public static readonly WEBSITE_PODCAST_CATEGORY = Config.API + '/podcast-category';
   public static readonly WEBSITE_BLOG_CATEGORY = Config.API + '/blog-category';
 
+  // Taxonomy List
+  public static readonly WEBSITE_BLOG_CATEGORY_LIST = Config.API + '/blog-taxonomies-list';
+
+
 
 
 

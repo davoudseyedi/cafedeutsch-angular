@@ -2,8 +2,8 @@
 <div id="blog-category">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-8 col-xs-12">
-        <div class="content teaser" *ngIf="!loading">
+      <div class="col-12 col-md-8 col-xs-12 order-md-0 order-1">
+        <div class="content teaser" *ngIf="!loading && blog && blog.length > 0">
           <article id="post-{{ i+1 }}" *ngFor="let item of blog;let i = index">
             <div class="blog-item">
               <div class="image-wrapper">
@@ -29,10 +29,15 @@
             <app-loading [type]="1"></app-loading>
           </div>
         </div>
+        <div class="col-12">
+          <div class="aler-message" *ngIf="!loading && blog && blog.length == 0">
+            <div class="alert alert-warning" >آیتمی یافت نشد.</div>
+          </div>
+        </div>
       </div>
 
       <!-- Sidebar -->
-      <div class="col-12 col-md-4 col-xs-12">
+      <div class="col-12 col-md-4 col-xs-12 order-0 order-md-1">
         <app-search-sidebar></app-search-sidebar>
         <app-blog-categories></app-blog-categories>
         <hr>

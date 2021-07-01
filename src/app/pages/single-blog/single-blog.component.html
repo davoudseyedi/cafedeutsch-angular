@@ -1,17 +1,21 @@
 <app-cover [type]="'image'" [category]="blog.category" [title]="blog.title" [categoryID]="'/blog/' + blog.category_id + '/'+ blog.category" [bg]="blog.image"></app-cover>
 
 <div id="blog">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-8 col-xs-12">
+  <div class="container" >
+    <div class="row" *ngIf="!loading">
+      <div class="col-12 col-md-8 col-xs-12 order-1 order-md-0" >
         <p [innerHTML]="blog.body"></p>
       </div>
-      <div class="col-12 col-md-4 col-xs-12">
+      <div class="col-12 col-md-4 col-xs-12 order-0 order-md-1">
         <!--  ToDO: you can insert here embeded audioplayer -->
         <app-search-sidebar></app-search-sidebar>
         <app-blog-categories></app-blog-categories>
       </div>
     </div>
-
+    <div class="row" *ngIf="loading">
+      <div class="col-12 text-center pt-5"  >
+        <app-loading [type]="1"></app-loading>
+      </div>
+    </div>
   </div>
 </div>

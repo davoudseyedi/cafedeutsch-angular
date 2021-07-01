@@ -100,7 +100,7 @@
                    <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
                  </div>
                  <div class="podcast-cat">
-                   <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category_id }}/{{ item.field_podcast_category }}">سطح git{{ item.field_podcast_category }}</a></h5>
+                   <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category_id }}/{{ item.field_podcast_category }}">سطح {{ item.field_podcast_category }}</a></h5>
                  </div>
                  <div class="podcast-body" [innerHTML]="item.body | slice:0 : 100"></div>
                  <div class="view-more d-none d-md-block d-xs-none">
