@@ -2,12 +2,16 @@
 
 #cover{
   //margin-top: 87px;
-  padding-top: 10rem!important;
+  padding-top: 10rem;
   background-color: $primary;
   margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  @media (max-width: 667px) {
+    padding-top: 6rem !important;
+    padding-bottom: 2rem;
+  }
   &.text{
     text-align: center;
-    padding: 3rem 0;
     h1{
       color: $white
     }
@@ -18,7 +22,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    padding: 6rem 0;
+    //padding: 6rem 0;
     &::before{
       content: "";
       position: absolute;

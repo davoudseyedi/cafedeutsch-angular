@@ -2,7 +2,7 @@
 <div id="blogs">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-8 col-xs-12">
+      <div class="col-12 col-md-8 col-xs-12 order-md-0 order-1">
         <div class="content teaser" *ngIf="!loading">
           <article id="post-{{ i+1 }}" *ngFor="let item of blogs;let i = index">
             <div class="blog-item">
@@ -27,7 +27,7 @@
       </div>
 
       <!-- Sidebar -->
-      <div class="col-12 col-md-4 col-xs-12">
+      <div class="col-12 col-md-4 col-xs-12 order-md-1 order-0">
         <app-search-sidebar></app-search-sidebar>
         <app-blog-categories></app-blog-categories>
         <hr>

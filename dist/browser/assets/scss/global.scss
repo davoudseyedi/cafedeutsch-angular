@@ -23,7 +23,7 @@ html, body {
 
 h1 {
   color: $text-dark;
-  font-size: 2.75rem;
+  font-size: 2.25rem;
   font-weight: 700;
   font-style: normal;
   line-height: 72px;
@@ -35,7 +35,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2.25rem;
+  font-size: 1.825rem;
   line-height: 42px;
   text-transform: none;
   font-weight: 700;
@@ -46,7 +46,7 @@ h2 {
   }
 }
 h3 {
-  font-size: 1.876rem;
+  font-size: 1.625rem;
   line-height: 42px;
   text-transform: none;
   font-weight: 700;
@@ -123,9 +123,11 @@ p{
 
 a{
   text-decoration: none;
+  transition: 0.2s all ease-out;
   &:hover{
     color: $red-color !important;
     text-decoration: none;
+    transition: 0.3s all ease-in;
     > i{
       color: $red-color !important;
     }

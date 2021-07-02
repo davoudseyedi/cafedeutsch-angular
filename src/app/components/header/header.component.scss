@@ -22,6 +22,7 @@
           display: inline-block;
           text-decoration: none;
           color: $white;
+          transition: 0.2s all ease-out;
           &::before {
             background: $red-color;
             border-radius: 50%;
@@ -38,14 +39,17 @@
             margin-top: -6px;
             right: -5px;
             opacity: 0;
+
           }
           &:hover::before,
           &:focus::before,
           &.active::before{
             opacity: 1;
+
           }
           &:hover{
             color: $red-color !important;
+            transition: 0.3s all ease-in;
           }
           &.active{
             color: $red-color !important;

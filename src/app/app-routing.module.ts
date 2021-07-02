@@ -10,6 +10,8 @@ import {SingleBlogComponent} from './pages/single-blog/single-blog.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {PodcastsCategoryComponent} from './pages/podcasts-category/podcasts-category.component';
 import {BlogCategoryComponent} from './pages/blog-category/blog-category.component';
+import {AboutComponent} from './pages/about/about.component';
+import {DonateComponent} from './pages/donate/donate.component';
 
 
 
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     component: PodcastsComponent,
     path: 'podcasts'
+  },
+  {
+    component: AboutComponent,
+    path: 'about'
+  },
+  {
+    component: DonateComponent,
+    path: 'donate'
   },
   {
     component: SinglePodcastComponent,
