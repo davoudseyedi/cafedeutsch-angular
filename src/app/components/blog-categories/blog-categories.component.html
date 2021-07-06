@@ -3,7 +3,7 @@
   <ul class="ul-list" *ngFor="let item of categories">
 
     <li>
-      <a class="text-dark" href="/blog/{{ item.tid }}{{ item.term_slug }}">
+      <a class="text-dark" routerLink="/blog{{ item.term_slug }}">
         {{ item.name }}
       </a>
     </li>

@@ -5,7 +5,7 @@
   padding-top: 10rem;
   background-color: $primary;
   margin-bottom: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 9rem;
   @media (max-width: 667px) {
     padding-top: 6rem !important;
     padding-bottom: 2rem;
@@ -53,12 +53,16 @@
   }
   &.image2{
     position: relative;
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: top;
     background-attachment: fixed;
-    padding: 6rem 0;
+    padding: 10rem 0;
     text-align: center;
+    @media (max-width: 667px) {
+      background-size: cover;
+      background-position: center;
+    }
     &::before{
       content: "";
       position: absolute;

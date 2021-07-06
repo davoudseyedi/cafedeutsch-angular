@@ -1,4 +1,4 @@
-<app-cover [type]="'text'" [title]="categoryLabel"></app-cover>
+<app-cover [type]="'text'" [title]="categoryLabel" [breadcrumbs]="breadcrumb"></app-cover>
 <div id="podcast-category">
   <div class="container">
     <div class="row" *ngIf="!loading">
@@ -7,28 +7,28 @@
           <div class="row">
             <div class="col-6 col-md-6">
               <div class="img">
-                <a routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}">
-                  <img src="{{ item.field_podcast_image }}" alt="{{ item.title }}" class="img-fluid" >
+                <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">
+                  <img src="{{ item.field_podcast_image_export?.url }}" alt="{{ item.field_podcast_image_export?.alt }}" class="img-fluid" >
                 </a>
               </div>
             </div>
             <div class="col-6 col-md-6">
               <div class="desc">
                 <div class="podcast-title">
-                  <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
+                  <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
                 </div>
                 <div class="podcast-cat">
-                  <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category_id }}/{{ item.field_podcast_category }}">سطح {{ item.field_podcast_category }}</a></h5>
+                  <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">سطح {{ item.field_podcast_category_export?.name }}</a></h5>
                 </div>
                 <div class="podcast-body" [innerHTML]="item.body | slice:0 : 100"></div>
                 <div class="view-more d-none d-md-block d-xs-none">
-                  <a routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">بیشتر بخوانید</a>
+                  <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">بیشتر بخوانید</a>
                 </div>
               </div>
             </div>
             <div class="col-12 d-block d-md-none d-xs-block">
               <div class="view-more">
-                <a routerLink="/podcasts/{{item.field_podcast_category}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">بیشتر بخوانید</a>
+                <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">بیشتر بخوانید</a>
               </div>
             </div>
           </div>

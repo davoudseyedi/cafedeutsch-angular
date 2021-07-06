@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -57,6 +58,7 @@ import { DonateComponent } from './pages/donate/donate.component';
     DonateComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule.withServerTransition({ appId: 'main-app' }),
     FormsModule,
     ComponentModule,

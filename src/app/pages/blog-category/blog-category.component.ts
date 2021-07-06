@@ -15,7 +15,12 @@ export class BlogCategoryComponent implements OnInit {
 
   public categoryLabel = '';
 
+  public cat = '';
+  public category_url;
+
   public id;
+
+  public breadcrumb = [];
 
   constructor(private api: ApiService,
               private metaService: MetaService,
@@ -28,11 +33,27 @@ export class BlogCategoryComponent implements OnInit {
     this.metaService.clearMetaTags();
 
     this.route.paramMap.subscribe(event => {
-      this.id = event.get('id');
 
+      if ( event.get('cat') ) {
+
+        this.cat = event.get('cat');
+
+        this.category_url = '/blog/' + this.cat;
+        this.breadcrumb = [
+          {
+            name: 'بلاگ',
+            url: '/blog',
+          },
+          {
+            name : this.categoryLabel,
+            url : this.category_url
+          }
+        ];
+
+      }
+
+      this.loadBlogCategory();
     });
-
-    this.loadBlogCategory();
 
   }
 
@@ -41,7 +62,7 @@ export class BlogCategoryComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .getBlogOfCategory(this.id)
+      .loadAllBlogs(this.cat)
       .subscribe({
         next: this.onLoadBlogSuccess.bind(this),
         error: this.onLoadBlogError.bind(this)
@@ -52,7 +73,18 @@ export class BlogCategoryComponent implements OnInit {
     this.loading = false;
     this.blog = response;
 
-    this.categoryLabel = response[0].field_blog_category;
+    this.categoryLabel = response[0].field_blog_category_export.name;
+
+    this.breadcrumb = [
+      {
+        name: 'بلاگ',
+        url: '/blog',
+      },
+      {
+        name : this.categoryLabel,
+        url : this.category_url
+      }
+    ];
 
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -11,16 +12,37 @@ export class BlogComponent implements OnInit {
 
   public loading = false;
 
+  public cat = 'all';
+
+  public breadcrumb = [
+    {
+      name: 'خانه',
+      url: '/'
+    },
+    {
+      name: 'بلاگ',
+      url: '/blog'
+    }
+  ];
+
   public blogs = [];
 
   constructor(private api: ApiService,
-              private metaService: MetaService) { }
+              private metaService: MetaService,
+              private route: ActivatedRoute) { }
 
   public ngOnInit() {
     this.metaService.setTitle();
     this.metaService.clearMetaTags();
 
-    this.loadBlogs();
+    this.route.paramMap.subscribe(event => {
+
+      if (event.get('category')){
+        this.cat = event.get('category');
+      }
+      this.loadBlogs();
+    });
+
   }
 
   private loadBlogs() {
@@ -28,7 +50,7 @@ export class BlogComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .loadAllBlogs()
+      .loadAllBlogs(this.cat)
       .subscribe({
         next: this.onLoadBlogsSuccess.bind(this),
         error: this.onLoadBlogsError.bind(this)

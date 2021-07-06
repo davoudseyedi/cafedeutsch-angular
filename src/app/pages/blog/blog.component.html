@@ -1,24 +1,24 @@
-<app-cover [type]="'text'" [title]="'بلاگ'"></app-cover>
+<app-cover [type]="'text'" [title]="'بلاگ'" [breadcrumbs]="breadcrumb"></app-cover>
 <div id="blogs">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-8 col-xs-12 order-md-0 order-1">
+      <div class="col-12 col-md-8 col-xs-12 order-md-0 order-0">
         <div class="content teaser" *ngIf="!loading">
           <article id="post-{{ i+1 }}" *ngFor="let item of blogs;let i = index">
             <div class="blog-item">
               <div class="image-wrapper">
-                <a routerLink="/blog{{ item.term_slug }}/{{ item.nid }}{{ item.slug }}">
-                  <img src="{{ item.field_image }}" alt="{{ item.title }}" class="img-fluid" />
+                <a routerLink="/blog/{{ item.field_blog_category_export?.name | slugify }}/{{ item.nid }}{{ item.slug }}">
+                  <img src="{{ item.field_image_export?.url }}" alt="{{ item.field_image_export?.url }}" class="img-fluid" />
                 </a>
               </div>
               <div class="content-wrapper">
-                <a routerLink="/blog/{{ item.category_id }}{{ item.term_slug }}" class="category">{{ item.field_blog_category_export }}</a>
-                <h2><a class="text-dark" routerLink="/blog{{ item.term_slug }}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h2>
+                <a routerLink="/blog/{{ item.field_blog_category_export?.name  | slugify }}" class="category">{{ item.field_blog_category_export?.name }}</a>
+                <h2><a class="text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name }}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h2>
 
                 <div class="text-12" [innerHTML]="item.body | slice: 0: 200"></div>
                 <hr>
                 <div class="view-more">
-                  <a class="text-uppercase text-12 text-dark" routerLink="/blog{{ item.term_slug }}/{{ item.nid }}{{ item.slug }}">ادامه مطلب</a>
+                  <a class="text-uppercase text-12 text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name | slugify }}/{{ item.nid }}{{ item.slug }}">ادامه مطلب</a>
                 </div>
               </div>
             </div>
@@ -27,22 +27,22 @@
       </div>
 
       <!-- Sidebar -->
-      <div class="col-12 col-md-4 col-xs-12 order-md-1 order-0">
+      <div class="col-12 col-md-4 col-xs-12 order-md-1 order-1">
         <app-search-sidebar></app-search-sidebar>
         <app-blog-categories></app-blog-categories>
         <hr>
-        <div id="recent-post" *ngif="false">
-          <div class="container">
-            <div class="row">
-              <div class="col-3">
+<!--        <div id="recent-post" *ngif="false">-->
+<!--          <div class="container">-->
+<!--            <div class="row">-->
+<!--              <div class="col-3">-->
 
-              </div>
-              <div class="col-9">
+<!--              </div>-->
+<!--              <div class="col-9">-->
 
-              </div>
-            </div>
-          </div>
-        </div>
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
 
     </div>

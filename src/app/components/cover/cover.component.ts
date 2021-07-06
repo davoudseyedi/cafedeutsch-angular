@@ -13,6 +13,7 @@ export class CoverComponent implements OnInit {
   @Input() public category: any;
   @Input() public categoryID: any;
   @Input() public bg: any;
+  @Input() public breadcrumbs = [];
 
 
   constructor() { }

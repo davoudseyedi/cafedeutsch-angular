@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import { Track } from 'ngx-audio-player';
-import {decoratorArgument} from 'codelyzer/util/astQuery';
-
 
 @Component({
   selector: 'app-single-podcast',
@@ -26,6 +24,11 @@ export class SinglePodcastComponent implements OnInit {
 
   ];
 
+  public cat = '';
+  public slug = '';
+  public name;
+  public categoryUrl;
+
   public podcast = {
     nid: 0,
     title: null,
@@ -33,11 +36,13 @@ export class SinglePodcastComponent implements OnInit {
     created: '',
     image: '',
     category: '',
-    category_id: '',
-    audio: ''
+    audio: '',
+    slug: ''
   };
 
   public id;
+
+  public breadcrumb = [];
 
   constructor(private api: ApiService,
               private route: ActivatedRoute) { }
@@ -45,11 +50,30 @@ export class SinglePodcastComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(event => {
-      this.id = event.get('id');
+
+      if (event.get('id')){
+        this.id = event.get('id');
+      }
+
+      if (event.get('cat')){
+        this.cat = event.get('cat');
+
+        this.categoryUrl = '/podcasts/' + this.cat;
+        this.breadcrumb = [
+          {
+            name: 'بلاگ',
+            url: '/blog',
+          },
+          {
+            name : this.podcast.category,
+            url : this.categoryUrl
+          }
+        ];
+      }
+
+      this.loadSinglePodcast();
 
     });
-
-    this.loadSinglePodcast();
   }
 
   public loadSinglePodcast(){
@@ -64,25 +88,40 @@ export class SinglePodcastComponent implements OnInit {
   private makePodcastItem(data){
 
     this.podcast = {
-          nid: data[0].nid,
-          title: data[0].title,
-          body: data[0].body,
-          created: data[0].created,
-          image: data[0].field_podcast_image,
-          category: data[0].field_podcast_category,
-          category_id: data[0].category_id,
-          audio: data[0].field_podcast
-        };
+      nid: data[0].nid,
+      title: data[0].title,
+      body: data[0].body,
+      created: data[0].created,
+      image: data[0].field_podcast_image_export.url,
+      category: data[0].field_podcast_category_export.name,
+      audio: data[0].field_podcast,
+      slug: data[0].slug
+    };
+
     this.playlist = [{
       title: this.podcast.title,
       link: 'http://core.cafedeutsch.net' + this.podcast.audio,
       artist: 'داود سیدی'
     }];
+
+    this.breadcrumb = [
+      {
+        name: 'اپیزود ها',
+        url: '/podcasts',
+      },
+      {
+        name : this.podcast.category,
+        url : this.categoryUrl
+      },
+      {
+        name : this.podcast.title,
+        url : this.categoryUrl + '/' + this.podcast.nid + this.podcast.slug
+      }
+    ];
   }
 
   private onLoadPodcastSuccess(response) {
 
-    console.log(response);
     this.makePodcastItem(response);
   }
 

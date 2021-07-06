@@ -12,8 +12,8 @@ export class ApiService {
 
   // Podcasts
 
-  public loadAllPodcasts() {
-    return this.http.get(this.config.WEBSITE_ALL_PODCASTS);
+  public loadAllPodcasts(category) {
+    return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '?category=' + category);
   }
 
   public loadFeaturedPodcasts() {
@@ -31,8 +31,8 @@ export class ApiService {
 
   // Blog
 
-  public loadAllBlogs() {
-    return this.http.get(this.config.WEBSITE_ALL_BLOGS);
+  public loadAllBlogs(category) {
+    return this.http.get(this.config.WEBSITE_ALL_BLOGS + '?category=' + category);
   }
 
 
@@ -43,16 +43,6 @@ export class ApiService {
   // Contact
   public postWebform(webform){
     return this.http.post(this.config.WEBSITE_WEBFORM, webform);
-  }
-
-  // Podcast Category Page
-  public getPodcastsOfCategory(termID){
-    return this.http.get(this.config.WEBSITE_PODCAST_CATEGORY + '/' + termID);
-  }
-
-  // Blog Category Page
-  public getBlogOfCategory(termID){
-    return this.http.get(this.config.WEBSITE_BLOG_CATEGORY + '/' + termID);
   }
 
   // BLOG TAXONOMIES LIST

@@ -12,6 +12,7 @@ import { LoadingComponent } from "./loading/loading.component";
 import { ButtonDirective } from "./button/button.component";
 import { BlogCategoriesComponent } from './blog-categories/blog-categories.component';
 import { SearchSidebarComponent } from './search-sidebar/search-sidebar.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 
 
@@ -27,7 +28,8 @@ export function playerFactory() {
     LoadingComponent,
     ButtonDirective,
     BlogCategoriesComponent,
-    SearchSidebarComponent
+    SearchSidebarComponent,
+    BreadcrumbComponent
   ],
   exports: [
     CoverComponent,

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import { Track } from 'ngx-audio-player';
-import {decoratorArgument} from 'codelyzer/util/astQuery';
 
 @Component({
   selector: 'app-home',

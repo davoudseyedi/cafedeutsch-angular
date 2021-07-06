@@ -51,11 +51,11 @@ const routes: Routes = [
   },
   {
     component: PodcastsCategoryComponent,
-    path: 'podcasts/:id/:slug'
+    path: 'podcasts/:cat'
   },
   {
     component: BlogCategoryComponent,
-    path: 'blog/:id/:slug'
+    path: 'blog/:cat'
   },
   {
     component: NotFoundComponent,

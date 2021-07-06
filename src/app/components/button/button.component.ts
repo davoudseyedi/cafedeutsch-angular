@@ -1,8 +1,8 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: "app-btn",
-    styles:[``],
+    selector: 'app-btn',
+    styles: [``],
     template: `
         <button [type]="type ? type : 'button'" class="{{ className }}" id="{{id}}" [disabled]="disabled || loading">
             <span class="inline-middle ml-2" *ngIf="loading">
@@ -19,11 +19,11 @@ import { Component, Input } from "@angular/core";
 
 export class ButtonDirective {
 
-    @Input() public className:any;
-    @Input() public id:any;
-    @Input() public loading:boolean;
-    @Input() public type:string;
-    @Input() public disabled:boolean;
+    @Input() public className: any;
+    @Input() public id: any;
+    @Input() public loading: boolean;
+    @Input() public type: string;
+    @Input() public disabled: boolean;
 
     constructor() {}
 

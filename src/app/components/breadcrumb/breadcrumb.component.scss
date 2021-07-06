@@ -1,0 +1,18 @@
+@import "../../../assets/scss/variables";
+
+.breadcrumb{
+  background: transparent;
+  display: inline-flex;
+  margin: 0 auto;
+  position: relative;
+  li{
+    a{
+      color: $white;
+    }
+    &::before{
+      padding-right: inherit;
+      padding-left: 0.5rem;
+    }
+  }
+
+}

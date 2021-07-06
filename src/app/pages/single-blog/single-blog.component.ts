@@ -11,7 +11,14 @@ export class SingleBlogComponent implements OnInit {
 
   public loading = false;
 
+  public cat = '';
+  public slug = '';
+  public name;
+  public categoryUrl;
+
   public id;
+
+  public breadcrumb = [];
 
   public blog = {
     nid: 0,
@@ -20,7 +27,6 @@ export class SingleBlogComponent implements OnInit {
     created: '',
     image: '',
     category: '',
-    category_id: '',
     slug: '',
     term_slug: ''
   };
@@ -31,11 +37,30 @@ export class SingleBlogComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(event => {
-      this.id = event.get('id');
+
+     if (event.get('id')){
+       this.id = event.get('id');
+     }
+
+     if (event.get('cat')){
+       this.cat = event.get('cat');
+
+       this.categoryUrl = '/blog/' + this.cat;
+       this.breadcrumb = [
+         {
+           name: 'بلاگ',
+           url: '/blog',
+         },
+         {
+           name : this.blog.category,
+           url : this.categoryUrl
+         }
+       ];
+     }
+
+     this.loadSinglePost();
 
     });
-
-    this.loadSinglePost();
   }
 
   public loadSinglePost(){
@@ -56,12 +81,27 @@ export class SingleBlogComponent implements OnInit {
       title: data[0].title,
       body: data[0].body,
       created: data[0].created,
-      image: data[0].field_image,
-      category: data[0].field_blog_category,
-      category_id: data[0].category_id,
+      image: data[0].field_image_export.url,
+      category: data[0].field_blog_category_export.name,
       slug: data[0].slug,
       term_slug: data[0].term_slug
     };
+
+
+    this.breadcrumb = [
+      {
+        name: 'بلاگ',
+        url: '/blog',
+      },
+      {
+        name : this.blog.category,
+        url : this.categoryUrl
+      },
+      {
+        name : this.blog.title,
+        url : this.categoryUrl + '/' + this.blog.nid + this.blog.slug
+      }
+    ];
   }
 
   private onLoadPostSuccess(response) {

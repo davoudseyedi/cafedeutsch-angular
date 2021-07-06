@@ -14,8 +14,12 @@ export class PodcastsCategoryComponent implements OnInit {
   public podcasts = [];
 
   public categoryLabel = '';
+  public cat: string = '';
+  public categoryUrl = '';
 
   public id;
+
+  public breadcrumb = [];
 
   constructor(private api: ApiService,
               private metaService: MetaService,
@@ -27,11 +31,29 @@ export class PodcastsCategoryComponent implements OnInit {
     this.metaService.clearMetaTags();
 
     this.route.paramMap.subscribe(event => {
-      this.id = event.get('id');
+
+      if ( event.get('cat') ) {
+
+        this.cat = event.get('cat');
+
+        this.categoryUrl = '/podcasts/' + this.cat;
+        this.breadcrumb = [
+          {
+            name: 'اپیزود ها',
+            url: '/podcasts',
+          },
+          {
+            name : this.categoryLabel,
+            url : this.categoryUrl
+          }
+        ];
+
+      }
+      this.loadPodcastsCategory();
 
     });
 
-    this.loadPodcastsCategory();
+
   }
 
   private loadPodcastsCategory() {
@@ -39,7 +61,7 @@ export class PodcastsCategoryComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .getPodcastsOfCategory(this.id)
+      .loadAllPodcasts(this.cat)
       .subscribe({
         next: this.onLoadPodcastsSuccess.bind(this),
         error: this.onLoadPodcastsError.bind(this)
@@ -50,7 +72,18 @@ export class PodcastsCategoryComponent implements OnInit {
     this.loading = false;
     this.podcasts = response;
 
-    this.categoryLabel = 'سطح ' + response[0].field_podcast_category;
+    this.categoryLabel = 'سطح ' + response[0].field_podcast_category_export.name;
+
+    this.breadcrumb = [
+      {
+        name: 'اپیزود ها',
+        url: '/podcasts',
+      },
+      {
+        name : this.categoryLabel,
+        url : this.categoryUrl
+      }
+    ];
   }
 
   private onLoadPodcastsError(error) {
