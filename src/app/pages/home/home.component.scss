@@ -84,12 +84,13 @@
     }
   }
   .podcast-item{
-    //padding: 20px;
+    padding: 20px;
     background: #fff;
     border-radius: 10px;
     position: relative;
     @media (max-width: 667px) {
       overflow: hidden;
+      padding: 0 ;
     }
     box-shadow: 0 0 35px 0px rgb(22 12 96 / 9%);
     .desc,.view-more{
