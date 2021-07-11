@@ -12,8 +12,8 @@ export class ApiService {
 
   // Podcasts
 
-  public loadAllPodcasts(category) {
-    return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '?category=' + category);
+  public loadAllPodcasts(category, season) {
+    return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '?category=' + category + '&season=' + season);
   }
 
   public loadFeaturedPodcasts() {

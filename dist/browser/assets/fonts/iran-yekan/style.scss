@@ -5,6 +5,7 @@
   src: url('/assets/fonts/iran-yekan/iranyekanwebmedium.ttf');
   src: url('/assets/fonts/iran-yekan/iranyekanwebmedium.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
   url('/assets/fonts/iran-yekan/iranyekanwebmedium.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  font-display: fallback;
 }
 
 @font-face {
@@ -14,4 +15,5 @@
   src: url('/assets/fonts/iran-yekan/iranyekanwebmedium.ttf');
   src: url('/assets/fonts/iran-yekan/iranyekanwebmedium.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
   url('/assets/fonts/iran-yekan/iranyekanwebmedium.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  font-display: fallback;
 }

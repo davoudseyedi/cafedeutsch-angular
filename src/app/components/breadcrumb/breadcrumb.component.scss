@@ -13,6 +13,10 @@
       padding-right: inherit;
       padding-left: 0.5rem;
     }
+
+  }
+  .breadcrumb-item+.breadcrumb-item::before{
+    float: right;
   }
 
 }

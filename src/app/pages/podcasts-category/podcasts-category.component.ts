@@ -14,7 +14,8 @@ export class PodcastsCategoryComponent implements OnInit {
   public podcasts = [];
 
   public categoryLabel = '';
-  public cat: string = '';
+  public cat = '';
+  public season = 'all';
   public categoryUrl = '';
 
   public id;
@@ -61,7 +62,7 @@ export class PodcastsCategoryComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .loadAllPodcasts(this.cat)
+      .loadAllPodcasts(this.cat, this.season)
       .subscribe({
         next: this.onLoadPodcastsSuccess.bind(this),
         error: this.onLoadPodcastsError.bind(this)

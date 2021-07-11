@@ -215,6 +215,9 @@ THE SOFTWARE.
 ngx-lottie
 MIT
 
+ngx-owl-carousel-o
+MIT
+
 regenerator-runtime
 MIT
 MIT License

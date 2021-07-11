@@ -7,10 +7,12 @@ import { FormsModule } from '@angular/forms';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PipeModule } from './pipes/pipe.module';
 import { ComponentModule } from './components/component.module';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { NotifierModule } from 'angular-notifier';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 // Components
@@ -63,10 +65,12 @@ import { DonateComponent } from './pages/donate/donate.component';
     FormsModule,
     ComponentModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     PipeModule,
     NgxAudioPlayerModule,
-    NotifierModule
+    NotifierModule,
+    CarouselModule
   ],
   providers: [
     ApiService,

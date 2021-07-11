@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import { Track } from 'ngx-audio-player';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
 
 @Component({
   selector: 'app-home',
@@ -16,6 +18,7 @@ export class HomeComponent implements OnInit {
   public podcasts = [];
 
   public newest = [];
+  public heroBG = '';
 
   public displayVolumeControls = true;
   public displayRepeatControls = true;
@@ -30,6 +33,33 @@ export class HomeComponent implements OnInit {
     }
 
   ];
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    autoplay: true,
+    navSpeed: 700,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 2
+      },
+      940: {
+        items: 2
+      }
+    },
+    nav: true
+  };
 
   constructor(private api: ApiService,
               private metaService: MetaService) { }
@@ -68,6 +98,7 @@ export class HomeComponent implements OnInit {
   private onLoadNewestPodcastsSuccess(response) {
     this.loading = false;
     this.newest = response;
+    this.heroBG = response[0].field_podcast_image_export?.url;
 
     this.playlist = [{
       title: response[0].title,

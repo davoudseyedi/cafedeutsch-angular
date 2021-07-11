@@ -13,6 +13,7 @@ export class PodcastsComponent implements OnInit {
   public loading = false;
 
   public cat = 'all';
+  public season = 'all';
 
   public breadcrumb = [
     {
@@ -55,7 +56,7 @@ export class PodcastsComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .loadAllPodcasts(this.cat)
+      .loadAllPodcasts(this.cat, this.season)
       .subscribe({
         next: this.onLoadPodcastsSuccess.bind(this),
         error: this.onLoadPodcastsError.bind(this)
