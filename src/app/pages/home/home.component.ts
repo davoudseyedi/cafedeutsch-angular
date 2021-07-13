@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
-import { Track } from 'ngx-audio-player';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import {Track} from 'ngx-audio-player';
+import {OwlOptions} from 'ngx-owl-carousel-o';
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class HomeComponent implements OnInit {
@@ -39,11 +40,11 @@ export class HomeComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: false,
+    dots: true,
     autoplay: true,
     navSpeed: 700,
     rtl: true,
-    navText: ['', ''],
+    navText: ['<i class="fa fa-arrow-alt-circle-right"></i>', '<i class="fa fa-arrow-alt-circle-left"></i>'],
     responsive: {
       0: {
         items: 1

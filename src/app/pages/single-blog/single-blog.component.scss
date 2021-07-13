@@ -1,0 +1,33 @@
+@import "../../../assets/scss/variables";
+
+#related-posts {
+  padding-bottom: 30px;
+  ul{
+    padding: 0;
+    li {
+      display: flex !important;
+      align-items: center;
+      background:$white;
+      padding:10px 1rem !important;
+      border-radius: 8px;
+      box-shadow: 5px 5px 5px #f4f4f4;
+      .media {
+        width: 76px;
+        img {
+          width: 70px;
+          max-width: none;
+          border-radius: 50%;
+        }
+      }
+      .content {
+        padding-right: 20px;
+        width: 100%;
+        a {
+          font-size: 18px;
+          color: $primary !important;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

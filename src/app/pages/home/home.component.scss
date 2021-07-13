@@ -149,12 +149,11 @@
 }
 
 
-:host ::ng-deep{
-  .mat-card{
-    background: #191919;
-    margin-top: 4rem !important;
-    padding: 1rem !important;
-  }
+// Audio Player
+.mat-card{
+  background: #191919;
+  margin-top: 4rem !important;
+  padding: 1rem !important;
   .mat-slider-ticks,.mat-slider-thumb{
     background: #fff !important;
   }
@@ -172,7 +171,42 @@
       background-color: transparent;
     }
   }
+  span{
+    color: $white;
+  }
 }
 
 
+
+// Carousel
+.owl-nav{
+  position: relative;
+  .owl-next{
+    margin-right: 50px !important;
+    z-index: 999;
+    position: relative;
+  }
+  .owl-prev{
+    margin-left: 50px !important;
+    z-index: 999;
+    position: relative;
+  }
+}
+
+.owl-dots {
+  position: absolute;
+  bottom: 7px;
+  right: 0;
+  left: 0;
+  .owl-dot{
+    span{
+      background: $white !important;
+    }
+    &.active{
+      span{
+        background: $red-color !important;
+      }
+    }
+  }
+}
 

@@ -216,3 +216,20 @@ a{
 
   }
 }
+
+
+.owl-nav{
+  [class*=owl-]{
+    background: transparent !important;
+    i{
+      font-size: 1.5rem;
+      transition: 200ms all ease-in-out;
+    }
+    &:hover{
+      i{
+        color: $red-color !important;
+        transition: 200ms all ease-in-out;
+      }
+    }
+  }
+}

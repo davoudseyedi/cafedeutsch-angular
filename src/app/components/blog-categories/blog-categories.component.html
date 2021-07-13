@@ -1,8 +1,8 @@
 <div id="categories">
   <h4 class="text-uppercase font-weight-normal">دسته بندی ها</h4>
-  <ul class="ul-list" *ngFor="let item of categories">
+  <ul class="ul-list">
 
-    <li>
+    <li *ngFor="let item of categories">
       <a class="text-dark" routerLink="/blog{{ item.term_slug }}">
         {{ item.name }}
       </a>

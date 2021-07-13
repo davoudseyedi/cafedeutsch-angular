@@ -1,0 +1,12 @@
+@import "../../../assets/scss/variables";
+
+#categories{
+  ul {
+    li{
+      &:hover > a{
+        color: $red-color !important;
+        padding-right: 0.25rem;
+      }
+    }
+  }
+}

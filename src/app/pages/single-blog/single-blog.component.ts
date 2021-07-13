@@ -16,6 +16,8 @@ export class SingleBlogComponent implements OnInit {
   public name;
   public categoryUrl;
 
+  public related = [];
+
   public id;
 
   public breadcrumb = [];
@@ -60,6 +62,8 @@ export class SingleBlogComponent implements OnInit {
 
      this.loadSinglePost();
 
+     this.loadRelated();
+
     });
   }
 
@@ -71,6 +75,17 @@ export class SingleBlogComponent implements OnInit {
       .subscribe({
         next: this.onLoadPostSuccess.bind(this),
         error: this.onLoadPostError.bind(this)
+      });
+  }
+
+  public loadRelated(){
+    this.loading = true;
+
+    this.api
+      .getRelatedBlogPosts(this.id)
+      .subscribe({
+        next: this.onLoadRelatedPostSuccess.bind(this),
+        error: this.onLoadRelatedPostError.bind(this)
       });
   }
 
@@ -114,6 +129,20 @@ export class SingleBlogComponent implements OnInit {
   private onLoadPostError(error) {
     this.loading = false;
 
+    console.error(error);
+  }
+
+  private onLoadRelatedPostSuccess(response) {
+
+    this.loading = false;
+    this.related = response;
+
+  }
+
+
+  private onLoadRelatedPostError(error) {
+
+    this.loading = false;
     console.error(error);
   }
 }
