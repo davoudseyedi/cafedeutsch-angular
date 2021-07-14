@@ -7,6 +7,15 @@
         color: $red-color !important;
         padding-right: 0.25rem;
       }
+      a.active{
+        color: $red-color !important;
+      }
     }
   }
+}
+
+.sticky{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 80px;
 }

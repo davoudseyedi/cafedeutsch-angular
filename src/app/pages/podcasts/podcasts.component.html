@@ -1,44 +1,71 @@
 <app-cover [type]="'text'" [title]="'اپیزودها'" [breadcrumbs]="breadcrumb"></app-cover>
 <div id="podcasts">
   <div class="container">
-    <div class="row" *ngIf="!loading">
-      <div class="col-md-6 col-xs-12" *ngFor="let item of podcasts">
-        <div class="podcast-item mb-3">
-          <div class="row">
-            <div class="col-6 col-md-6">
-              <div class="img">
-                <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">
-                  <img src="{{ item.field_podcast_image_export?.url }}" alt="{{ item.field_podcast_image_export?.alt }}" class="img-fluid" >
-                </a>
-              </div>
-            </div>
-            <div class="col-6 col-md-6">
-              <div class="desc">
-                <div class="podcast-title">
-                  <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
+    <div class="row">
+      <aside class="col-12 col-md-3 col-xs-12">
+        <div id="all" class="filter">
+          <h4><a class="text-dark" routerLink="/podcasts" routerLinkActive="active" [queryParams]="{category: 'all',season: 'all'}" [queryParamsHandling]="'merge'">همه اپیزودها</a></h4>
+        </div>
+        <div id="level" class="filter">
+          <h4>سطح</h4>
+          <ul class="p-0 list-unstyled">
+            <li><a routerLink="/podcasts" [queryParams]="{category: 'all'}" routerLinkActive="active">همه سطوح</a></li>
+            <li><a routerLink="/podcasts" [queryParams]="{category: 'a'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح A</a></li>
+            <li><a routerLink="/podcasts" [queryParams]="{category: 'b'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح B</a></li>
+          </ul>
+        </div>
+        <div id="season" class="filter">
+          <h4>فصل</h4>
+          <ul class="p-0 list-unstyled">
+            <li><a routerLink="/podcasts" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+            <li><a routerLink="/podcasts" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
+            <li><a routerLink="/podcasts" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
+          </ul>
+        </div>
+      </aside>
+      <main class="col-12 col-md-9 col-xs-12">
+        <div class="row" *ngIf="!loading">
+          <div class="col-md-6 col-xs-12" *ngFor="let item of podcasts">
+            <div class="podcast-item mb-3">
+              <div class="row">
+                <div class="col-6 col-md-6">
+                  <div class="img">
+                    <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">
+                      <img src="{{ item.field_podcast_image_export?.url }}" alt="{{ item.field_podcast_image_export?.alt }}" class="img-fluid" >
+                    </a>
+                  </div>
                 </div>
-                <div class="podcast-cat">
-                  <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name | lowercase }}">سطح {{ item.field_podcast_category_export?.name }}</a></h5>
+                <div class="col-6 col-md-6">
+                  <div class="desc">
+                    <div class="podcast-title">
+                      <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
+                    </div>
+                    <div class="podcast-cat">
+                      <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name | lowercase }}">سطح {{ item.field_podcast_category_export?.name }}</a></h5>
+                    </div>
+                    <div class="podcast-body" [innerHTML]="item.body | slice:0 : 100"></div>
+                    <div class="view-more d-none d-md-block d-xs-none">
+                      <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">بیشتر بخوانید</a>
+                    </div>
+                  </div>
                 </div>
-                <div class="podcast-body" [innerHTML]="item.body | slice:0 : 100"></div>
-                <div class="view-more d-none d-md-block d-xs-none">
-                  <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">بیشتر بخوانید</a>
+                <div class="col-12 d-block d-md-none d-xs-block">
+                  <div class="view-more">
+                    <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">بیشتر بخوانید</a>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-12 d-block d-md-none d-xs-block">
-              <div class="view-more">
-                <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">بیشتر بخوانید</a>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div class="row" *ngIf="loading">
+          <div class="col-12 text-center pt-5">
+            <app-loading [type]="1"></app-loading>
+          </div>
+        </div>
+      </main>
+
     </div>
-    <div class="row" *ngIf="loading">
-      <div class="col-12 text-center pt-5">
-        <app-loading [type]="1"></app-loading>
-      </div>
-    </div>
+
   </div>
 </div>

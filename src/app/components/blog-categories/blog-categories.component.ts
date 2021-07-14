@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 
 @Component({
@@ -9,6 +9,7 @@ import {ApiService} from '../../services/api.service';
 export class BlogCategoriesComponent implements OnInit {
 
   public categories = [];
+  @Input() sticky = false;
 
   constructor(private  api: ApiService) { }
 

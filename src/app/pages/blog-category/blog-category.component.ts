@@ -16,6 +16,7 @@ export class BlogCategoryComponent implements OnInit {
   public categoryLabel = '';
 
   public cat = '';
+  public season = 'all';
   public category_url;
 
   public id;
@@ -53,6 +54,13 @@ export class BlogCategoryComponent implements OnInit {
       }
 
       this.loadBlogCategory();
+    });
+
+    this.route.queryParamMap.subscribe(params => {
+
+      if (params.get('season')){
+        this.season = params.get('season');
+      }
     });
 
   }

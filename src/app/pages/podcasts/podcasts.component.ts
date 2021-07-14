@@ -39,10 +39,14 @@ export class PodcastsComponent implements OnInit {
     this.metaService.setTitle();
     this.metaService.clearMetaTags();
 
-    this.route.paramMap.subscribe(event => {
+    this.route.queryParamMap.subscribe(params => {
 
-      if (event.get('category')){
-        this.cat = event.get('category');
+      if (params.get('category')){
+        this.cat = params.get('category');
+      }
+
+      if (params.get('season')){
+        this.season = params.get('season');
       }
       this.loadPodcasts();
 
