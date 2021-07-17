@@ -12,10 +12,41 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-8 col-xs-12">
+        <div class="details">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+              <ul class="list-unstyled d-flex">
+                <li class="season ml-2">
+                  <h4 class="mb-0">{{ podcast.season }}</h4>
+                  <p>فصل</p>
+                </li>
+                <li class="level ml-2">
+                  <h4 class="mb-0">{{ podcast.category }}</h4>
+                  <p>سطح</p>
+                </li>
+                <li class="episode-count">
+                  <h4 class="mb-0">{{ podcasts.length }}</h4>
+                  <p>اپیزود</p>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mb-3">متن اپیزود</h2>
         <p [innerHTML]="podcast.body"></p>
       </div>
       <div class="col-12 col-md-4 col-xs-12">
-        <!--  ToDO: you can insert here embeded audioplayer -->
+        <div class="sticky-info">
+          <h3 class="text-center mb-3">کافه دویچی شوید</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="far fa-play-circle ml-2"></i> دسترسی نامحدود به هر اپیزود</li>
+            <li class="mb-2"><i class="far fa-user ml-2"></i> پشتیبانی رایگان</li>
+            <li class="mb-2"><i class="far fa-file-archive ml-2"></i> تنوع دسته بندی</li>
+          </ul>
+          <a class="btn btn-warning btn-block btn-sm mt-5" routerLink="">شروع کنید</a>
+        </div>
       </div>
     </div>
 

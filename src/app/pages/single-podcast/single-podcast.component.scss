@@ -29,3 +29,37 @@
     }
   }
 }
+.details{
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #dcdee1;
+  ul{
+    li{
+      background-color: #fff;
+      width: 144px;
+      height: 110px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+    .stats-column .stat {
+      text-align: center;
+    }
+  }
+}
+.sticky-info{
+  background-color: $white;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgb(180 184 184 / 50%);
+  border-radius: 8px;
+  position: sticky;
+  top: 50px;
+  margin-top: -90px;
+}
