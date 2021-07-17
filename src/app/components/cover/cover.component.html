@@ -8,11 +8,41 @@
       </div>
     </div>
 
+    <div class="breadcrumb-top" *ngIf="type == 'image'">
+      <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+    </div>
+
+
     <!--    Image -->
     <div *ngIf="type == 'image'" class="row justify-content-first">
       <div class="col-12 col-md-8">
         <h5 *ngIf="category" class="podcast-category"><a routerLink="{{ categoryID }}">{{ category }}</a></h5>
         <h1 class="podcast-title">{{ title }}</h1>
+        <div class="podcast-audio" *ngIf="audio">
+          <ngx-audio-player [playlist]="audio"  [autoPlay]="false"
+                            muted="muted"
+                            [displayTitle]="false"
+                            [displayVolumeControls]="displayVolumeControls"
+                            [displayRepeatControls]="displayRepeatControls"
+                            [disablePositionSlider]="disablePositionSlider"
+                            [displayDuration]="displayDuration">
+
+          </ngx-audio-player>
+        </div>
+      </div>
+      <div class="col-12 col-md-4" *ngIf="podcastsList.length > 0">
+        <div class="podcasts-list">
+          <span class="epis-count text-white pr-3 mb-2">{{ podcastsList.length }} اپیزود
+            <span class="badge badge-danger" *ngIf="season">فصل {{ season }}</span>
+          </span>
+         <ul class="list-unstyled">
+           <li class="epis-item" *ngFor="let item of podcastsList;let i = index">
+             <a class="text-white" routerLink="/podcasts/{{ item.category.name | lowercase  }}/{{item.nid}}{{item.slug}}" routerLinkActive="active">
+               <i class="far fa-play-circle ml-2"></i>{{i}}. {{ item.title }}
+             </a>
+           </li>
+         </ul>
+        </div>
       </div>
     </div>
 
@@ -24,7 +54,9 @@
       </div>
     </div>
 
-    <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+    <div class="breadcrumb-bottom" *ngIf="type != 'image'">
+      <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+    </div>
 
   </div>
 </div>

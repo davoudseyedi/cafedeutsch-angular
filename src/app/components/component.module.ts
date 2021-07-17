@@ -13,6 +13,7 @@ import { ButtonDirective } from "./button/button.component";
 import { BlogCategoriesComponent } from './blog-categories/blog-categories.component';
 import { SearchSidebarComponent } from './search-sidebar/search-sidebar.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import {NgxAudioPlayerModule} from 'ngx-audio-player';
 
 
 
@@ -39,12 +40,13 @@ export function playerFactory() {
     BlogCategoriesComponent,
     SearchSidebarComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    LottieModule.forRoot({player: playerFactory})
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        RouterModule,
+        LottieModule.forRoot({player: playerFactory}),
+        NgxAudioPlayerModule
+    ],
   providers: [],
 })
 

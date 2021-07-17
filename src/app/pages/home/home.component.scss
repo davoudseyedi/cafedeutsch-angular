@@ -150,29 +150,31 @@
 
 
 // Audio Player
-.mat-card{
-  background: #191919;
-  margin-top: 4rem !important;
-  padding: 1rem !important;
-  .mat-slider-ticks,.mat-slider-thumb{
-    background: #fff !important;
-  }
-  .mat-slider-ticks{
-    opacity: 1;
-  }
-  .mat-icon{
-    svg{
-      fill: $white
+:host::ng-deep{
+  .mat-card{
+    background: #191919;
+    margin-top: 4rem !important;
+    padding: 1rem !important;
+    .mat-slider-ticks,.mat-slider-thumb{
+      background: #fff !important;
     }
-  }
-  .mat-button{
-    background-color: transparent;
-    &.volume{
+    .mat-slider-ticks{
+      opacity: 1;
+    }
+    .mat-icon{
+      svg{
+        fill: $white
+      }
+    }
+    .mat-button{
       background-color: transparent;
+      &.volume{
+        background-color: transparent;
+      }
     }
-  }
-  span{
-    color: $white;
+    span{
+      color: $white;
+    }
   }
 }
 

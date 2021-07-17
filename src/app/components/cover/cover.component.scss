@@ -49,7 +49,32 @@
        border-radius: 4px;
 
      }
+
     }
+
+    .podcasts-list{
+      .epis-count{
+        border-bottom: 1px solid $white;
+        line-height: 42px;
+        display: block;
+      }
+      ul{
+        li.epis-item{
+          a{
+            display: block;
+            padding: 0.5rem 1rem;
+            line-height: 40px;
+            border-radius: 5px;
+            //margin-top: 1rem;
+            &.active{
+              background-color: $text-dark;
+              color: $red-color !important;
+            }
+          }
+        }
+      }
+    }
+
   }
   &.image2{
     position: relative;
@@ -79,5 +104,38 @@
       color: $white;
     }
 
+
   }
 }
+
+
+
+// Audio Player
+:host::ng-deep{
+  .mat-card{
+    background: #191919;
+    margin-top: 4rem !important;
+    padding: 1rem !important;
+    .mat-slider-ticks,.mat-slider-thumb{
+      background: #fff !important;
+    }
+    .mat-slider-ticks{
+      opacity: 1;
+    }
+    .mat-icon{
+      svg{
+        fill: $white
+      }
+    }
+    .mat-button{
+      background-color: transparent;
+      &.volume{
+        background-color: transparent;
+      }
+    }
+    span{
+      color: $white;
+    }
+  }
+}
+

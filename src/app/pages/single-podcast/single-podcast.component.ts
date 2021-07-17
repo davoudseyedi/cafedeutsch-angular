@@ -10,10 +10,13 @@ import { Track } from 'ngx-audio-player';
 })
 export class SinglePodcastComponent implements OnInit {
 
+  public loading = false;
+
   public displayVolumeControls = true;
   public displayRepeatControls = true;
   public displayDuration = true;
   public disablePositionSlider = false;
+
   public playlist: Track[] = [
     {
       title: '',
@@ -36,9 +39,15 @@ export class SinglePodcastComponent implements OnInit {
     created: '',
     image: '',
     category: '',
+    season: '',
     audio: '',
     slug: ''
   };
+
+  public catId = 0;
+  public seasonId = 0;
+
+  public podcasts = [];
 
   public id;
 
@@ -85,6 +94,18 @@ export class SinglePodcastComponent implements OnInit {
       });
   }
 
+  public loadRelatedEpisodes(){
+
+    this.loading = true;
+
+    this.api
+      .loadRelatedPodcasts(this.seasonId, this.catId)
+      .subscribe({
+        next: this.onLoadRelatedPodcastSuccess.bind(this),
+        error: this.onLoadRelatedPodcastError.bind(this)
+      });
+  }
+
   private makePodcastItem(data){
 
     this.podcast = {
@@ -94,9 +115,13 @@ export class SinglePodcastComponent implements OnInit {
       created: data[0].created,
       image: data[0].field_podcast_image_export.url,
       category: data[0].field_podcast_category_export.name,
+      season: data[0].season.name,
       audio: data[0].field_podcast,
       slug: data[0].slug
     };
+
+    this.catId = data[0].field_podcast_category_export.id;
+    this.seasonId = data[0].season.id;
 
     this.playlist = [{
       title: this.podcast.title,
@@ -123,10 +148,25 @@ export class SinglePodcastComponent implements OnInit {
   private onLoadPodcastSuccess(response) {
 
     this.makePodcastItem(response);
+    this.loadRelatedEpisodes();
+
   }
 
 
   private onLoadPodcastError(error) {
+    console.error('Error: ');
+    console.error(error);
+  }
+
+  private onLoadRelatedPodcastSuccess(response) {
+
+    this.loading = false;
+    this.podcasts = response;
+
+  }
+
+
+  private onLoadRelatedPodcastError(error) {
     console.error('Error: ');
     console.error(error);
   }

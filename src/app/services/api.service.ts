@@ -16,6 +16,10 @@ export class ApiService {
     return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '?category=' + category + '&season=' + season);
   }
 
+  public loadRelatedPodcasts(seasonID, catID) {
+    return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '/related/' + seasonID + '/' + catID);
+  }
+
   public loadFeaturedPodcasts() {
     return this.http.get(this.config.WEBSITE_FEATURED_PODCASTS);
   }

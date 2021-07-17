@@ -1,8 +1,11 @@
 <app-cover [type]="'image'"
            [category]="'سطح ' + podcast.category"
+           [season]="podcast.season"
            [categoryID]="'/podcasts/'+ podcast.category | lowercase"
            [title]="podcast.title" [bg]="podcast.image"
            [breadcrumbs]="breadcrumb"
+           [podcastsList]="podcasts"
+           [audio]="playlist"
 ></app-cover>
 
 <div id="podcast">
@@ -17,24 +20,24 @@
     </div>
 
     </div>
-  <div class="podcast-player pt-3 pb-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-6">
-          <h4 class="text-white">{{ podcast.title }}</h4>
-        </div>
-        <div class="col-12 col-md-6">
-          <ngx-audio-player [playlist]="playlist"  [autoPlay]="false"
-                            muted="muted"
-                            [displayTitle]="false"
-                            [displayVolumeControls]="displayVolumeControls"
-                            [displayRepeatControls]="displayRepeatControls"
-                            [disablePositionSlider]="disablePositionSlider"
-                            [displayDuration]="displayDuration">
+<!--  <div class="podcast-player pt-3 pb-3">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col-12 col-md-6">-->
+<!--          <h4 class="text-white">{{ podcast.title }}</h4>-->
+<!--        </div>-->
+<!--        <div class="col-12 col-md-6">-->
+<!--          <ngx-audio-player [playlist]="playlist"  [autoPlay]="false"-->
+<!--                            muted="muted"-->
+<!--                            [displayTitle]="false"-->
+<!--                            [displayVolumeControls]="displayVolumeControls"-->
+<!--                            [displayRepeatControls]="displayRepeatControls"-->
+<!--                            [disablePositionSlider]="disablePositionSlider"-->
+<!--                            [displayDuration]="displayDuration">-->
 
-          </ngx-audio-player>
-        </div>
-      </div>
-    </div>
-  </div>
+<!--          </ngx-audio-player>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </div>
