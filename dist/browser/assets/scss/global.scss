@@ -239,3 +239,18 @@ a{
     }
   }
 }
+
+
+.tag{
+  display: inline-block;
+  position: relative;
+  background-color: #394649;
+  padding: 2px 8px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  text-transform: none;
+  line-height: 16px;
+  font-weight: 700;
+  border-radius: 4px;
+}

@@ -41,7 +41,8 @@ export class SinglePodcastComponent implements OnInit {
     category: '',
     season: '',
     audio: '',
-    slug: ''
+    slug: '',
+    tag: [],
   };
 
   public catId = 0;
@@ -117,7 +118,8 @@ export class SinglePodcastComponent implements OnInit {
       category: data[0].field_podcast_category_export.name,
       season: data[0].season.name,
       audio: data[0].field_podcast,
-      slug: data[0].slug
+      slug: data[0].slug,
+      tag: data[0].tag
     };
 
     this.catId = data[0].field_podcast_category_export.id;

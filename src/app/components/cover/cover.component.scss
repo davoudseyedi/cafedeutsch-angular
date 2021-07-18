@@ -23,6 +23,7 @@
     background-position: center;
     background-attachment: fixed;
     //padding: 6rem 0;
+    padding-bottom: 2rem;
     &::before{
       content: "";
       position: absolute;
@@ -36,6 +37,7 @@
       color: $white;
     }
     h5.podcast-category{
+
      a {
        padding: 5px 15px;
        font-weight: 500;
@@ -53,6 +55,9 @@
     }
 
     .podcasts-list{
+      @media  only screen and (max-width: 667px) {
+        margin-top: 3rem;
+      }
       .epis-count{
         border-bottom: 1px solid $white;
         line-height: 42px;

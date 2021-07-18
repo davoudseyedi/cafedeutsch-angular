@@ -54,6 +54,39 @@
     }
   }
 }
+
+.tags{
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #dcdee1;
+  ul{
+    li{
+      display: inline-block;
+      a{
+        display: block;
+        background: transparent !important;
+        color: $primary !important;
+        margin: 0 8px 12px 0;
+        padding: 5px 16px;
+        font-weight: 700 !important;
+        border: #dcdee1 1px solid !important;
+      }
+      &:hover {
+        a{
+          background-color: $primary !important;
+          color: $yellow-dark-color !important;
+        }
+      }
+    }
+  }
+}
+
+.body{
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #dcdee1;
+}
+
 .sticky-info{
   background-color: $white;
   padding: 2rem;
@@ -62,4 +95,7 @@
   position: sticky;
   top: 50px;
   margin-top: -90px;
+  @media  only screen and (max-width: 667px) {
+    margin-top: 3rem ;
+  }
 }

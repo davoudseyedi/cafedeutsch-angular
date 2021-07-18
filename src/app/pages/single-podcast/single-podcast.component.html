@@ -34,8 +34,17 @@
           </div>
         </div>
 
-        <h2 class="mb-3">متن اپیزود</h2>
-        <p [innerHTML]="podcast.body"></p>
+       <div class="body">
+         <h4 class="mb-3">متن اپیزود</h4>
+         <p [innerHTML]="podcast.body"></p>
+       </div>
+
+        <div class="tags" *ngIf="podcast.tag.length > 0">
+          <h4 class="mb-3">برچسب ها</h4>
+          <ul class="list-unstyled">
+            <li *ngFor="let item of podcast.tag"><a class="tag" href="">{{ item.title }}</a></li>
+          </ul>
+        </div>
       </div>
       <div class="col-12 col-md-4 col-xs-12">
         <div class="sticky-info">
