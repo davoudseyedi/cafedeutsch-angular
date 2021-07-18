@@ -181,34 +181,37 @@
 
 
 // Carousel
-.owl-nav{
-  position: relative;
-  .owl-next{
-    margin-right: 50px !important;
-    z-index: 999;
+:host::ng-deep{
+  .owl-nav{
     position: relative;
-  }
-  .owl-prev{
-    margin-left: 50px !important;
-    z-index: 999;
-    position: relative;
-  }
-}
-
-.owl-dots {
-  position: absolute;
-  bottom: 7px;
-  right: 0;
-  left: 0;
-  .owl-dot{
-    span{
-      background: $white !important;
+    .owl-next{
+      margin-right: 50px !important;
+      z-index: 999;
+      position: relative;
     }
-    &.active{
+    .owl-prev{
+      margin-left: 50px !important;
+      z-index: 999;
+      position: relative;
+    }
+  }
+
+  .owl-dots {
+    position: absolute;
+    bottom: 7px;
+    right: 0;
+    left: 0;
+    .owl-dot{
       span{
-        background: $red-color !important;
+        background: $white !important;
+      }
+      &.active{
+        span{
+          background: $red-color !important;
+        }
       }
     }
   }
 }
+
 
