@@ -50,6 +50,16 @@ export class PodcastsCategoryComponent implements OnInit {
         ];
 
       }
+
+
+    });
+
+    this.route.queryParamMap.subscribe(params => {
+
+      if (params.get('season')){
+        this.season = params.get('season');
+      }
+
       this.loadPodcastsCategory();
 
     });

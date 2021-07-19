@@ -58,12 +58,31 @@
       @media  only screen and (max-width: 667px) {
         margin-top: 3rem;
       }
-      .epis-count{
+      .list-header{
         border-bottom: 1px solid $white;
         line-height: 42px;
         display: block;
       }
       ul{
+        overflow: auto;
+        max-height: 285px;
+        margin-bottom: 3rem;
+        &::-webkit-scrollbar-track
+        {
+          -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+          background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar
+        {
+          width: 6px;
+          background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar-thumb
+        {
+          background-color: $text-medium;
+        }
         li.epis-item{
           a{
             display: block;

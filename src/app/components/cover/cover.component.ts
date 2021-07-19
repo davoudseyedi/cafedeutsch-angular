@@ -17,6 +17,7 @@ export class CoverComponent implements OnInit {
   @Input() public breadcrumbs = [];
   @Input() public podcastsList = [];
   @Input() public audio: any;
+  @Input() public created: any;
 
 
   public displayVolumeControls = true;

@@ -21,3 +21,42 @@
   }
 
 }
+
+.filter{
+  h4{
+    //font-size: 14px;
+    line-height: 2.8;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color:$text-dark;
+    border-bottom: #dcdee1 1px solid;
+    font-weight: 900;
+
+  }
+  ul{
+    li{
+      a{
+        line-height: 20px;
+        color: $text-light;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 15px;
+        display: block;
+      }
+      &:hover{
+        a{
+
+          background-color: #dcdee1;
+          cursor: pointer;
+          border-radius: 4px;
+        }
+      }
+      a.active{
+        background-color: $primary;
+        cursor: pointer;
+        color: $red-color;
+        border-radius: 4px;
+      }
+    }
+  }
+}
