@@ -71,8 +71,8 @@ export class SinglePodcastComponent implements OnInit {
         this.categoryUrl = '/podcasts/' + this.cat;
         this.breadcrumb = [
           {
-            name: 'بلاگ',
-            url: '/blog',
+            name: 'اپیزودها',
+            url: '/podcasts',
           },
           {
             name : this.podcast.category,

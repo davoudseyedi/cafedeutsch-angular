@@ -18,6 +18,7 @@ export class CoverComponent implements OnInit {
   @Input() public podcastsList = [];
   @Input() public audio: any;
   @Input() public created: any;
+  @Input() public publishDateNormal = false;
 
 
   public displayVolumeControls = true;

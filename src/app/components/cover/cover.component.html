@@ -8,15 +8,16 @@
       </div>
     </div>
 
-    <div class="breadcrumb-top" *ngIf="type == 'image'">
-      <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
-    </div>
-
-
     <!--    Image -->
     <div *ngIf="type == 'image'" class="row justify-content-first">
       <div class="col-12 col-md-8">
-        <h5 *ngIf="category" class="podcast-category"><a routerLink="{{ categoryID }}">{{ category }}</a></h5>
+        <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+        <div class="d-flex align-items-center">
+          <h5 *ngIf="category" class="podcast-category"><a routerLink="{{ categoryID }}">{{ category }}</a></h5>
+
+          <span class="mr-auto text-white d-block d-md-none d-xs-block" *ngIf="publishDateNormal == true"><i class="far fa-clock ml-2"></i> {{ created | jalaliDate }}</span>
+
+        </div>
         <h1 class="podcast-title">{{ title }}</h1>
         <div class="podcast-audio" *ngIf="audio">
           <ngx-audio-player [playlist]="audio"  [autoPlay]="false"
@@ -30,14 +31,14 @@
           </ngx-audio-player>
         </div>
       </div>
-      <div class="col-12 col-md-4" *ngIf="podcastsList.length > 0">
+      <div class="col-12 col-md-4" *ngIf="podcastsList && podcastsList.length > 0">
         <div class="podcasts-list">
           <div class="list-header d-flex align-items-center">
             <span class="epis-count text-white pr-3 mb-2">
               {{ podcastsList.length }} اپیزود
                <span class="badge badge-danger" *ngIf="season">فصل {{ season }}</span>
             </span>
-            <span class="mr-auto text-white"><i class="far fa-clock ml-2"></i>تاریخ انتشار {{ created }}</span>
+            <span class="mr-auto text-white"><i class="far fa-clock ml-2"></i> {{ created }}</span>
           </div>
           <ul class="list-unstyled">
             <li class="epis-item" *ngFor="let item of podcastsList;let i = index">
@@ -47,6 +48,9 @@
             </li>
           </ul>
         </div>
+      </div>
+      <div class="col-12 col-md-4 d-flex" *ngIf="publishDateNormal == true">
+        <span class="mr-auto text-white d-none d-md-block d-xs-none"><i class="far fa-clock ml-2"></i> {{ created | jalaliDate }}</span>
       </div>
     </div>
 

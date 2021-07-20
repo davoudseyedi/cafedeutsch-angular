@@ -14,6 +14,7 @@ import { BlogCategoriesComponent } from './blog-categories/blog-categories.compo
 import { SearchSidebarComponent } from './search-sidebar/search-sidebar.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
+import {PipeModule} from '../pipes/pipe.module';
 
 
 
@@ -45,7 +46,8 @@ export function playerFactory() {
         FormsModule,
         RouterModule,
         LottieModule.forRoot({player: playerFactory}),
-        NgxAudioPlayerModule
+        NgxAudioPlayerModule,
+        PipeModule
     ],
   providers: [],
 })

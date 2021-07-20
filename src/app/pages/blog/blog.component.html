@@ -12,8 +12,17 @@
                 </a>
               </div>
               <div class="content-wrapper">
-                <a routerLink="/blog/{{ item.field_blog_category_export?.name  | slugify }}" class="category">{{ item.field_blog_category_export?.name }}</a>
-                <h2><a class="text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name }}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h2>
+                <div class="d-flex align-items-center">
+                  <a routerLink="/blog/{{ item.field_blog_category_export?.name  | slugify }}" class="category">
+                    {{ item.field_blog_category_export?.name }}
+                  </a>
+                  <span class="mr-auto mb-3"><i class="far fa-clock ml-2"></i> {{ item.created| jalaliDate }}</span>
+                </div>
+                <h2>
+                  <a class="text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name }}/{{ item.nid }}{{ item.slug }}">
+                    {{ item.title }}
+                  </a>
+                </h2>
 
                 <div class="text-12" [innerHTML]="item.body | slice: 0: 200"></div>
                 <hr>
@@ -24,6 +33,22 @@
             </div>
           </article>
         </div>
+        <div class="container" *ngIf="loading">
+          <div class="row" >
+            <div class="col-12 text-center pt-5">
+              <app-loading [type]="1"></app-loading>
+            </div>
+          </div>
+        </div>
+       <div class="container" *ngIf="!loading && blogs.length == 0">
+         <div class="row" >
+           <div class="col-12">
+             <div class="alert alert-warning">
+               آیتمی یافت نشد.
+             </div>
+           </div>
+         </div>
+       </div>
       </div>
 
       <!-- Sidebar -->

@@ -3,6 +3,8 @@
            [title]="blog.title" [categoryID]="'/blog/' + blog.category |slugify"
            [bg]="blog.image"
            [breadcrumbs]="breadcrumb"
+           [created]="blog.created"
+           [publishDateNormal]="true"
 ></app-cover>
 
 <div id="blog">

@@ -17,8 +17,9 @@
                  <h1 class="podcast-title">
                    <a  class="text-white" routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a>
                  </h1>
-                 <div class="podcast-cat">
+                 <div class="podcast-cat d-flex align-items-center">
                    <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase}}">سطح {{ item.field_podcast_category_export?.name }}</a></h5>
+                   <span class="mr-2 text-white"> | <i class="far fa-clock ml-2 mr-2"></i>{{ item.created }}</span>
                  </div>
                  <div class="podcast-body" [innerHTML]="item.body"></div>
 

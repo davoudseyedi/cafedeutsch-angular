@@ -12,9 +12,12 @@
                 </a>
               </div>
               <div class="content-wrapper">
-                <a routerLink="/blog/{{ item.field_blog_category_export?.name | slugify }}" class="category">{{ item.field_blog_category_export?.name }}</a>
-                <h2><a class="text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name | slugify }}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h2>
-
+                <div class="d-flex align-items-center">
+                  <a routerLink="/blog/{{ item.field_blog_category_export?.name  | slugify }}" class="category">
+                    {{ item.field_blog_category_export?.name }}
+                  </a>
+                  <span class="mr-auto mb-3"><i class="far fa-clock ml-2"></i> {{ item.created| jalaliDate }}</span>
+                </div>
                 <div class="text-12" [innerHTML]="item.body | slice: 0: 200"></div>
                 <hr>
                 <div class="view-more">
@@ -41,18 +44,7 @@
         <app-search-sidebar></app-search-sidebar>
         <app-blog-categories></app-blog-categories>
         <hr>
-<!--        <div id="recent-post" *ngif="false">-->
-<!--          <div class="container">-->
-<!--            <div class="row">-->
-<!--              <div class="col-3">-->
 
-<!--              </div>-->
-<!--              <div class="col-9">-->
-
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
       </div>
 
     </div>
