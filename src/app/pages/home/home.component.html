@@ -1,4 +1,6 @@
 <div id="home">
+
+  <!--  Hero Section  -->
   <div id="hero" [style]="'background-image: url(' + heroBG + ') !important'">
     <div class="container">
      <div class="newest" *ngIf="!loading">
@@ -39,14 +41,17 @@
          </div>
        </div>
      </div>
-      <div class="row" *ngIf="loading">
-        <div class="col-12 text-center pt-5">
-          <app-loading [type]="1"></app-loading>
+      <div class="container" *ngIf="loading">
+        <div class="row">
+          <div class="col-12 text-center pt-5">
+            <app-loading [type]="1"></app-loading>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!--  About Section  -->
   <div id="about">
     <div class="container">
       <div class="row">
@@ -74,11 +79,12 @@
     </div>
   </div>
 
+  <!--  Featured Section  -->
   <div id="featured">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
        <div class="col-12">
-         <div class="featured-header mb-3">
+         <div class="featured-header mb-4 text-center">
            <h2>اپیزودهای اخیر</h2>
            <a routerLink="/podcasts" class="text-dark text-uppercase">نمایش همه</a>
          </div>
@@ -131,14 +137,17 @@
 
         </owl-carousel-o>
       </div>
-      <div class="row" *ngIf="loading">
-        <div class="col-12 text-center pt-5">
-          <app-loading [type]="1"></app-loading>
+      <div class="container" *ngIf="loading">
+        <div class="row">
+          <div class="col-12 text-center pt-5">
+            <app-loading [type]="1"></app-loading>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!--  Donate Section  -->
   <div id="support">
     <div class="container">
       <div class="row">
@@ -157,4 +166,5 @@
       </div>
     </div>
   </div>
+
 </div>

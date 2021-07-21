@@ -1,5 +1,5 @@
 <!--Desktop-->
-<nav class="navbar navbar-expand-lg  d-flex justify-content-between navbar-light bg-light d-none d-md-block d-xs-none">
+<nav class="navbar navbar-expand-lg justify-content-between navbar-light bg-light d-none d-md-flex d-xs-none">
   <div class="container">
     <div class="navbar-brand site-branding ml-md-auto m-auto">
       <a class="logo d-flex align-items-center text-dark text-decoration-none" routerLink="/">
@@ -38,14 +38,18 @@
 
     <div class="row align-items-center">
       <div class="col-4">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="fa fa-bars"></span>
-          <span class="fa fa-times"></span>
+        <button class="navbar-toggler d-flex" [class.active]="showDropDown" type="button" (click)="openDropDown( )">
+          <svg class="ss-svg-icon hamburger" *ngIf="!showDropDown"><use xlink:href="#hamburger">
+            <svg viewBox="0 0 24 24" id="hamburger" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 5.5a.5.5 0 0 0 .5.5h19a.5.5 0 0 0 0-1h-19a.5.5 0 0 0-.5.5zm.5 6.5a.5.5 0 0 1 0-1h15a.5.5 0 0 1 0 1h-15zm0 6a.5.5 0 0 1 0-1h19a.5.5 0 0 1 0 1h-19z" fill="currentColor"></path></svg>
+          </use></svg>
+          <svg class="ss-svg-icon close" *ngIf="showDropDown"><use xlink:href="#close">
+            <svg viewBox="0 0 24 24" id="close" xmlns="http://www.w3.org/2000/svg"><path d="M12.707 12l7.147 7.146a.5.5 0 0 1-.708.708L12 12.707l-7.146 7.147a.5.5 0 0 1-.708-.708L11.293 12 4.146 4.854a.5.5 0 1 1 .708-.708L12 11.293l7.146-7.147a.5.5 0 0 1 .708.708L12.707 12z" fill="currentColor"></path></svg>
+          </use></svg>
         </button>
       </div>
       <div class="col-4 text-center">
         <a class="logo text-dark text-decoration-none" routerLink="/">
-          <img src="/assets/img/logo.png" alt="Cafe Deutsch" width="50" class="logo-img">
+          <img src="/assets/img/logo.png" alt="Cafe Deutsch" width="40" class="logo-img">
           <h4 class="site-title mr-2 text-white d-none d-md-block d-xs-none">Cafe Deutsch</h4>
         </a>
 
@@ -54,19 +58,19 @@
         <button class="btn btn-outline-danger btn-sm mr-auto pt-2 pb-2 pr-3 pl-3"> ثبت نام</button>
       </div>
     </div>
-    <div class="collapse navbar-collapse" id="navbar-collapse">
+    <div class="mobile-dropdown collapse1 navbar-collapse1" id="navbar-collapse" *ngIf="showDropDown">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">صفحه اصلی</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">صفحه اصلی</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/podcasts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">اپیزود ها</a>
+          <a class="nav-link" routerLink="/podcasts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">اپیزود ها</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">بلاگ</a>
+          <a class="nav-link" routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">بلاگ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">تماس با ما</a>
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">تماس با ما</a>
         </li>
       </ul>
     </div>

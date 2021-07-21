@@ -54,9 +54,11 @@
               </div>
             </div>
           </div>
-          <div class="row" *ngIf="loading">
-            <div class="col-12 text-center pt-5">
-              <app-loading [type]="1"></app-loading>
+          <div class="container" *ngIf="loading">
+            <div class="row">
+              <div class="col-12 text-center pt-5">
+                <app-loading [type]="1"></app-loading>
+              </div>
             </div>
           </div>
           <div class="row"  *ngIf="!loading && podcasts.length == 0">

@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-header',
-    styleUrls: ['./header.component.scss'],
-    templateUrl: './header.component.html'
+  selector: 'app-header',
+  styleUrls: ['./header.component.scss'],
+  templateUrl: './header.component.html'
 })
 
 export class HeaderComponent implements OnInit {
 
-    constructor() { }
+  public showDropDown = false;
 
-    public ngOnInit() { }
+
+  constructor() { }
+
+  public ngOnInit() { }
+
+  public openDropDown(){
+    this.showDropDown = !this.showDropDown;
+  }
+
+  public changeMenuState() {
+    this.showDropDown = false;
+  }
+
 
 }

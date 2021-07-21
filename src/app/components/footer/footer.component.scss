@@ -23,7 +23,7 @@
     position: relative;
     display: block;
     margin-top: 2rem;
-    input[type="text"]{
+    input[type="text"] {
       color: #6d727c;
       border-radius: 25px;
       border: 1px solid #ecf2f7;
@@ -31,6 +31,9 @@
       width: 100%;
       padding-left: 150px;
       height: 50px;
+      @media (max-width: 667px) {
+        padding-left: 0;
+      }
     }
 
   }

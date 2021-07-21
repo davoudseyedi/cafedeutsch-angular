@@ -6,9 +6,10 @@
   background-color: $primary;
   margin-bottom: 3rem;
   padding-bottom: 9rem;
+  width: 100%;
   @media (max-width: 667px) {
-    padding-top: 6rem !important;
-    padding-bottom: 2rem;
+    padding-top: 1rem !important;
+    padding-bottom: 2rem !important;
   }
   &.text{
     text-align: center;
@@ -55,6 +56,9 @@
     }
 
     .podcasts-list{
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 8px;
       @media  only screen and (max-width: 667px) {
         margin-top: 3rem;
       }

@@ -1,7 +1,7 @@
 @import "variables";
 
 // Global Styles
-html, body {
+body {
   padding: 0;
   margin: 0;
   font-size: 16px;
@@ -19,6 +19,9 @@ html, body {
   -o-background-size: auto;
   background-size: auto;
   font-family: "Rubik",'iran-yekan', Sans-serif;
+  @media (max-width: 667px) {
+    padding-top: 65.72px;
+  }
 }
 
 
