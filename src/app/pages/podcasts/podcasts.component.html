@@ -3,26 +3,61 @@
   <div class="container">
     <div class="row">
       <aside class="col-12 col-md-3 col-xs-12">
-        <div id="all" class="filter">
-          <h4><a class="text-dark" routerLink="/podcasts" routerLinkActive="active" [queryParams]="{category: 'all',season: 'all'}" [queryParamsHandling]="'merge'">همه اپیزودها</a></h4>
-        </div>
+        <!--desktop -->
+       <div class="desktop d-none d-md-block d-xs-none">
+         <div id="all" class="filter">
+           <h4><a class="text-dark" routerLink="/podcasts" routerLinkActive="active" [queryParams]="{category: 'all',season: 'all'}" [queryParamsHandling]="'merge'">همه اپیزودها</a></h4>
+         </div>
 
-        <div id="level" class="filter">
-          <h4>سطح</h4>
-          <ul class="p-0 list-unstyled">
-            <li><a routerLink="/podcasts" [queryParams]="{category: 'all'}" routerLinkActive="active">همه سطوح</a></li>
-            <li><a routerLink="/podcasts" [queryParams]="{category: 'a'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح A</a></li>
-            <li><a routerLink="/podcasts" [queryParams]="{category: 'b'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح B</a></li>
-          </ul>
-        </div>
+         <div id="level" class="filter">
+           <h4>سطح</h4>
+           <ul class="p-0 list-unstyled">
+             <li><a routerLink="/podcasts" [queryParams]="{category: 'all'}" routerLinkActive="active">همه سطوح</a></li>
+             <li><a routerLink="/podcasts" [queryParams]="{category: 'a'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح A</a></li>
+             <li><a routerLink="/podcasts" [queryParams]="{category: 'b'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح B</a></li>
+           </ul>
+         </div>
 
-        <div id="season" class="filter">
-          <h4>فصل</h4>
-          <ul class="p-0 list-unstyled">
-            <li><a routerLink="/podcasts" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
-            <li><a routerLink="/podcasts" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
-            <li><a routerLink="/podcasts" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
-          </ul>
+         <div id="season" class="filter">
+           <h4>فصل</h4>
+           <ul class="p-0 list-unstyled">
+             <li><a routerLink="/podcasts" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+             <li><a routerLink="/podcasts" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
+             <li><a routerLink="/podcasts" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
+           </ul>
+         </div>
+
+       </div>
+        <!--mobile-->
+        <div class="mobile d-block d-md-block d-xs-block">
+          <button class="btn btn-warning btn-block w-100 d-block d-md-none d-xs-block mb-3" type="button" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-filter ml-2"></i>دسته بندی
+          </button>
+          <div class="collapse mb-3" id="collapseCategory">
+            <div class="card card-body">
+              <div id="all-mobile" class="filter">
+                <h4><a class="text-dark" routerLink="/podcasts" routerLinkActive="active" [queryParams]="{category: 'all',season: 'all'}" [queryParamsHandling]="'merge'">همه اپیزودها</a></h4>
+              </div>
+
+              <div id="level-mobile" class="filter">
+                <h4>سطح</h4>
+                <ul class="p-0 list-unstyled">
+                  <li><a routerLink="/podcasts" [queryParams]="{category: 'all'}" routerLinkActive="active">همه سطوح</a></li>
+                  <li><a routerLink="/podcasts" [queryParams]="{category: 'a'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح A</a></li>
+                  <li><a routerLink="/podcasts" [queryParams]="{category: 'b'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح B</a></li>
+                </ul>
+              </div>
+
+              <div id="season-mobile" class="filter">
+                <h4>فصل</h4>
+                <ul class="p-0 list-unstyled">
+                  <li><a routerLink="/podcasts" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+                  <li><a routerLink="/podcasts" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
+                  <li><a routerLink="/podcasts" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </aside>
       <main class="col-12 col-md-9 col-xs-12">

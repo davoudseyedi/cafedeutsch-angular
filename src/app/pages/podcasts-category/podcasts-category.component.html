@@ -3,17 +3,43 @@
   <div class="container">
     <div class="row">
       <aside class="col-12 col-md-3 col-xs-12">
+        <!-- desktop -->
+        <div class="desktop d-none d-md-block d-xs-none">
+          <div id="season" class="filter">
 
-        <div id="season" class="filter">
+            <h4>فصل</h4>
 
-          <h4>فصل</h4>
-
-          <ul class="p-0 list-unstyled">
-            <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
-            <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
-            <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
-          </ul>
+            <ul class="p-0 list-unstyled">
+              <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+              <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
+              <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
+            </ul>
+          </div>
         </div>
+         <!-- mobile -->
+        <div class="desktop d-block d-md-none d-xs-block">
+          <div id="season-mobile" class="filter">
+
+            <button class="btn btn-warning btn-block w-100 d-block d-md-none d-xs-block mb-3" type="button" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-filter ml-2"></i>دسته بندی
+            </button>
+            <div class="collapse mb-3" id="collapseCategory">
+              <div class="card card-body">
+                <h4>فصل</h4>
+
+                <ul class="p-0 list-unstyled">
+                  <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+                  <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
+                  <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
+                </ul>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
 
       </aside>
 

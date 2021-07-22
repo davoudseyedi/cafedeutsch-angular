@@ -37,14 +37,6 @@ export class BlogComponent implements OnInit {
     this.metaService.setTitle();
     this.metaService.clearMetaTags();
 
-    this.route.paramMap.subscribe(event => {
-
-      if (event.get('category')){
-        this.cat = event.get('category');
-      }
-
-    });
-
     this.route.queryParamMap.subscribe(params => {
 
       if (params.get('search')){
@@ -53,7 +45,19 @@ export class BlogComponent implements OnInit {
 
     });
 
-    this.loadBlogs();
+    this.route.paramMap.subscribe(event => {
+
+      if (event.get('category')){
+        this.cat = event.get('category');
+      }
+
+      this.loadBlogs();
+
+    });
+
+
+
+
   }
 
   public searchPost(){

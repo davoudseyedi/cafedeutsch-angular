@@ -22,6 +22,20 @@
 
 }
 
+#all{
+  h4{
+    line-height: 2;
+    a{
+      display: block;
+      background-color: $primary;
+      color: $white !important;
+      padding: 5px 15px;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+  }
+}
 .filter{
   h4{
     //font-size: 14px;
