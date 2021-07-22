@@ -1,4 +1,4 @@
-<div id="cover" class="{{type}}" style="background-image: url('{{ bg }}');">
+<div id="cover" class="{{type}}" [ngStyle]="{'background-image': (bg) ? 'url(' + bg + ')' : ''}">
   <div class="container">
 
     <!--    Text  -->

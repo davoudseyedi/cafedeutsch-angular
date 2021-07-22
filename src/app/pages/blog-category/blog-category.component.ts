@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HelpersService} from '../../services/helpers.service';
 
 @Component({
   selector: 'app-blog-category',
@@ -17,6 +18,7 @@ export class BlogCategoryComponent implements OnInit {
 
   public cat = '';
   public season = 'all';
+  public search = '';
   public category_url;
 
   public id;
@@ -25,6 +27,8 @@ export class BlogCategoryComponent implements OnInit {
 
   constructor(private api: ApiService,
               private metaService: MetaService,
+              private router: Router,
+              private helpersService: HelpersService,
               private route: ActivatedRoute) { }
 
 
@@ -52,8 +56,6 @@ export class BlogCategoryComponent implements OnInit {
         ];
 
       }
-
-      this.loadBlogCategory();
     });
 
     this.route.queryParamMap.subscribe(params => {
@@ -61,8 +63,27 @@ export class BlogCategoryComponent implements OnInit {
       if (params.get('season')){
         this.season = params.get('season');
       }
+      if (params.get('search')){
+        this.search = params.get('search');
+      }
+
     });
 
+    this.loadBlogCategory();
+
+  }
+
+  public searchPost(){
+
+    this.helpersService.changeRouteParams('/blog' , {search: this.search} );
+
+    this.loading = true;
+    this.api
+      .loadAllBlogsWithSearch(this.search)
+      .subscribe({
+        next: this.onLoadBlogSuccess.bind(this),
+        error: this.onLoadBlogError.bind(this)
+      });
   }
 
   private loadBlogCategory() {
@@ -81,7 +102,7 @@ export class BlogCategoryComponent implements OnInit {
     this.loading = false;
     this.blog = response;
 
-    this.categoryLabel = response[0].field_blog_category_export.name;
+    this.categoryLabel = response[0]?.field_blog_category_export.name;
 
     this.breadcrumb = [
       {

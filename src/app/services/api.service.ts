@@ -39,6 +39,10 @@ export class ApiService {
     return this.http.get(this.config.WEBSITE_ALL_BLOGS + '?category=' + category);
   }
 
+  public loadAllBlogsWithSearch(search) {
+    return this.http.get(this.config.WEBSITE_ALL_BLOGS + '?search=' + search );
+  }
+
   public getRelatedBlogPosts(blogID) {
     return this.http.get(this.config.WEBSITE_ALL_BLOGS + '/' + blogID + '/related' );
   }

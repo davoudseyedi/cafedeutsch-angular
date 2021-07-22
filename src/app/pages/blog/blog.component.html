@@ -2,7 +2,7 @@
 <div id="blogs">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-8 col-xs-12 order-md-0 order-0">
+      <div class="col-12 col-md-8 col-xs-12 order-md-0 order-1">
         <div class="content teaser" *ngIf="!loading">
           <article id="post-{{ i+1 }}" *ngFor="let item of blogs;let i = index">
             <div class="blog-item">
@@ -52,9 +52,22 @@
       </div>
 
       <!-- Sidebar -->
-      <div class="col-12 col-md-4 col-xs-12 order-md-1 order-1">
-        <app-search-sidebar></app-search-sidebar>
-        <app-blog-categories [sticky]="true"></app-blog-categories>
+      <div class="col-12 col-md-4 col-xs-12 order-md-1 order-0">
+        <div id="search" class="mb-2">
+          <form action="" (ngSubmit)="searchPost()">
+            <input type="text" [(ngModel)]="search" name="search" class="form-control form-control-lg" placeholder="جستجو کنید...">
+            <i class="fa fa-search"></i>
+          </form>
+        </div>
+        <button class="btn btn-warning btn-block w-100 d-block d-md-none d-xs-block" type="button" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseExample">
+          دسته بندی
+        </button>
+        <div class="collapse" id="collapseCategory">
+          <div class="card card-body">
+            <app-blog-categories></app-blog-categories>
+          </div>
+        </div>
+        <app-blog-categories class="d-none d-md-block d-xs-none" [sticky]="true"></app-blog-categories>
       </div>
 
     </div>

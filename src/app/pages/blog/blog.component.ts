@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -13,6 +13,7 @@ export class BlogComponent implements OnInit {
   public loading = false;
 
   public cat = 'all';
+  public search = '';
 
   public breadcrumb = [
     {
@@ -29,6 +30,7 @@ export class BlogComponent implements OnInit {
 
   constructor(private api: ApiService,
               private metaService: MetaService,
+              private router: Router,
               private route: ActivatedRoute) { }
 
   public ngOnInit() {
@@ -40,9 +42,31 @@ export class BlogComponent implements OnInit {
       if (event.get('category')){
         this.cat = event.get('category');
       }
-      this.loadBlogs();
+
     });
 
+    this.route.queryParamMap.subscribe(params => {
+
+      if (params.get('search')){
+        this.search = params.get('search');
+      }
+
+    });
+
+    this.loadBlogs();
+  }
+
+  public searchPost(){
+    this.router.navigateByUrl('/blog?search=' + this.search );
+
+
+    this.loading = true;
+    this.api
+      .loadAllBlogsWithSearch(this.search)
+      .subscribe({
+        next: this.onLoadBlogsSuccess.bind(this),
+        error: this.onLoadBlogsError.bind(this)
+      });
   }
 
   private loadBlogs() {
