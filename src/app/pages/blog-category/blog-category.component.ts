@@ -37,18 +37,6 @@ export class BlogCategoryComponent implements OnInit {
     this.metaService.setTitle();
     this.metaService.clearMetaTags();
 
-    this.route.queryParamMap.subscribe(params => {
-
-      if (params.get('season')){
-        this.season = params.get('season');
-      }
-      if (params.get('search')){
-        this.search = params.get('search');
-      }
-
-    });
-
-
     this.route.paramMap.subscribe(event => {
 
       if ( event.get('cat') ) {
@@ -70,6 +58,14 @@ export class BlogCategoryComponent implements OnInit {
         this.loadBlogCategory();
 
       }
+    });
+
+    this.route.queryParamMap.subscribe(params => {
+
+      if (params.get('search')){
+        this.search = params.get('search');
+      }
+
     });
 
 

@@ -105,7 +105,13 @@
                           <img src="{{ item.field_podcast_image_export?.url }}" alt="{{ item.field_podcast_image_export?.alt }}" class="img-fluid" >
                         </a>
                         <div class="podcast-cat text-md-right text-center d-block d-md-none d-xs-block">
-                          <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">سطح {{ item.field_podcast_category_export?.name }}</a></h5>
+                          <h5 class="d-flex align-items-center">
+                            <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">
+                              <span class="badge badge-warning">سطح {{ item.field_podcast_category_export?.name }}</span>
+                            </a>
+                            <a><span class="badge badge-info mr-2" *ngIf="item.publish_date">درحال انتشار</span></a>
+
+                          </h5>
                         </div>
                       </div>
 
@@ -113,20 +119,29 @@
                     <div class="col-12 col-md-6">
                       <div class="desc">
                         <div class="podcast-title text-md-right text-center">
-                          <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category_export?.name  | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
+                          <h4>
+                            <a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category_export?.name  | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
                         </div>
                         <div class="podcast-cat text-md-right text-center d-none d-md-block d-xs-none">
-                          <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">سطح {{ item.field_podcast_category_export?.name }}</a></h5>
+                          <h5 class="d-flex align-items-center">
+                            <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">
+                              <span class="badge badge-warning">سطح {{ item.field_podcast_category_export?.name }}</span>
+                            </a>
+                            <a><span class="badge badge-info mr-2" *ngIf="item.publish_date">درحال انتشار</span></a>
+                          </h5>
+                        </div>
+                        <div class="count-down mt-3" *ngIf="item.publish_date">
+                          <app-countdown [countdownDate]="item.publish_date |date"></app-countdown>
                         </div>
                         <div class="podcast-body d-none d-md-block d-xs-none" [innerHTML]="item.body | slice:0 : 100"></div>
                         <div class="view-more d-none d-md-block d-xs-none">
-                          <a routerLink="/podcasts/{{item.field_podcast_category_export?.name  | lowercase}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">بیشتر بخوانید</a>
+                          <a routerLink="/podcasts/{{item.field_podcast_category_export?.name  | lowercase}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">مشاهده</a>
                         </div>
                       </div>
                     </div>
                     <div class="col-12 d-block d-md-none d-xs-block">
                       <div class="view-more">
-                        <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">بیشتر بخوانید</a>
+                        <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
                       </div>
                     </div>
                   </div>

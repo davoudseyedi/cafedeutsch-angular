@@ -7,11 +7,13 @@
            [podcastsList]="podcasts"
            [audio]="playlist"
            [created]="podcast.created"
+           [loading]="loading"
+           [publishDate]="publishDate |date"
 ></app-cover>
 
 <div id="podcast">
   <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="!loading">
       <div class="col-12 col-md-8 col-xs-12">
         <div class="details">
           <div class="row justify-content-center">
@@ -59,7 +61,11 @@
         </div>
       </div>
     </div>
-
+    <div class="row justify-content-center" *ngIf="loading">
+      <div class="col-12 text-center">
+        <app-loading type="1"></app-loading>
+      </div>
+    </div>
     </div>
 <!--  <div class="podcast-player pt-3 pb-3">-->
 <!--    <div class="container">-->

@@ -45,16 +45,16 @@
     h5.podcast-category{
 
      a {
-       padding: 5px 15px;
-       font-weight: 500;
-       line-height: 20px;
+       //padding: 5px 15px;
+       //font-weight: 500;
+       //line-height: 20px;
        text-align: center;
        text-transform: uppercase;
        display: inline-block;
        z-index: 99999;
-       background: $orange;
-       color: #fff;
-       border-radius: 4px;
+       //background: $orange;
+       //color: #fff;
+       //border-radius: 4px;
 
      }
 
@@ -178,3 +178,20 @@
 
 
 
+// CountDown
+
+:host::ng-deep{
+  .podcast-pub-date{
+    .timer{
+      color: $white;
+      li{
+        font-size: 1.5rem !important;
+        padding: 0 1.5rem !important;
+        span{
+          color: $white;
+          font-size: 2rem!important;
+        }
+      }
+    }
+  }
+}

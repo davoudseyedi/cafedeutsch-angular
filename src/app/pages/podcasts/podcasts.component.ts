@@ -70,6 +70,7 @@ export class PodcastsComponent implements OnInit {
   private onLoadPodcastsSuccess(response) {
     this.loading = false;
     this.podcasts = response;
+
   }
 
   private onLoadPodcastsError(error) {

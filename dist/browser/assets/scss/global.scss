@@ -133,6 +133,7 @@ p{
 a{
   text-decoration: none;
   transition: 0.2s all ease-out;
+  font-weight: normal;
   &:hover{
     color: $red-color !important;
     text-decoration: none;
@@ -189,6 +190,12 @@ a{
 }
 .text-16{
   font-size: 1rem
+}
+
+.badge{
+  line-height: 1;
+  padding: 5px;
+  display: inline-block;
 }
 
 .content-wrapper{

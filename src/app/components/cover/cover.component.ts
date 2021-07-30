@@ -11,6 +11,7 @@ export class CoverComponent implements OnInit {
   @Input() public title: any;
   @Input() public subtitle: any;
   @Input() public category: any;
+  @Input() public publishDate: any;
   @Input() public season: any;
   @Input() public categoryID: any;
   @Input() public bg: any;
@@ -18,7 +19,11 @@ export class CoverComponent implements OnInit {
   @Input() public podcastsList = [];
   @Input() public audio: any;
   @Input() public created: any;
+  @Input() public loading: any;
   @Input() public publishDateNormal = false;
+
+  public now = new Date();
+  public pubDate;
 
 
   public displayVolumeControls = true;
@@ -27,9 +32,12 @@ export class CoverComponent implements OnInit {
   public disablePositionSlider = false;
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
+
+
 
 }

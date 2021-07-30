@@ -2,24 +2,30 @@
   <div class="container">
 
     <!--    Text  -->
-    <div *ngIf="type == 'text'" class="row justify-content-center">
+    <div *ngIf="!loading && type == 'text'" class="row justify-content-center">
       <div class="col-12">
         <h1>{{ title }}</h1>
       </div>
     </div>
 
     <!--    Image -->
-    <div *ngIf="type == 'image'" class="row justify-content-first">
+    <div *ngIf="!loading && type == 'image'" class="row justify-content-first">
       <div class="col-12 col-md-8">
         <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
-        <div class="d-flex align-items-center">
-          <h5 *ngIf="category" class="podcast-category"><a routerLink="{{ categoryID }}">{{ category }}</a></h5>
+        <div class="d-flex align-items-center"  >
+          <h5 *ngIf="category" class="podcast-category d-flex align-items-center">
+            <a routerLink="{{ categoryID }}">
+              <span class="badge badge-warning">{{ category }}</span>
+            </a>
+            <a><span class="badge badge-info mr-2" *ngIf="publishDate">درحال انتشار</span></a>
+
+          </h5>
 
           <span class="mr-auto text-white d-block d-md-none d-xs-block" *ngIf="publishDateNormal == true"><i class="far fa-clock ml-2"></i> {{ created | jalaliDate }}</span>
 
         </div>
         <h1 class="podcast-title">{{ title }}</h1>
-        <div class="podcast-audio" *ngIf="audio">
+        <div class="podcast-audio" *ngIf="audio && publishDate <= now">
           <ngx-audio-player [playlist]="audio"  [autoPlay]="false"
                             muted="muted"
                             [displayTitle]="false"
@@ -29,6 +35,9 @@
                             [displayDuration]="displayDuration">
 
           </ngx-audio-player>
+        </div>
+        <div class="podcast-pub-date" *ngIf="publishDate">
+          <app-countdown [countdownDate]="publishDate"></app-countdown>
         </div>
       </div>
       <div class="col-12 col-md-4" *ngIf="podcastsList && podcastsList.length > 0">
@@ -55,15 +64,21 @@
     </div>
 
     <!--    Image static pages -->
-    <div *ngIf="type == 'image2'" class="row justify-content-center">
+    <div *ngIf="!loading && type == 'image2'" class="row justify-content-center">
       <div class="col-12 col-md-8">
         <h1 class="podcast-title">{{ title }}</h1>
         <p class="podcast-subtitle text-16">{{ subtitle }}</p>
       </div>
     </div>
 
-    <div class="breadcrumb-bottom" *ngIf="type != 'image'">
+    <div class="breadcrumb-bottom" *ngIf="!loading && type != 'image'">
       <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+    </div>
+
+    <div class="row justify-content-center" *ngIf="loading">
+      <div class="col-12 text-center">
+        <app-loading type="1"></app-loading>
+      </div>
     </div>
 
   </div>

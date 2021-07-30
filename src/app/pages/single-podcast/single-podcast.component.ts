@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
-import { Track } from 'ngx-audio-player';
+import {Track} from 'ngx-audio-player';
 
 @Component({
   selector: 'app-single-podcast',
   templateUrl: './single-podcast.component.html',
-  styleUrls: ['./single-podcast.component.scss']
+  styleUrls: ['./single-podcast.component.scss'],
 })
 export class SinglePodcastComponent implements OnInit {
 
@@ -37,6 +37,7 @@ export class SinglePodcastComponent implements OnInit {
     title: null,
     body: '',
     created: '',
+    publish_date: null,
     image: '',
     category: '',
     season: '',
@@ -44,6 +45,8 @@ export class SinglePodcastComponent implements OnInit {
     slug: '',
     tag: [],
   };
+
+  public publishDate;
 
   public catId = 0;
   public seasonId = 0;
@@ -63,6 +66,7 @@ export class SinglePodcastComponent implements OnInit {
 
       if (event.get('id')){
         this.id = event.get('id');
+
       }
 
       if (event.get('cat')){
@@ -83,10 +87,14 @@ export class SinglePodcastComponent implements OnInit {
 
       this.loadSinglePodcast();
 
+
     });
   }
 
   public loadSinglePodcast(){
+
+    this.loading = true;
+
     this.api
       .getPodcast(this.id)
       .subscribe({
@@ -109,6 +117,8 @@ export class SinglePodcastComponent implements OnInit {
 
   private makePodcastItem(data){
 
+    this.loading = false;
+
     this.podcast = {
       nid: data[0].nid,
       title: data[0].title,
@@ -116,12 +126,14 @@ export class SinglePodcastComponent implements OnInit {
       created: data[0].created,
       image: data[0].field_podcast_image_export.url,
       category: data[0].field_podcast_category_export.name,
+      publish_date: data[0].publish_date,
       season: data[0].season.name,
       audio: data[0].field_podcast,
       slug: data[0].slug,
       tag: data[0].tag
     };
 
+    this.publishDate = data[0].publish_date;
     this.catId = data[0].field_podcast_category_export.id;
     this.seasonId = data[0].season.id;
 
@@ -156,6 +168,7 @@ export class SinglePodcastComponent implements OnInit {
 
 
   private onLoadPodcastError(error) {
+    this.loading = false;
     console.error('Error: ');
     console.error(error);
   }

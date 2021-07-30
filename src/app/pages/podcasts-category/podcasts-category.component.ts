@@ -59,7 +59,6 @@ export class PodcastsCategoryComponent implements OnInit {
       if (params.get('season')){
         this.season = params.get('season');
       }
-
       this.loadPodcastsCategory();
 
     });
@@ -83,7 +82,7 @@ export class PodcastsCategoryComponent implements OnInit {
     this.loading = false;
     this.podcasts = response;
 
-    this.categoryLabel = 'سطح ' + response[0].field_podcast_category_export.name;
+    this.categoryLabel = 'سطح ' + response[0].field_podcast_category_export?.name;
 
     this.breadcrumb = [
       {
