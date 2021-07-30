@@ -187,6 +187,9 @@
       li{
         font-size: 1.5rem !important;
         padding: 0 1.5rem !important;
+        @media (max-width: 667px){
+          font-size: 1rem !important;
+        }
         span{
           color: $white;
           font-size: 2rem!important;
