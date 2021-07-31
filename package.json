@@ -6,9 +6,10 @@
     "ngcc": "ngcc",
     "start": "ng serve",
     "build": "ng build",
-    "build-server": "run-s build:client build:server",
-    "build:client": "ng build --prod && ng run sample:server",
-    "build:server": "webpack -p --config webpack.config.js --progress --colors",
+    "dev:ssr": "ng run cafedeutsch-app::serve-ssr",
+    "serve:ssr": "node dist/server/main.js",
+    "build:ssr": "ng build --prod && ng run cafedeutsch-app:server:production",
+    "prerender": "ng run cafedeutsch-app:prerender",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
