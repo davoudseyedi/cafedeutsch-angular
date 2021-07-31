@@ -148,7 +148,7 @@
         "check-typecast"
       ]
     }
-},
+  },
   "rulesDirectory": [
     "codelyzer"
   ]
