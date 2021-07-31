@@ -9,6 +9,7 @@
     "dev:ssr": "ng run cafedeutsch-app::serve-ssr",
     "serve:ssr": "node dist/server/main.js",
     "build:ssr": "ng build --prod && ng run cafedeutsch-app:server:production",
+    "build-qa:ssr": "ng build --configuration qa && ng run cafedeutsch-app:server:qa",
     "prerender": "ng run cafedeutsch-app:prerender",
     "test": "ng test",
     "lint": "ng lint",
