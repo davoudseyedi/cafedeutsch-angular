@@ -9,7 +9,7 @@ import {OwlOptions} from 'ngx-owl-carousel-o';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  // encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
 
 export class HomeComponent implements OnInit {
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   public loading = false;
 
   public podcasts = [];
+  public blog = [];
 
   public newest = [];
   public heroBG = '';
@@ -61,6 +62,34 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   };
+  blogOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    autoplay: true,
+    navSpeed: 700,
+    rtl: true,
+    animateIn: 'fadeIn',
+    animateOut: 'fadeOut',
+    navText: ['<i class="fa fa-arrow-alt-circle-right"></i>', '<i class="fa fa-arrow-alt-circle-left"></i>'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      },
+      940: {
+        items: 1
+      }
+    },
+    nav: true
+  };
 
   constructor(private api: ApiService,
               private metaService: MetaService) { }
@@ -71,6 +100,7 @@ export class HomeComponent implements OnInit {
 
     this.loadNewestPodcast();
     this.loadPodcasts();
+    this.loadBlogs();
   }
 
   private loadNewestPodcast(){
@@ -93,6 +123,18 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next: this.onLoadPodcastsSuccess.bind(this),
         error: this.onLoadPodcastsError.bind(this)
+      });
+  }
+
+  private loadBlogs() {
+
+    this.loading = true;
+
+    this.api
+      .loadAllBlogs('all')
+      .subscribe({
+        next: this.onLoadBlogsSuccess.bind(this),
+        error: this.onLoadBlogsError.bind(this)
       });
   }
 
@@ -122,4 +164,16 @@ export class HomeComponent implements OnInit {
     this.loading = false;
     console.error(error);
   }
+
+  private onLoadBlogsSuccess(response) {
+    this.loading = false;
+    this.blog = response;
+  }
+
+  private onLoadBlogsError(error) {
+    this.loading = false;
+    console.error(error);
+  }
+
+
 }

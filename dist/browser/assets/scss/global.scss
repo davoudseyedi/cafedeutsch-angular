@@ -130,6 +130,191 @@ p{
   color: $text-dark !important;
 }
 
+
+// Buttons ---------------------------------------- //
+.btn {
+  transition: background-color 360ms ease, transform 360ms ease, border-radius 360ms ease, box-shadow 400ms ease, border-color 360ms ease;
+  [class^="icon-"] {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .icon-left {
+    margin-right: 12px;
+  }
+  .icon-right {
+    margin-left: 12px;
+  }
+  &.disabled, &:disabled {
+    opacity: 1!important;
+    background-color: $gray-medium!important;
+    border-color: $gray-medium!important;
+    color: $text-lighter!important;
+    &:hover {
+      background-color: $gray-medium!important;
+      border-color: $gray-medium!important;
+      color: $text-lighter!important;
+    }
+  }
+}
+
+button[class*="btn-outline"], a[class*="btn-outline"], button[class*="btn-tertiary"], a[class*="btn-outline-tertiary"] {
+  &.disabled, &:disabled {
+    background-color: white!important;
+    box-shadow: none;
+    &:hover {
+      background-color: white!important;
+    }
+  }
+}
+
+.btn, .btn-lg {
+  min-width: 100px;
+  //line-height: 30px;
+}
+
+.btn {
+  //height: 40px;
+  font-size: 0.875rem;
+  border-radius: 30px;
+}
+
+.btn-lg {
+  //height: 48px;
+  font-size: 1rem!important;
+}
+.btn-sm{
+  padding: 0.25rem;
+  font-size: 0.75rem !important;
+  //line-height: 2.5 !important;
+  //border-radius: 0.2rem !important;
+  min-width: 75px!important;
+}
+
+button:focus {
+  outline: 0px auto $white!important;
+}
+
+.btn-primary {
+  @include button($primary);
+}
+
+.btn-secondary {
+  @include button($secondary);
+}
+
+.btn-success {
+  @include button($success);
+}
+
+.btn-info {
+  @include button($info);
+}
+
+.btn-warning {
+  @include button($yellow-dark-color);
+}
+
+.btn-danger {
+  @include button($red-color);
+}
+
+.btn-outline-primary {
+  @include button-outline($primary);
+}
+
+.btn-outline-secondary {
+  @include button-outline($secondary);
+}
+
+.btn-outline-success {
+  @include button-outline($success);
+}
+
+.btn-outline-info {
+  @include button-outline($info);
+}
+
+.btn-outline-warning {
+  @include button-outline($yellow-dark-color);
+}
+
+.btn-outline-danger {
+  @include button-outline($red-color);
+}
+
+.btn-circle-primary {
+  @include button-circle($primary);
+}
+
+.btn-circle-secondary {
+  @include button-circle($secondary);
+}
+
+.btn-circle-success {
+  @include button-circle($success);
+}
+
+.btn-circle-info {
+  @include button-circle($info);
+}
+
+.btn-circle-warning {
+  @include button-circle($yellow-dark-color);
+}
+
+.btn-circle-danger {
+  @include button-circle($red-color);
+}
+
+.btn-circle-outline-primary {
+  @include button-outline-circle($primary);
+}
+
+.btn-circle-outline-secondary {
+  @include button-outline-circle($secondary);
+}
+
+.btn-circle-outline-success {
+  @include button-outline-circle($success);
+}
+
+.btn-circle-outline-info {
+  @include button-outline-circle($info);
+}
+
+.btn-circle-outline-warning {
+  @include button-outline-circle($yellow-dark-color);
+}
+
+.btn-circle-outline-danger {
+  @include button-outline-circle($red-color);
+}
+
+.btn-tertiary-primary {
+  @include button-tertiary($primary);
+}
+
+.btn-tertiary-secondary {
+  @include button-tertiary($secondary);
+}
+
+.btn-tertiary-success {
+  @include button-tertiary($success);
+}
+
+.btn-tertiary-info {
+  @include button-tertiary($info);
+}
+
+.btn-tertiary-warning {
+  @include button-tertiary($yellow-dark-color);
+}
+
+.btn-tertiary-danger {
+  @include button-tertiary($red-color);
+}
+
+
 a{
   text-decoration: none;
   transition: 0.2s all ease-out;

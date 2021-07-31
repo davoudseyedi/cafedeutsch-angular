@@ -162,6 +162,46 @@
     </div>
   </div>
 
+  <!-- Recent Posts -->
+  <div id="blog">
+    <owl-carousel-o [options]="blogOptions">
+
+      <ng-container  *ngFor="let item of blog| slice: 0: 5">
+        <ng-template carouselSlide>
+          <div class="blog-item" [ngStyle]="{'background-image': ( item.field_image_export?.url) ? 'url(' +  item.field_image_export?.url + ')' : ''}">
+            <div class="container">
+              <div class="row align-content-end">
+                <div class="col-12 col-md-4 col-xs-12">
+                  <div class="content-wrapper">
+                    <div class="d-flex align-items-center">
+                      <a routerLink="/blog/{{ item.field_blog_category_export?.name  | slugify }}" class="category">
+                        {{ item.field_blog_category_export?.name }}
+                      </a>
+                      <span class="mr-auto mb-3"><i class="far fa-clock ml-2"></i> {{ item.created| jalaliDate }}</span>
+                    </div>
+                    <h2 class="blog-title">
+                      <a class="text-white" routerLink="/blog/{{ item.field_blog_category_export?.name }}/{{ item.nid }}{{ item.slug }}">
+                        {{ item.title }}
+                      </a>
+                    </h2>
+
+                    <div class="text-12" [innerHTML]="item.body | slice: 0: 200"></div>
+                    <hr>
+                    <div class="view-more">
+                      <a class="text-uppercase text-12 text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name | slugify }}/{{ item.nid }}{{ item.slug }}">ادامه مطلب</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ng-template>
+      </ng-container>
+
+    </owl-carousel-o>
+  </div>
+
   <!--  Donate Section  -->
   <div id="support">
     <div class="container">
