@@ -109,7 +109,7 @@
                             <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">
                               <span class="badge badge-warning">سطح {{ item.field_podcast_category_export?.name }}</span>
                             </a>
-                            <a><span class="badge badge-info mr-2" *ngIf="(item.publish_date | date) > now">درحال انتشار</span></a>
+                            <a><span class="badge badge-info mr-2" *ngIf="checkPublishDate(item.publish_date)">درحال انتشار</span></a>
 
                           </h5>
                         </div>
