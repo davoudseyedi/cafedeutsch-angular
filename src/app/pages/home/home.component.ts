@@ -62,6 +62,7 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   };
+
   blogOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -173,6 +174,14 @@ export class HomeComponent implements OnInit {
   private onLoadBlogsError(error) {
     this.loading = false;
     console.error(error);
+  }
+
+  public checkPublishDate(date: string | null){
+    const now = new Date().getTime();
+    const pDate = new Date(date).getTime();
+    if (pDate && pDate > now){
+      return pDate;
+    }
   }
 
 

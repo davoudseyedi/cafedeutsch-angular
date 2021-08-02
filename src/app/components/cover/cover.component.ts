@@ -22,7 +22,7 @@ export class CoverComponent implements OnInit {
   @Input() public loading: any;
   @Input() public publishDateNormal = false;
 
-  public now = new Date();
+  public now = new Date().getTime();
   public pubDate;
 
 

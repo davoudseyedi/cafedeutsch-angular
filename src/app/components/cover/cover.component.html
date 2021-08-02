@@ -17,7 +17,7 @@
             <a routerLink="{{ categoryID }}">
               <span class="badge badge-warning">{{ category }}</span>
             </a>
-            <a><span class="badge badge-info mr-2" *ngIf="publishDate">درحال انتشار</span></a>
+            <a><span class="badge badge-info mr-2" *ngIf="publishDate && publishDate > now">درحال انتشار</span></a>
 
           </h5>
 
@@ -25,7 +25,7 @@
 
         </div>
         <h1 class="podcast-title">{{ title }}</h1>
-        <div class="podcast-audio" *ngIf="audio && publishDate <= now">
+        <div class="podcast-audio" *ngIf="audio && publishDate < now">
           <ngx-audio-player [playlist]="audio"  [autoPlay]="false"
                             muted="muted"
                             [displayTitle]="false"
@@ -36,7 +36,7 @@
 
           </ngx-audio-player>
         </div>
-        <div class="podcast-pub-date" *ngIf="publishDate">
+        <div class="podcast-pub-date" *ngIf="publishDate && publishDate > now">
           <app-countdown [countdownDate]="publishDate"></app-countdown>
         </div>
       </div>

@@ -69,14 +69,14 @@
                               سطح {{ item.field_podcast_category_export?.name }}
                             </span>
                           </a>
-                          <span class="badge badge-info mr-2" *ngIf="item.publish_date">درحال انتشار</span>
+                          <span class="badge badge-info mr-2" *ngIf="checkPublishDate(item.publish_date)">درحال انتشار</span>
                         </h5>
                       </div>
                       <div class="podcast-date mt-3">
                         <p>{{ item.created | jalaliDate }}</p>
                       </div>
-                      <div class="count-down mt-3" *ngIf="item.publish_date">
-                        <app-countdown [countdownDate]="item.publish_date |date"></app-countdown>
+                      <div class="count-down mt-3" *ngIf="checkPublishDate(item.publish_date)">
+                        <app-countdown [countdownDate]="item.publish_date"></app-countdown>
                       </div>
 <!--                      <div class="podcast-body d-none d-md-block d-xs-none" [innerHTML]="item.body | slice:0 : 100"></div>-->
                       <div class="view-more d-none d-md-block d-xs-none">

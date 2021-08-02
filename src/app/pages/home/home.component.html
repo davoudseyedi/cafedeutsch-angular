@@ -109,7 +109,7 @@
                             <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">
                               <span class="badge badge-warning">سطح {{ item.field_podcast_category_export?.name }}</span>
                             </a>
-                            <a><span class="badge badge-info mr-2" *ngIf="item.publish_date">درحال انتشار</span></a>
+                            <a><span class="badge badge-info mr-2" *ngIf="(item.publish_date | date) > now">درحال انتشار</span></a>
 
                           </h5>
                         </div>
@@ -127,11 +127,11 @@
                             <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">
                               <span class="badge badge-warning">سطح {{ item.field_podcast_category_export?.name }}</span>
                             </a>
-                            <a><span class="badge badge-info mr-2" *ngIf="item.publish_date">درحال انتشار</span></a>
+                            <a><span class="badge badge-info mr-2" *ngIf="checkPublishDate(item.publish_date)">درحال انتشار</span></a>
                           </h5>
                         </div>
-                        <div class="count-down mt-3" *ngIf="item.publish_date">
-                          <app-countdown [countdownDate]="item.publish_date |date"></app-countdown>
+                        <div class="count-down mt-3" *ngIf="checkPublishDate(item.publish_date)">
+                          <app-countdown [countdownDate]="item.publish_date"></app-countdown>
                         </div>
                         <div class="podcast-body d-none d-md-block d-xs-none" [innerHTML]="item.body | slice:0 : 100"></div>
                         <div class="view-more d-none d-md-block d-xs-none">

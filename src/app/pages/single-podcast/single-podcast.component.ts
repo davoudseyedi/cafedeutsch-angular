@@ -133,7 +133,8 @@ export class SinglePodcastComponent implements OnInit {
       tag: data[0].tag
     };
 
-    this.publishDate = data[0].publish_date;
+    this.publishDate = new Date(data[0].publish_date).getTime();
+
     this.catId = data[0].field_podcast_category_export.id;
     this.seasonId = data[0].season.id;
 

@@ -101,4 +101,12 @@ export class PodcastsCategoryComponent implements OnInit {
     console.error(error);
   }
 
+  public checkPublishDate(date: string | null){
+    const now = new Date().getTime();
+    const pDate = new Date(date).getTime();
+    if (pDate && pDate > now){
+      return pDate;
+    }
+  }
+
 }
