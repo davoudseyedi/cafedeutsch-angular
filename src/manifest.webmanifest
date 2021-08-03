@@ -1,8 +1,8 @@
 {
   "name": "Cafe Deutsch",
   "short_name": "Cafe Deutsch",
-  "theme_color": "#191919",
-  "background_color": "#fff",
+  "theme_color": "#333",
+  "background_color": "#333",
   "display": "fullscreen",
   "scope": "./",
   "start_url": "./",
