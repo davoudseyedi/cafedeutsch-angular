@@ -84,6 +84,56 @@
   }
 }
 
+#levels{
+  background-color: $white;
+  padding: 1rem 0;
+  .level-item{
+    min-height: 150px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    position: relative;
+    p{
+      color: $white;
+    }
+    h3{
+      color: $white;
+    }
+    &.yellow{
+      background-color: $yellow-dark-color;
+      &::before{
+        content: "A";
+        position: absolute;
+        left: 15px;
+        top: 0;
+        font-size: 4rem;
+        font-weight: bold;
+        opacity: 0.4;
+        width: 94px;
+        border-radius: 50%;
+        height: 94px;
+        text-align: center;
+      }
+    }
+    &.red{
+      background-color: $red-color;
+      &::before{
+        content: "B";
+        position: absolute;
+        left: 15px;
+        top: 0;
+        font-size: 4rem;
+        font-weight: bold;
+        opacity: 0.4;
+        width: 94px;
+        border-radius: 50%;
+        height: 94px;
+        text-align: center;
+      }
+    }
+  }
+}
+
 #about{
   padding: 4rem 0;
   background-color: $white;
