@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AboutComponent implements OnInit {
 
   public background = '/assets/img/about.jpg';
-  public subTitle = '                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز';
+  public subTitle = 'کافه دویچ از رویکرد بسیار متفاوتی نسبت به سایر دوره ها یا وب سایت ها استفاده می کند. ما معتقدیم سریع ترین راه برای بهبود زبان آلمانی گوش دادن به مکالمات و بحث هایی است که می توانید درک کنید.';
 
   public breadcrumb = [
     {

@@ -73,7 +73,7 @@ export class ContactComponent implements OnInit {
   private onLoadContactSuccess(response) {
 
     this.btnLoading = false;
-    this.notifier.notify('success', 'Your message has send successfully!');
+    this.notifier.notify('success', 'پیام شما با موفقیت ارسال شد.');
 
   }
 
@@ -82,12 +82,12 @@ export class ContactComponent implements OnInit {
     this.btnLoading = false;
 
     this.webformModelError = {
-      name: res.error.error.name,
-      email: res.error.error.email,
-      message: res.error.error.message,
-    }
+      name: res.error.name,
+      email: res.error.email,
+      message: res.error.message,
+    };
 
-    this.notifier.notify('error', res.error.message);
+    this.notifier.notify('error', 'لطفا فیلد های خالی رو پر کنید');
   }
 
 }

@@ -62,5 +62,46 @@ export class ApiService {
     return this.http.get(this.config.WEBSITE_BLOG_CATEGORY_LIST);
   }
 
+
+  //Profile
+
+
+  public userLogin(form) {
+
+    const options = {
+      headers: {
+        'Content-type': 'application/json',
+      }, withCredentials: true
+    };
+
+    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/login?_format=json', form, options);
+  }
+
+  public userRegister(form) {
+    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/register?_format=json', form);
+  }
+
+    public logout(token, csrfToken) {
+    const options = {
+      headers: {
+        'X-CSRF-Token': csrfToken,
+        'Content-type': 'application/json',
+      }, withCredentials: true
+    };
+    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + `/logout?_format=json&token=${token}`, null, options);
+  }
+
+  public getLoginStatus() {
+    return this.http.get(this.config.WEBSITE_AUTH_BASE_URL + '/login_status?_format=json');
+  }
+
+  public getCsrfToken() {
+    return this.http.get(this.config.SITE_URL + '/session/token', {responseType : 'text' as 'json'});
+  }
+
+  public getProfileData(id) {
+    return this.http.get(this.config.WEBSITE_AUTH_BASE_URL + '/' + id + '?_format=json');
+  }
+
 }
 

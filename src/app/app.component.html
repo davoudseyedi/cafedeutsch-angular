@@ -1,6 +1,7 @@
+<notifier-container></notifier-container>
 
 <div class="main-wrapper">
-    <app-header *ngIf="hideHeader"></app-header>
+    <app-header *ngIf="hideHeader" [isProfile]="isProfile"></app-header>
 
     <div class="content-wrapper">
         <router-outlet></router-outlet>
@@ -8,4 +9,4 @@
 
     <app-footer *ngIf="hideHeader"></app-footer>
 </div>
-<notifier-container></notifier-container>
+<app-login-modal [redirectLink]="link"></app-login-modal>

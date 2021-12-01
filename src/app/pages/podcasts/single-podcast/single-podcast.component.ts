@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ApiService} from '../../services/api.service';
+import {ApiService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {Track} from 'ngx-audio-player';
 
@@ -140,7 +140,8 @@ export class SinglePodcastComponent implements OnInit {
 
     this.playlist = [{
       title: this.podcast.title,
-      link: 'http://core.cafedeutsch.net' + this.podcast.audio,
+      link: 'http://cafedeutsch.lan' + this.podcast.audio,
+      // link: 'http://core.cafedeutsch.net' + this.podcast.audio,
       artist: 'داود سیدی'
     }];
 

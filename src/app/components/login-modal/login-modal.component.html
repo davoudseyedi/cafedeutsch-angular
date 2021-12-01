@@ -1,0 +1,109 @@
+<div class="container">
+  <button type="button" class="btn btn-info btn-round d-none" data-toggle="modal" data-target="#loginModal" #modalOpener>
+    ورود
+  </button>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="row">
+        <div class="col-12 col-md-7 bg-white">
+         <div class="wrap-form">
+           <div class="modal-header border-bottom-0">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close" #modalCloser>
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+             <div class="form-title text-center login-title" *ngIf="pageState == 'login'">
+               <h4>ورود به حساب کاربری</h4>
+             </div>
+             <div class="form-title text-center register-title" *ngIf="pageState == 'register'">
+               <h4>ایجاد حساب کاربری</h4>
+             </div>
+             <!-- Login -->
+             <div class="d-flex flex-column text-center" *ngIf="pageState == 'login'">
+               <form (submit)="login()">
+                 <div class="form-group">
+                   <input name="name" type="text" class="form-control" id="inputEmail"
+                          autocomplete="" placeholder="نام‌کاربری خود را وارد کنید"
+                          [(ngModel)]="formModel.name" (keyup)="errorModel.name = ''"
+                          [class.is-invalid]="errorModel.name" />
+                   <div class="invalid-feedback" *ngIf="errorModel.name">
+                     {{ errorModel.name }}
+                   </div>
+                 </div>
+                 <div class="form-group">
+                   <input type="password" class="form-control" name="password" id="password1" placeholder="گذرواژه"
+                          autocomplete=""
+                          [(ngModel)]="formModel.pass" (keyup)="errorModel.pass = ''"
+                          [class.is-invalid]="errorModel.pass" />
+                   <div class="invalid-feedback" *ngIf="errorModel.pass">
+                     {{ errorModel.pass }}
+                   </div>
+                 </div>
+                 <app-btn [type]="'submit'" [className]="'btn btn-danger btn-block w-100 btn-round'" [loading]="btnLoading"  [disabled]="btnLoading">وارد شوید</app-btn>
+               </form>
+             </div>
+
+             <!-- Register -->
+             <div class="d-flex flex-column text-center" *ngIf="pageState == 'register'">
+               <form (click)="register()">
+                 <div class="form-group">
+                   <input type="text" class="form-control" name="name" id="name" placeholder="نام کاربری" autocomplete=""
+                          [(ngModel)]="formModel.name" (keyup)="errorModel.name = ''"
+                          [class.is-invalid]="errorModel.name" />
+                   <div class="invalid-feedback" *ngIf="errorModel.name">
+                     {{ errorModel.name }}
+                   </div>
+                 </div>
+                 <div class="form-group">
+                   <input type="email" class="form-control" name="email" id="email2" placeholder="ایمیل"  autocomplete=""
+                          [(ngModel)]="formModel.email" (keyup)="errorModel.email = ''"
+                          [class.is-invalid]="errorModel.email" />
+                   <div class="invalid-feedback" *ngIf="errorModel.email">
+                     {{ errorModel.email }}
+                   </div>
+                 </div>
+                 <div class="form-group">
+                   <input type="password" class="form-control" name= "password" id="password2" placeholder="گذرواژه"  autocomplete=""
+                          [(ngModel)]="formModel.pass" (keyup)="errorModel.pass = ''"
+                          [class.is-invalid]="errorModel.pass" />
+                   <div class="invalid-feedback" *ngIf="errorModel.pass">
+                     {{ errorModel.pass }}
+                   </div>
+                 </div>
+                 <app-btn [type]="'submit'" [className]="'btn btn-danger btn-block w-100 btn-round'" [loading]="btnLoading"  [disabled]="btnLoading">ایجاد حساب</app-btn>
+               </form>
+             </div>
+           </div>
+
+           <div class="modal-footer d-flex justify-content-center" *ngIf="pageState == 'login'">
+             <div class="signup-section">هنوز حساب کاربری ندارید؟ <a  (click)="setState('register')" class="text-info cursor-pointer">ثبت نام کنید</a>.</div>
+           </div>
+           <div class="modal-footer d-flex justify-content-center" *ngIf="pageState == 'register'">
+             <div class="signup-section"><a  class="text-info cursor-pointer" (click)="setState('login')">ورود به حساب کاربری</a> </div>
+           </div>
+         </div>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <div class="wrap d-flex flex-column align-items-center">
+            <h4>به صورت رایگان به Cafe Deutsch بپیوندید</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2 text-white text-14"><i class="far fa-play-circle ml-2"></i> دسترسی نامحدود به هر اپیزود</li>
+              <li class="mb-2 text-white text-14"><i class="fa fa-dollar-sign ml-2"></i> کاملا رایگان</li>
+              <li class="mb-2 text-white text-14"><i class="far fa-file-archive ml-2"></i> تنوع موضوعی</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+

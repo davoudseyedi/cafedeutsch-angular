@@ -18,12 +18,12 @@
         a{
           text-transform: uppercase;
           position: relative;
-          padding: 1rem 1.5rem !important;
+          padding: 1rem 1.5rem;
           display: inline-block;
           text-decoration: none;
           color: $white;
           transition: 0.2s all ease-out;
-          &::before {
+          &:not(.menu-dropdown)::before {
             background: $red-color;
             border-radius: 50%;
             margin: 10px;
@@ -55,6 +55,9 @@
             color: $red-color !important;
           }
         }
+        a.menu-dropdown{
+          font-size: 14px !important;
+        }
       }
   }
   .navbar-brand{
@@ -63,6 +66,10 @@
         text-transform: uppercase;
       }
     }
+  }
+
+  &.profile{
+    background-image: linear-gradient(70deg, $primary,#333) !important;
   }
 }
 .navbar-toggler{
@@ -141,3 +148,33 @@
   }
 
 }
+
+.dropdown-toggle{
+  &::after{
+    content: unset;
+  }
+  &:hover{
+
+  }
+}
+//.dropdown{
+//  &:hover{
+//    .dropdown-menu{
+//      display: block !important;
+//    }
+//  }
+//}
+.dropdown-menu{
+  a{
+    direction: rtl;
+    text-align: right;
+    color: $primary !important;
+    &:focus{
+      background-color: transparent;
+    }
+    &.dropdown-item{
+      padding: 0.5rem 1.5rem !important;
+    }
+  }
+}
+

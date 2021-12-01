@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import {NotifierService} from 'angular-notifier';
+import {HelpersService} from "../../services/helpers.service";
 
 @Component({
     selector: 'app-footer',
@@ -23,6 +24,7 @@ export class FooterComponent implements OnInit {
 
   constructor(private api: ApiService,
               private metaService: MetaService,
+              private helperService: HelpersService,
               private notifier: NotifierService) { }
 
   public ngOnInit() {
@@ -53,14 +55,12 @@ export class FooterComponent implements OnInit {
 
   }
 
-  private onLoadSubscribeError(res) {
+  private onLoadSubscribeError(error) {
 
     this.btnLoading = false;
-    this.subscribeModelError = {
-      email: res.error.error.email,
-    }
 
-    this.notifier.notify('error', res.error.message);
+    this.helperService.handleResponseError(error, this.subscribeModelError, 'email');
+    this.notifier.notify('error', error.message);
   }
 
 

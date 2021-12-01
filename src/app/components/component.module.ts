@@ -16,6 +16,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
 import {PipeModule} from '../pipes/pipe.module';
 import { CountdownComponent } from './countdown/countdown.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 
 
@@ -32,7 +33,8 @@ export function playerFactory() {
     BlogCategoriesComponent,
     SearchSidebarComponent,
     BreadcrumbComponent,
-    CountdownComponent
+    CountdownComponent,
+    LoginModalComponent
   ],
     exports: [
         CoverComponent,
@@ -41,7 +43,8 @@ export function playerFactory() {
         ButtonDirective,
         BlogCategoriesComponent,
         SearchSidebarComponent,
-        CountdownComponent
+        CountdownComponent,
+        LoginModalComponent
     ],
     imports: [
         CommonModule,

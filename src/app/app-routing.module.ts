@@ -3,13 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
 import {PodcastsComponent} from './pages/podcasts/podcasts.component';
-import {SinglePodcastComponent} from './pages/single-podcast/single-podcast.component';
+import {SinglePodcastComponent} from './pages/podcasts/single-podcast/single-podcast.component';
 import {ContactComponent} from './pages/contact/contact.component';
 import {BlogComponent} from './pages/blog/blog.component';
-import {SingleBlogComponent} from './pages/single-blog/single-blog.component';
+import {SingleBlogComponent} from './pages/blog/single-blog/single-blog.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import {PodcastsCategoryComponent} from './pages/podcasts-category/podcasts-category.component';
-import {BlogCategoryComponent} from './pages/blog-category/blog-category.component';
+import {PodcastsCategoryComponent} from './pages/podcasts/podcasts-category/podcasts-category.component';
+import {BlogCategoryComponent} from './pages/blog/blog-category/blog-category.component';
 import {AboutComponent} from './pages/about/about.component';
 import {DonateComponent} from './pages/donate/donate.component';
 
@@ -56,6 +56,10 @@ const routes: Routes = [
   {
     component: BlogCategoryComponent,
     path: 'blog/:cat'
+  },
+  {
+    loadChildren: () => import('../app/profile/profile.module').then(m => m.ProfileModule),
+    path: 'profile',
   },
   {
     component: NotFoundComponent,

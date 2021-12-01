@@ -1,5 +1,5 @@
 <!--Desktop-->
-<nav class="navbar navbar-expand-lg justify-content-between navbar-light bg-light d-none d-md-flex d-xs-none">
+<nav class="navbar navbar-expand-lg justify-content-between navbar-light bg-light d-none d-md-flex d-xs-none" [class.profile] = "isProfile">
   <div class="container">
     <div class="navbar-brand site-branding ml-md-auto m-auto">
       <a class="logo d-flex align-items-center text-dark text-decoration-none" routerLink="/">
@@ -23,10 +23,34 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">تماس با ما</a>
         </li>
+        <li class="nav-item dropdown d-flex align-items-center">
+          <a class="btn menu-dropdown nav-link btn-sm mr-auto pt-2 pb-2 pr-3 pl-3 d-flex align-items-center cursor-pointer" (click)="openModal()" *ngIf="!isUser" routerLink="/profile/panel">
+            <i class="far fa-user-circle fa-2x ml-2"></i>
+            حساب کاربری
+          </a>
+          <a class="text-14 menu-dropdown text-white nav-link dropdown-toggle cursor-pointer d-flex align-items-center" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="isUser">
+
+            <i class="far fa-user-circle fa-2x ml-2"></i>
+
+            سلام {{ userData.field_first_name[0]?.value ? userData.field_first_name[0]?.value : 'خوش آمدید' }}
+
+            <span class="fa fa-caret-down inline-middle mr-1"></span>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="isUser">
+            <a class="dropdown-item menu-dropdown" routerLink="/profile/panel/dashboard">
+              داشبورد
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item menu-dropdown cursor-pointer" (click)="logout()">
+              <!--          <span class="icon-logout-line text-20 inline-middle"></span>-->
+              خروج از حساب کاربری
+            </a>
+
+          </div>
+        </li>
       </ul>
     </div>
-
-    <button class="btn btn-outline-danger btn-sm mr-auto pt-2 pb-2 pr-3 pl-3"> ثبت نام</button>
 
   </div>
 </nav>

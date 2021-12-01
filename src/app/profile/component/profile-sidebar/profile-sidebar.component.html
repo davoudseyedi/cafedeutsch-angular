@@ -1,0 +1,24 @@
+<div id="profile-sidebar">
+  <div class="profile-info d-flex align-items-center">
+    <div class="avatar">
+      <img src="/assets/img/avatar.svg" alt="avatar" class="img-fluid">
+    </div>
+    <div class="name">
+      <h5 class="m-0" *ngIf="userData.name">{{ userData.name[0].value }}</h5>
+      <p class="m-0 text-12" *ngIf="userData.field_first_name && userData.field_last_name">{{ userData.field_first_name[0].value + ' ' + userData.field_last_name[0].value }}</p>
+    </div>
+
+  </div>
+  <hr>
+  <div id="menu">
+    <ul class="list-unstyled pr-4">
+      <li><a class="cursor-pointer text-dark" routerLink="/profile/panel/dashboard"><i class="fas fa-tachometer-alt ml-2"></i>داشبورد</a></li>
+      <li><a class="cursor-pointer text-dark" routerLink="/profile/panel/favorite"><i class="far fa-heart ml-2"></i>لیست علاقه‌مندی‌ها</a></li>
+      <li><a class="cursor-pointer text-dark" routerLink="/profile/panel/dashboard"><i class="far fa-comments ml-2"></i>نظرات</a></li>
+      <li><a class="cursor-pointer text-dark" routerLink="/profile/panel/setting"><i class="fas fa-cog ml-2"></i>اطلاعات حساب</a></li>
+      <hr>
+      <li><a class="cursor-pointer text-dark" (click)="logout()" routerLink="/"><i class="fas fa-sign-out-alt ml-2"></i>خروج</a></li>
+
+    </ul>
+  </div>
+</div>

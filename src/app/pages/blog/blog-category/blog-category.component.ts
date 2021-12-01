@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../../services/api.service';
-import {MetaService} from '../../services/meta.service';
+import {ApiService} from '../../../services/api.service';
+import {MetaService} from '../../../services/meta.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HelpersService} from '../../services/helpers.service';
+import {HelpersService} from '../../../services/helpers.service';
 
 @Component({
   selector: 'app-blog-category',

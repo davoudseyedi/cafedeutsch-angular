@@ -43,6 +43,7 @@
     "ngx-audio-player": "^11.0.4",
     "ngx-lottie": "^7.0.1",
     "ngx-owl-carousel-o": "^5.1.0",
+    "ngx-toastr": "^13.2.0",
     "node-localstorage": "^2.1.5",
     "popper.js": "^1.16.1",
     "rxjs": "^6.6.3",

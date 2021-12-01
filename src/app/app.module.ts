@@ -19,7 +19,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-
+import { SinglePodcastComponent } from './pages/podcasts/single-podcast/single-podcast.component';
+import { PodcastsComponent } from './pages/podcasts/podcasts.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { SingleBlogComponent } from './pages/blog/single-blog/single-blog.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PodcastsCategoryComponent } from './pages/podcasts/podcasts-category/podcasts-category.component';
+import { BlogCategoryComponent } from './pages/blog/blog-category/blog-category.component';
+import { AboutComponent } from './pages/about/about.component';
+import { DonateComponent } from './pages/donate/donate.component';
 
 
 // Services
@@ -30,18 +39,10 @@ import { MetaService } from './services/meta.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { AuthService } from './services/auth.service';
 import { HelpersService } from './services/helpers.service';
-import { SinglePodcastComponent } from './pages/single-podcast/single-podcast.component';
-import { PodcastsComponent } from './pages/podcasts/podcasts.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { BlogComponent } from './pages/blog/blog.component';
-import { SingleBlogComponent } from './pages/single-blog/single-blog.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { PodcastsCategoryComponent } from './pages/podcasts-category/podcasts-category.component';
-import { BlogCategoryComponent } from './pages/blog-category/blog-category.component';
-import { AboutComponent } from './pages/about/about.component';
-import { DonateComponent } from './pages/donate/donate.component';
+import { MessageService } from './services/message.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { environment } from '../environments/environment';
     NgxAudioPlayerModule,
     NotifierModule,
     CarouselModule,
+    ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
@@ -90,7 +92,8 @@ import { environment } from '../environments/environment';
     MetaService,
     LocalStorageService,
     AuthService,
-    HelpersService
+    HelpersService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

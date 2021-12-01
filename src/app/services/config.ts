@@ -1,7 +1,9 @@
 
 export class Config {
-  public static readonly SITE_URL = 'https://core.cafedeutsch.net';
+  public static readonly SITE_URL = 'http://cafedeutsch.lan';
+  // public static readonly SITE_URL = 'https://core.cafedeutsch.net';
   public static readonly API = Config.SITE_URL + '/api';
+  public static readonly WEBSITE_AUTH_BASE_URL = Config.SITE_URL + '/user';
 
 
 

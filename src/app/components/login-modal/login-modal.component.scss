@@ -1,0 +1,63 @@
+@import "../../../assets/scss/variables";
+
+.wrap{
+  padding: 3rem 1.5rem;
+  height: 100%;
+  background-color: $primary;
+  p,h4{
+    color: $white;
+  }
+  h4{
+    position: relative;
+    margin-bottom: 2rem;
+    &::before{
+      content: '';
+      position: absolute;
+      top: 4rem;
+      width: 100px;
+      background-color: $warning;
+      height: 3px;
+      border-radius: 4px;
+    }
+  }
+}
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 690px;
+
+    .modal-content .wrap-form {
+      padding: 1rem;
+    }
+  }
+}
+.modal-content{
+  background-color: $primary;
+  overflow: hidden;
+}
+.modal-header {
+  .close {
+    margin-top: -1.5rem;
+  }
+}
+
+.form-title {
+  margin: -2rem 0rem 2rem;
+}
+
+.btn-round {
+  border-radius: 3rem;
+}
+
+.delimiter {
+  padding: 1rem;
+}
+
+.social-buttons {
+  .btn {
+    margin: 0 0.5rem 1rem;
+  }
+}
+
+.signup-section {
+  padding: 0.3rem 0rem;
+}
