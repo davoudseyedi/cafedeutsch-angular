@@ -146,8 +146,7 @@ export class HomeComponent implements OnInit {
 
     this.playlist = [{
       title: response[0].title,
-      link: 'http://cafedeutsch.lan' + response[0].audio,
-      // link: 'https://core.cafedeutsch.net' + response[0].audio,
+      link: 'https://core-test.cafedeutsch.net' + response[0].audio,
       artist: 'داود سیدی'
     }];
   }
