@@ -81,7 +81,7 @@ export class ApiService {
     return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/register?_format=json', form);
   }
 
-    public logout(token, csrfToken) {
+  public logout(token, csrfToken) {
     const options = {
       headers: {
         'X-CSRF-Token': csrfToken,
@@ -101,6 +101,10 @@ export class ApiService {
 
   public getProfileData(id) {
     return this.http.get(this.config.WEBSITE_AUTH_BASE_URL + '/' + id + '?_format=json');
+  }
+
+  public updateProfileData(id,form) {
+    return this.http.patch(this.config.WEBSITE_AUTH_BASE_URL + '/' + id + '?_format=json', form);
   }
 
 }

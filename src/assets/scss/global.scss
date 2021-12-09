@@ -454,3 +454,10 @@ a{
 .cursor-pointer{
   cursor: pointer !important;
 }
+
+
+label{
+  color: $primary;
+  opacity: 0.7;
+  font-size: 0.825rem;
+}

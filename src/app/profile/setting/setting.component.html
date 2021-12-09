@@ -1,11 +1,85 @@
 <div id="profile-dashboard" class="profile-card">
   <div class="profile-title">
-    <h2>اطلاعات‌ حساب</h2>
+    <h2>تنظیمات حساب</h2>
   </div>
-  <div class="profile-data">
+  <div class="profile-data mt-3">
     <div class="card1">
       <div class="card-body1">
 
+        <form>
+          <h4 class="mb-2 text-danger">حساب کاربری</h4>
+          <div class="form-row">
+
+           <div class="form-group col-12 col-md-4">
+             <label>نام کاربری</label>
+             <input type="text" class="form-control disabled" disabled  [(ngModel)]="accountModel.username" name="username" maxlength="255">
+           </div>
+           <div class="form-group col-12 col-md-4">
+             <label>گذرواژه فعلی</label>
+             <input type="password" class="form-control" placeholder="*****" required
+                    [(ngModel)]="accountModel.current_password"
+                    [class.is-invalid]="userModelError.current_password"
+                    (keyup)="userModelError.current_password = ''"
+                    name="current_password" maxlength="255">
+             <span class="invalid-feedback">{{ userModelError.current_password }}</span>
+           </div>
+           <div class="form-group col-12 col-md-4">
+             <label>گذرواژه جدید</label>
+             <input type="password" class="form-control" placeholder="*****" required
+                    [(ngModel)]="accountModel.password"
+                    [class.is-invalid]="userModelError.password"
+                    (keyup)="userModelError.password = ''"
+                    name="password" maxlength="255">
+
+             <span class="invalid-feedback">{{ userModelError.password }}</span>
+           </div>
+           <div class="form-group col-12 col-md-4">
+             <label>پست الکترونیکی</label>
+             <input type="email" class="form-control"
+                    [(ngModel)]="accountModel.mail"
+                    [class.is-invalid]="userModelError.mail"
+                    (keyup)="userModelError.mail = ''"
+                    name="mail" maxlength="255">
+             <span class="invalid-feedback">{{ userModelError.mail }}</span>
+           </div>
+          </div>
+          <hr>
+          <h4 class="mb-2 text-danger">اطلاعات شخصی</h4>
+          <div class="form-row">
+
+            <div class="form-group col-12 col-md-4">
+              <label>نام</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="userModel.field_first_name"
+                     [class.is-invalid]="userModelError.field_first_name"
+                     (keyup)="userModelError.field_first_name = ''"
+                     name="field_first_name" maxlength="255">
+              <span class="invalid-feedback">{{ userModelError.field_first_name }}</span>
+            </div>
+            <div class="form-group col-12 col-md-4">
+              <label>نام خانوادگی</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="userModel.field_last_name"
+                     [class.is-invalid]="userModelError.field_last_name"
+                     (keyup)="userModelError.field_last_name = ''"
+                     name="field_last_name" maxlength="255">
+
+              <span class="invalid-feedback">{{ userModelError.field_last_name }}</span>
+            </div>
+            <div class="form-group col-12 col-md-4">
+              <label>تلفن همراه</label>
+              <input type="tel" class="form-control"
+                     [(ngModel)]="userModel.field_phone_number"
+                     [class.is-invalid]="userModelError.field_phone_number"
+                     (keyup)="userModelError.field_phone_number = ''"
+                     name="field_phone_number" maxlength="255">
+
+              <span class="invalid-feedback">{{ userModelError.field_phone_number }}</span>
+            </div>
+          </div>
+
+          <app-btn [className]="'btn btn-warning'" [loading]="btnLoading" [disabled]="btnLoading" (click)="updateUser()">ثبت</app-btn>
+        </form>
       </div>
     </div>
   </div>
