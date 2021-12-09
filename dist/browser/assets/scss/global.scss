@@ -449,3 +449,15 @@ a{
   font-weight: 700;
   border-radius: 4px;
 }
+
+
+.cursor-pointer{
+  cursor: pointer !important;
+}
+
+
+label{
+  color: $primary;
+  opacity: 0.7;
+  font-size: 0.825rem;
+}
