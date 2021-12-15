@@ -17,6 +17,11 @@ import {isPlatformBrowser} from '@angular/common';
     .content-wrapper {
       min-height: 70vh;
     }
+    @media(max-width: 667px){
+      .content-wrapper{
+        margin-bottom: 5rem;
+      }
+    }
   `],
   templateUrl: './app.component.html'
 })

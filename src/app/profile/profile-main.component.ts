@@ -10,7 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
             }
             @media (max-width: 667px){
                 .profile-wrapper{
-                    margin-top: 59px;
+                    margin-top: 0px;
                 }
             }
         `],

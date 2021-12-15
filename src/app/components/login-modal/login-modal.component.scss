@@ -18,6 +18,9 @@
       background-color: $warning;
       height: 3px;
       border-radius: 4px;
+      @media(max-width: 667px){
+        top: 2rem
+      }
     }
   }
 }

@@ -4,8 +4,10 @@ import {AuthService} from '../../services/auth.service';
 import {Subscription} from 'rxjs';
 import {ApiService} from '../../services/api.service';
 import {Router} from '@angular/router';
+import {animation} from "../../services/animations.service";
 
 @Component({
+  animations: [animation],
   selector: 'app-header',
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html'
