@@ -4,6 +4,9 @@
   padding: 3rem 1.5rem;
   height: 100%;
   background-color: $primary;
+  @media (max-width: 667px) {
+    padding: 1rem 1.5rem;
+  }
   p,h4{
     color: $white;
   }
@@ -32,6 +35,9 @@
       padding: 1rem;
     }
   }
+}
+#loginModal{
+  z-index: 999999 !important;
 }
 .modal-content{
   background-color: $primary;
