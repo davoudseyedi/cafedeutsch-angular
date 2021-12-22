@@ -62,7 +62,7 @@
 
     <div class="row align-items-center">
       <div class="col-4">
-        <button class="navbar-toggler d-flex" [class.active]="showDropDown" type="button" (click)="openDropDown( )">
+        <button class="navbar-toggler d-flex" [class.active]="showDropDown" type="button" (click)="openDropDown('right')">
           <svg class="ss-svg-icon hamburger" *ngIf="!showDropDown"><use xlink:href="#hamburger">
             <svg viewBox="0 0 24 24" id="hamburger" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 5.5a.5.5 0 0 0 .5.5h19a.5.5 0 0 0 0-1h-19a.5.5 0 0 0-.5.5zm.5 6.5a.5.5 0 0 1 0-1h15a.5.5 0 0 1 0 1h-15zm0 6a.5.5 0 0 1 0-1h19a.5.5 0 0 1 0 1h-19z" fill="currentColor"></path></svg>
           </use></svg>
@@ -82,13 +82,15 @@
         <a class="text-14 menu-dropdown text-white cursor-pointer mr-auto" (click)="openModal()"  routerLink="/profile/panel" *ngIf="!isUser">
           <i class="far fa-user-circle fa-2x ml-2"></i>
         </a>
-        <a class="text-14 menu-dropdown text-white cursor-pointer mr-auto" routerLink="/profile/panel/dashboard" *ngIf="isUser">
+        <a class="text-14 menu-dropdown text-white cursor-pointer mr-auto" [class.active]="showDropDownAccount" (click)="openDropDown('left')" *ngIf="isUser">
 
           <i class="far fa-user-circle fa-2x ml-2"></i>
         </a>
       </div>
     </div>
-    <div class="mobile-dropdown collapse1 navbar-collapse1" id="navbar-collapse" *ngIf="showDropDown" [@slideLeftAnimation]>
+
+
+    <div class="mobile-dropdown collapse1 navbar-collapse1" id="navbar-collapse1" *ngIf="showDropDown" [@slideLeftAnimation]>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">صفحه اصلی</a>
@@ -101,6 +103,20 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">تماس با ما</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mobile-dropdown collapse2 navbar-collapse2" id="navbar-collapse2" *ngIf="showDropDownAccount && isUser" [@slideRightAnimation]>
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile/panel/settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">تنظیمات حساب</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" (click)="logout()">
+            <i class="fa fa-sign-out-alt ml-2"></i>
+            خروج از حساب کاربری
+          </a>
         </li>
       </ul>
     </div>

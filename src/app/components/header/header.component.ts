@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   @Input() public isProfile = false;
 
   public showDropDown = false;
+  public showDropDownAccount = false;
 
   public isUser = false;
   public userData = null;
@@ -56,8 +57,13 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  public openDropDown(){
-    this.showDropDown = !this.showDropDown;
+  public openDropDown(type){
+    if(type == 'right'){
+      this.showDropDown = !this.showDropDown;
+    }else{
+      this.showDropDownAccount = !this.showDropDownAccount;
+    }
+
   }
 
   public changeMenuState() {

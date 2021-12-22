@@ -57,7 +57,7 @@
           <h5 class="text-uppercase">ارتباط با ما</h5>
           <ul class="list-unstyled text-small">
             <li><a class="" href="mailto:info@cafedeutsch.net">info@cafedeutsch.net</a></li>
-<!--            <li><a class="text-muted" href="#">@cafedeutsch</a></li>-->
+            <!--            <li><a class="text-muted" href="#">@cafedeutsch</a></li>-->
           </ul>
 
           <ul id="social-networks" class="p-0">
@@ -86,8 +86,20 @@
 
 
 <!-- Mobile Toolbar -->
-<div id="toolbar-mobile"  class="d-block d-md-none d-xs-block">
-  <nav class="bottom-nav">
+<div id="toolbar-mobile"  class="d-block d-md-none d-xs-block" [class.isFixed] = "isUser">
+
+  <div class="row1" *ngIf="!isUser">
+    <div class="col-12 text-center">
+      <div class="copyright">
+        <small class="d-block mb-3 text-white">© 2017-2021 - Cafedeutsch.net</small>
+      </div>
+    </div>
+    <div class="col-12  text-center">
+      <span class="rights text-12 text-white">All right Reserved.</span>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" *ngIf="isUser">
     <div class="bottom-nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/profile/panel/dashboard">
       <div class="bottom-nav-link">
         <i class="fas fa-tachometer-alt fa-2x"></i>

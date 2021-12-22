@@ -3,16 +3,21 @@ import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import {NotifierService} from 'angular-notifier';
 import {HelpersService} from "../../services/helpers.service";
+import {AuthService} from "../../services/auth.service";
+import {MessageService} from "../../services/message.service";
+import {Subscription} from "rxjs";
 
 @Component({
-    selector: 'app-footer',
-    styleUrls: ['./footer.component.scss'],
-    templateUrl: './footer.component.html'
+  selector: 'app-footer',
+  styleUrls: ['./footer.component.scss'],
+  templateUrl: './footer.component.html'
 })
 
 export class FooterComponent implements OnInit {
 
   public btnLoading = false;
+
+  public isUser = false;
 
   public subscribeModel = {
     email: ''
@@ -21,15 +26,33 @@ export class FooterComponent implements OnInit {
     email: ''
   }
 
+  public listener: Subscription;
 
-  constructor(private api: ApiService,
+  constructor(private messageService: MessageService,
+              private api: ApiService,
               private metaService: MetaService,
+              private authService: AuthService,
               private helperService: HelpersService,
-              private notifier: NotifierService) { }
+              private notifier: NotifierService) {
+
+    this.listener =  this.messageService.get()
+      .subscribe(message => {
+
+        if ( message.key === 'header' ) {
+
+          this.isUser = this.authService.isUser();
+
+        }
+
+      });
+
+  }
 
   public ngOnInit() {
 
-    }
+    this.isUser = this.authService.isUser();
+
+  }
 
   public subscribe(){
 
