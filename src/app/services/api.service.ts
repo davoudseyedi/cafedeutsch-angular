@@ -71,7 +71,7 @@ export class ApiService {
     const options = {
       headers: {
         'Content-type': 'application/json',
-      }, withCredentials: true
+      }
     };
 
     return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/login?_format=json', form, options);
@@ -86,7 +86,7 @@ export class ApiService {
       headers: {
         'X-CSRF-Token': csrfToken,
         'Content-type': 'application/json',
-      }, withCredentials: true
+      }
     };
     return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + `/logout?_format=json&token=${token}`, null, options);
   }
