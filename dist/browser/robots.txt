@@ -1,3 +1,0 @@
-User-agent: *
-Disallow: /profile/
-Crawl-delay: 5

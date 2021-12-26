@@ -166,8 +166,6 @@ export class SinglePodcastComponent implements OnInit {
   public addToBookmark(){
     this.btnLoading = true;
 
-    console.log(this.id);
-
     let form = {
       'flag_id': 'bookmark',
       'entity_id': [{'target_id': 'node'}]
