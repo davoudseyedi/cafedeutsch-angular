@@ -17,11 +17,15 @@
             <a routerLink="{{ categoryID }}">
               <span class="badge badge-warning">{{ category }}</span>
             </a>
+            <a class="cursor-pointer" (click)="addBookmark()"><i class="fa fa-bookmark mr-2 text-white"></i> </a>
+
             <a><span class="badge badge-info mr-2" *ngIf="publishDate && publishDate > now">درحال انتشار</span></a>
 
           </h5>
 
-          <span class="mr-auto text-white d-block d-md-none d-xs-block" *ngIf="publishDateNormal == true"><i class="far fa-clock ml-2"></i> {{ created | jalaliDate }}</span>
+
+
+          <span class="mr-auto text-white d-block d-md-none d-xs-block" *ngIf="publishDateNormal == true"><i class="far fa-clock ml-2"></i> {{ created | jalaliRelative }}</span>
 
         </div>
         <h1 class="podcast-title">{{ title }}</h1>
@@ -47,7 +51,7 @@
               {{ podcastsList.length }} اپیزود
                <span class="badge badge-danger" *ngIf="season">فصل {{ season }}</span>
             </span>
-            <span class="mr-auto text-white"><i class="far fa-clock ml-2"></i> {{ created }}</span>
+            <span class="mr-auto text-white"><i class="far fa-clock ml-2"></i> {{ created | jalaliRelative }}</span>
           </div>
           <ul class="list-unstyled">
             <li class="epis-item" *ngFor="let item of podcastsList;let i = index">
@@ -59,7 +63,7 @@
         </div>
       </div>
       <div class="col-12 col-md-4 d-flex" *ngIf="publishDateNormal == true">
-        <span class="mr-auto text-white d-none d-md-block d-xs-none"><i class="far fa-clock ml-2"></i> {{ created | jalaliDate }}</span>
+        <span class="mr-auto text-white d-none d-md-block d-xs-none"><i class="far fa-clock ml-2"></i> {{ created | jalaliRelative }}</span>
       </div>
     </div>
 

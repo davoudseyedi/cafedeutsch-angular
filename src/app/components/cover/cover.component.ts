@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component,EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-cover',
@@ -22,6 +22,8 @@ export class CoverComponent implements OnInit {
   @Input() public loading: any;
   @Input() public publishDateNormal = false;
 
+  @Output() public action = new EventEmitter();
+
   public now = new Date().getTime();
   public pubDate;
 
@@ -36,6 +38,12 @@ export class CoverComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public addBookmark(){
+
+    this.action.emit();
+
   }
 
 

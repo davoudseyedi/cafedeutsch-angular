@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {Track} from 'ngx-audio-player';
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-single-podcast',
@@ -11,6 +12,7 @@ import {Track} from 'ngx-audio-player';
 export class SinglePodcastComponent implements OnInit {
 
   public loading = false;
+  public btnLoading = false;
 
   public displayVolumeControls = true;
   public displayRepeatControls = true;
@@ -58,6 +60,7 @@ export class SinglePodcastComponent implements OnInit {
   public breadcrumb = [];
 
   constructor(private api: ApiService,
+              private notify: NotifierService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -160,13 +163,30 @@ export class SinglePodcastComponent implements OnInit {
     ];
   }
 
+  public addToBookmark(){
+    this.btnLoading = true;
+
+    console.log(this.id);
+
+    let form = {
+      'flag_id': 'bookmark',
+      'entity_id': [{'target_id': 'node'}]
+    }
+
+    this.api
+      .addBookmark(form)
+      .subscribe({
+        next: this.onAddBookmarkSuccess.bind(this),
+        error: this.onAddBookmarkError.bind(this)
+      });
+  }
+
   private onLoadPodcastSuccess(response) {
 
     this.makePodcastItem(response);
     this.loadRelatedEpisodes();
 
   }
-
 
   private onLoadPodcastError(error) {
     this.loading = false;
@@ -181,10 +201,23 @@ export class SinglePodcastComponent implements OnInit {
 
   }
 
-
   private onLoadRelatedPodcastError(error) {
     console.error('Error: ');
     console.error(error);
+  }
+
+  private onAddBookmarkSuccess(response) {
+
+    this.btnLoading = false;
+    this.notify.notify('success','با موفقیت ذخیره شد')
+
+  }
+
+  private onAddBookmarkError(error) {
+
+    this.btnLoading = false;
+    this.notify.notify('error',error.message)
+
   }
 
 }

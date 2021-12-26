@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {SlugifyPipe} from './slugify.pipe';
 import {JalaliDatePipe} from './jalali-date.pipe';
+import { JalaliRelativePipe } from "./jalali-relative.pipe";
 
 @NgModule({
   declarations: [
     SlugifyPipe,
-    JalaliDatePipe
+    JalaliDatePipe,
+    JalaliRelativePipe
   ],
   imports: [
     CommonModule,
     FormsModule,
   ],
-  exports: [SlugifyPipe, JalaliDatePipe],
+  exports: [SlugifyPipe, JalaliDatePipe, JalaliRelativePipe],
 })
 
 export class PipeModule {}

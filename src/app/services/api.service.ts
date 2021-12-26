@@ -107,5 +107,14 @@ export class ApiService {
     return this.http.patch(this.config.WEBSITE_AUTH_BASE_URL + '/' + id + '?_format=json', form);
   }
 
+  public addBookmark(form) {
+    const options = {
+      headers: {
+        'Content-type': 'application/json',
+      }
+    };
+    return this.http.post(this.config.WEBSITE_FLAGGING + '?_format=json' , form,options);
+  }
+
 }
 

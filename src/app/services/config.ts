@@ -13,6 +13,7 @@ export class Config {
   public static readonly WEBSITE_ALL_PODCASTS = Config.API + '/podcasts';
   public static readonly WEBSITE_FEATURED_PODCASTS = Config.API + '/featured-podcasts';
   public static readonly WEBSITE_PROMOTED_PODCASTS = Config.API + '/newest-podcast';
+  public static readonly WEBSITE_FLAGGING = Config.SITE_URL + '/entity/flagging';
 
   // Blogs Api's
   public static readonly WEBSITE_ALL_BLOGS = Config.API + '/blogs';
