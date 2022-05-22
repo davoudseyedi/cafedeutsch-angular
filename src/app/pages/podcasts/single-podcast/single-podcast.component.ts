@@ -172,48 +172,48 @@ export class SinglePodcastComponent implements OnInit {
     ];
   }
 
-  public addToBookmark(id){
-    this.btnLoading = true;
-    this.isFlagged = true;
-
-    let form = {
-      "uid": this.userId,
-      "flag_id": 'bookmark',
-      "entity_id": id,
-    }
-
-    // let form = {
-    //   "data": {
-    //     "type": "flagging--bookmark",
-    //     "attributes": {
-    //       "entity_type": 'node',
-    //       "entity_id": id,
-    //       "global": false
-    //     },
-    //     "relationships": {
-    //       "uid": {
-    //         "data": {
-    //           "type": "user--user",
-    //           "id": this.userId
-    //         }
-    //       },
-    //       "flagged_entity": {
-    //         "data": {
-    //           "type": "node--book",
-    //           "id": this.podcast.uuid
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-
-    this.api
-      .addBookmark(form)
-      .subscribe({
-        next: this.onAddBookmarkSuccess.bind(this),
-        error: this.onAddBookmarkError.bind(this)
-      });
-  }
+  // public addToBookmark(id){
+  //   this.btnLoading = true;
+  //   this.isFlagged = true;
+  //
+  //   let form = {
+  //     "uid": this.userId,
+  //     "flag_id": 'bookmark',
+  //     "entity_id": id,
+  //   }
+  //
+  //   // let form = {
+  //   //   "data": {
+  //   //     "type": "flagging--bookmark",
+  //   //     "attributes": {
+  //   //       "entity_type": 'node',
+  //   //       "entity_id": id,
+  //   //       "global": false
+  //   //     },
+  //   //     "relationships": {
+  //   //       "uid": {
+  //   //         "data": {
+  //   //           "type": "user--user",
+  //   //           "id": this.userId
+  //   //         }
+  //   //       },
+  //   //       "flagged_entity": {
+  //   //         "data": {
+  //   //           "type": "node--book",
+  //   //           "id": this.podcast.uuid
+  //   //         }
+  //   //       }
+  //   //     }
+  //   //   }
+  //   // }
+  //
+  //   this.api
+  //     .addBookmark(form)
+  //     .subscribe({
+  //       next: this.onAddBookmarkSuccess.bind(this),
+  //       error: this.onAddBookmarkError.bind(this)
+  //     });
+  // }
 
   private onLoadPodcastSuccess(response) {
 
