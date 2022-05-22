@@ -9,10 +9,11 @@
            [created]="podcast.created"
            [loading]="loading"
            [publishDate]="publishDate"
-           (action)="addToBookmark()"
+           [flagged]="isFlagged"
+           (action)="addToBookmark(id)"
 ></app-cover>
 
-<div id="podcast">
+<div id="podcast" *ngIf="!loading">
   <div class="container">
     <div class="row" *ngIf="!loading">
       <div class="col-12 col-md-8 col-xs-12">
@@ -38,10 +39,10 @@
           </div>
         </div>
 
-       <div class="body">
-         <h4 class="mb-3">متن اپیزود</h4>
-         <p [innerHTML]="podcast.body"></p>
-       </div>
+        <div class="body">
+          <h4 class="mb-3">متن اپیزود</h4>
+          <p [innerHTML]="podcast.body"></p>
+        </div>
 
         <div class="tags" *ngIf="podcast.tag.length > 0">
           <h4 class="mb-3">برچسب ها</h4>
@@ -62,30 +63,6 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center" *ngIf="loading">
-      <div class="col-12 text-center">
-        <app-loading type="1"></app-loading>
-      </div>
-    </div>
-    </div>
-<!--  <div class="podcast-player pt-3 pb-3">-->
-<!--    <div class="container">-->
-<!--      <div class="row">-->
-<!--        <div class="col-12 col-md-6">-->
-<!--          <h4 class="text-white">{{ podcast.title }}</h4>-->
-<!--        </div>-->
-<!--        <div class="col-12 col-md-6">-->
-<!--          <ngx-audio-player [playlist]="playlist"  [autoPlay]="false"-->
-<!--                            muted="muted"-->
-<!--                            [displayTitle]="false"-->
-<!--                            [displayVolumeControls]="displayVolumeControls"-->
-<!--                            [displayRepeatControls]="displayRepeatControls"-->
-<!--                            [disablePositionSlider]="disablePositionSlider"-->
-<!--                            [displayDuration]="displayDuration">-->
 
-<!--          </ngx-audio-player>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+  </div>
 </div>

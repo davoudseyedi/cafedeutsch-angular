@@ -3,6 +3,7 @@ import {ApiService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {Track} from 'ngx-audio-player';
 import {NotifierService} from "angular-notifier";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-single-podcast',
@@ -13,6 +14,9 @@ export class SinglePodcastComponent implements OnInit {
 
   public loading = false;
   public btnLoading = false;
+  public isFlagged = false;
+
+  public userId = 0;
 
   public displayVolumeControls = true;
   public displayRepeatControls = true;
@@ -46,6 +50,7 @@ export class SinglePodcastComponent implements OnInit {
     audio: '',
     slug: '',
     tag: [],
+    uuid: ''
   };
 
   public publishDate;
@@ -61,9 +66,12 @@ export class SinglePodcastComponent implements OnInit {
 
   constructor(private api: ApiService,
               private notify: NotifierService,
+              private authService:AuthService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.userId = this.authService.getUser()['uid'][0].value;
 
     this.route.paramMap.subscribe(event => {
 
@@ -133,7 +141,8 @@ export class SinglePodcastComponent implements OnInit {
       season: data[0].season.name,
       audio: data[0].field_podcast,
       slug: data[0].slug,
-      tag: data[0].tag
+      tag: data[0].tag,
+      uuid: data[0].uuid
     };
 
     this.publishDate = new Date(data[0].publish_date).getTime();
@@ -163,13 +172,40 @@ export class SinglePodcastComponent implements OnInit {
     ];
   }
 
-  public addToBookmark(){
+  public addToBookmark(id){
     this.btnLoading = true;
+    this.isFlagged = true;
 
     let form = {
-      'flag_id': 'bookmark',
-      'entity_id': [{'target_id': 'node'}]
+      "uid": this.userId,
+      "flag_id": 'bookmark',
+      "entity_id": id,
     }
+
+    // let form = {
+    //   "data": {
+    //     "type": "flagging--bookmark",
+    //     "attributes": {
+    //       "entity_type": 'node',
+    //       "entity_id": id,
+    //       "global": false
+    //     },
+    //     "relationships": {
+    //       "uid": {
+    //         "data": {
+    //           "type": "user--user",
+    //           "id": this.userId
+    //         }
+    //       },
+    //       "flagged_entity": {
+    //         "data": {
+    //           "type": "node--book",
+    //           "id": this.podcast.uuid
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
     this.api
       .addBookmark(form)

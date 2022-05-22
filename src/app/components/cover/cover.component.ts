@@ -21,8 +21,10 @@ export class CoverComponent implements OnInit {
   @Input() public created: any;
   @Input() public loading: any;
   @Input() public publishDateNormal = false;
+  @Input() public flagged : boolean;
 
   @Output() public action = new EventEmitter();
+  @Output() public actionRemove = new EventEmitter();
 
   public now = new Date().getTime();
   public pubDate;
@@ -43,6 +45,12 @@ export class CoverComponent implements OnInit {
   public addBookmark(){
 
     this.action.emit();
+
+  }
+
+  public removeBookmark(){
+
+    this.actionRemove.emit();
 
   }
 

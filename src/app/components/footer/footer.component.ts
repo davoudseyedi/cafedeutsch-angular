@@ -74,7 +74,7 @@ export class FooterComponent implements OnInit {
   private onLoadSubscribeSuccess(response) {
 
     this.btnLoading = false;
-    this.notifier.notify('success', 'Your message has send successfully!');
+    this.notifier.notify('success', 'پیام شما ارسال شد.');
 
   }
 
@@ -82,8 +82,14 @@ export class FooterComponent implements OnInit {
 
     this.btnLoading = false;
 
-    this.helperService.handleResponseError(error, this.subscribeModelError, 'email');
-    this.notifier.notify('error', error.message);
+    if(error.code == 422){
+      this.helperService.handleResponseError(error, this.subscribeModelError, 'email');
+
+    }else{
+      this.notifier.notify('error', error.message);
+
+    }
+
   }
 
 

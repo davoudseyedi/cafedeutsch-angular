@@ -113,7 +113,7 @@ export class ApiService {
         'Content-type': 'application/json',
       }
     };
-    return this.http.post(this.config.WEBSITE_FLAGGING + '?_format=json' , form,options);
+    return this.http.post(this.config.WEBSITE_FLAGGING + '?_format=json', form,options);
   }
 
 }

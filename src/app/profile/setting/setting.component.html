@@ -6,7 +6,7 @@
     <div class="card1">
       <div class="card-body1">
 
-        <form>
+        <form *ngIf="!loading">
           <h4 class="mb-2 text-danger">حساب کاربری</h4>
           <div class="form-row">
 
@@ -80,6 +80,13 @@
 
           <app-btn [className]="'btn btn-warning'" [loading]="btnLoading" [disabled]="btnLoading" (click)="updateUser()">ثبت</app-btn>
         </form>
+        <div class="container" *ngIf="loading">
+          <div class="row">
+            <div class="col-12 text-center pt-5">
+              <app-loading [type]="1"></app-loading>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
