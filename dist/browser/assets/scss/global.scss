@@ -1,0 +1,463 @@
+@import "variables";
+
+// Global Styles
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  //background-color: #f6fafc;
+  background-color: #f4f4f4;
+  direction: rtl;
+  text-align: right;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-blend-mode: normal;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  -ms-background-size: auto;
+  -o-background-size: auto;
+  background-size: auto;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
+  @media (max-width: 667px) {
+    padding-top: 65.72px;
+  }
+}
+
+
+h1 {
+  color: $text-dark;
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 72px;
+  letter-spacing: -2.4px;
+  text-shadow: 0px 0px 0px rgb(0 0 0 / 30%);
+  @media (max-width:667px) {
+    font-size: 1.825rem
+  }
+}
+
+h2 {
+  font-size: 1.825rem;
+  line-height: 38px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+  @media (max-width:667px) {
+    font-size: 1.5rem
+  }
+}
+h3 {
+  font-size: 1.625rem;
+  line-height: 35px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
+  @media (max-width:667px) {
+    font-size: 1.25rem
+  }
+}
+h4 {
+  font-size: 1.25rem;
+  line-height: 30px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
+  @media (max-width:667px) {
+    font-size: 1rem
+  }
+}
+h5 {
+  font-size: 1rem;
+  line-height: 25px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
+  @media (max-width:667px) {
+    font-size: 0.875rem
+  }
+}
+h6 {
+  font-size: 0.875px;
+  line-height: 42px;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $text-dark;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
+  @media (max-width:667px) {
+    font-size: 0.75rem
+  }
+}
+
+p{
+  color: $text-medium;
+  font-family: "Rubik",'iran-yekan', Sans-serif;
+  font-size: 1rem;
+  line-height: 27px;
+  @media (max-width:667px) {
+    font-size: 0.875rem
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1320px;
+  }
+}
+
+
+.rtl {
+  direction: rtl!important;
+}
+
+.ltr {
+  direction: ltr!important;
+}
+
+.btn-dark{
+  background-color: $primary !important;
+}
+.text-dark{
+  color: $text-dark !important;
+}
+
+
+// Buttons ---------------------------------------- //
+.btn {
+  transition: background-color 360ms ease, transform 360ms ease, border-radius 360ms ease, box-shadow 400ms ease, border-color 360ms ease;
+  [class^="icon-"] {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .icon-left {
+    margin-right: 12px;
+  }
+  .icon-right {
+    margin-left: 12px;
+  }
+  &.disabled, &:disabled {
+    opacity: 1!important;
+    background-color: $gray-medium!important;
+    border-color: $gray-medium!important;
+    color: $text-lighter!important;
+    &:hover {
+      background-color: $gray-medium!important;
+      border-color: $gray-medium!important;
+      color: $text-lighter!important;
+    }
+  }
+}
+
+button[class*="btn-outline"], a[class*="btn-outline"], button[class*="btn-tertiary"], a[class*="btn-outline-tertiary"] {
+  &.disabled, &:disabled {
+    background-color: white!important;
+    box-shadow: none;
+    &:hover {
+      background-color: white!important;
+    }
+  }
+}
+
+.btn, .btn-lg {
+  min-width: 100px;
+  //line-height: 30px;
+}
+
+.btn {
+  //height: 40px;
+  font-size: 0.875rem;
+  border-radius: 30px;
+}
+
+.btn-lg {
+  //height: 48px;
+  font-size: 1rem!important;
+}
+.btn-sm{
+  padding: 0.25rem;
+  font-size: 0.75rem !important;
+  //line-height: 2.5 !important;
+  //border-radius: 0.2rem !important;
+  min-width: 75px!important;
+}
+
+button:focus {
+  outline: 0px auto $white!important;
+}
+
+.btn-primary {
+  @include button($primary);
+}
+
+.btn-secondary {
+  @include button($secondary);
+}
+
+.btn-success {
+  @include button($success);
+}
+
+.btn-info {
+  @include button($info);
+}
+
+.btn-warning {
+  @include button($yellow-dark-color);
+}
+
+.btn-danger {
+  @include button($red-color);
+}
+
+.btn-outline-primary {
+  @include button-outline($primary);
+}
+
+.btn-outline-secondary {
+  @include button-outline($secondary);
+}
+
+.btn-outline-success {
+  @include button-outline($success);
+}
+
+.btn-outline-info {
+  @include button-outline($info);
+}
+
+.btn-outline-warning {
+  @include button-outline($yellow-dark-color);
+}
+
+.btn-outline-danger {
+  @include button-outline($red-color);
+}
+
+.btn-circle-primary {
+  @include button-circle($primary);
+}
+
+.btn-circle-secondary {
+  @include button-circle($secondary);
+}
+
+.btn-circle-success {
+  @include button-circle($success);
+}
+
+.btn-circle-info {
+  @include button-circle($info);
+}
+
+.btn-circle-warning {
+  @include button-circle($yellow-dark-color);
+}
+
+.btn-circle-danger {
+  @include button-circle($red-color);
+}
+
+.btn-circle-outline-primary {
+  @include button-outline-circle($primary);
+}
+
+.btn-circle-outline-secondary {
+  @include button-outline-circle($secondary);
+}
+
+.btn-circle-outline-success {
+  @include button-outline-circle($success);
+}
+
+.btn-circle-outline-info {
+  @include button-outline-circle($info);
+}
+
+.btn-circle-outline-warning {
+  @include button-outline-circle($yellow-dark-color);
+}
+
+.btn-circle-outline-danger {
+  @include button-outline-circle($red-color);
+}
+
+.btn-tertiary-primary {
+  @include button-tertiary($primary);
+}
+
+.btn-tertiary-secondary {
+  @include button-tertiary($secondary);
+}
+
+.btn-tertiary-success {
+  @include button-tertiary($success);
+}
+
+.btn-tertiary-info {
+  @include button-tertiary($info);
+}
+
+.btn-tertiary-warning {
+  @include button-tertiary($yellow-dark-color);
+}
+
+.btn-tertiary-danger {
+  @include button-tertiary($red-color);
+}
+
+
+a{
+  text-decoration: none;
+  transition: 0.2s all ease-out;
+  font-weight: normal;
+  &:hover{
+    color: $red-color !important;
+    text-decoration: none;
+    transition: 0.3s all ease-in;
+    > i{
+      color: $red-color !important;
+    }
+  }
+}
+
+
+
+.podcast-body{
+  p{
+    font-size: 14px;
+  }
+}
+.list-unstyled{
+  padding-right: 0;
+}
+.ul-list{
+  padding: 0;
+  list-style: none;
+  li{
+    position:relative;
+    color: $text-light!important;
+    padding-right: 1rem;
+    line-height: 2.5;
+    font-size: 0.875rem ;
+    text-transform: uppercase;
+    &::before {
+      line-height: 20px;
+      position: absolute;
+      right: 0px;
+      content: '';
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      background: $orange;
+      border-radius: 50%;
+      margin-top: -2.5px;
+      -webkit-transition: left .25s ease;
+      -moz-transition: left .25s ease;
+      transition: left .25s ease;
+    }
+  }
+}
+
+.text-12{
+  font-size: 0.75rem;
+}
+.text-14{
+  font-size: 0.875rem;
+}
+.text-16{
+  font-size: 1rem
+}
+
+.badge{
+  line-height: 1;
+  padding: 5px;
+  display: inline-block;
+}
+
+.content-wrapper{
+  p{
+    color: $text-light;
+  }
+}
+.notifier__notification{
+  p{
+    color: $white;
+  }
+}
+
+#subscribe{
+  button{
+    background: #000;
+    color: #fff;
+    border-radius: 25px;
+    height: 50px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    position: absolute;
+    left: 0;
+    top:0;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s;
+
+    @media (max-width: 667px){
+      position: relative;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+  }
+}
+
+
+.owl-nav{
+  [class*=owl-]{
+    background: transparent !important;
+    i{
+      font-size: 1.5rem;
+      transition: 200ms all ease-in-out;
+    }
+    &:hover{
+      i{
+        color: $red-color !important;
+        transition: 200ms all ease-in-out;
+      }
+    }
+  }
+}
+
+
+.tag{
+  display: inline-block;
+  position: relative;
+  background-color: #394649;
+  padding: 2px 8px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  text-transform: none;
+  line-height: 16px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+
+.cursor-pointer{
+  cursor: pointer !important;
+}
+
+
+label{
+  color: $primary;
+  opacity: 0.7;
+  font-size: 0.825rem;
+}
