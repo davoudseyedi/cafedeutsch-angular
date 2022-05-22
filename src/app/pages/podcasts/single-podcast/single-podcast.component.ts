@@ -71,7 +71,7 @@ export class SinglePodcastComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.userId = this.authService.getUser()['uid'][0].value;
+    // this.userId = this.authService.getUser()['uid'][0].value;
 
     this.route.paramMap.subscribe(event => {
 
