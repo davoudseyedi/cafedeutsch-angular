@@ -13,9 +13,6 @@ export class ProfileSidebarComponent implements OnInit {
 
   public userData = null;
 
-  public logoutToken = '';
-  public csrfToken = '';
-
   constructor(private authService: AuthService,
               private service: ApiService,
               private messageService: MessageService,
@@ -28,9 +25,6 @@ export class ProfileSidebarComponent implements OnInit {
   }
 
   public logout() {
-
-
-    // this.service.logout(this.logoutToken, this.csrfToken).subscribe();
 
     this.authService.logoutUser();
     this.router.navigateByUrl('/');

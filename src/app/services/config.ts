@@ -1,34 +1,25 @@
+import {environment} from "../../environments/environment";
 
 export class Config {
-  public static readonly SITE_URL = 'https://core-test.cafedeutsch.net';
-  public static readonly API = Config.SITE_URL + '/api';
-  public static readonly WEBSITE_AUTH_BASE_URL = Config.SITE_URL + '/user';
 
-
-
-  // public static readonly ANCHOR_API = 'https://api.rss2json.com/v1/api.json';
-
+  public static readonly SITE_URL = environment.SITE_URL;
+  public static readonly API = environment.API_BASE_URL;
+  public static readonly WEBSITE_AUTH_BASE_URL = Config.API + '/auth';
 
   // Podcasts Api's
-  public static readonly WEBSITE_ALL_PODCASTS = Config.API + '/podcasts';
+  public static readonly WEBSITE_ALL_PODCASTS = Config.API + '/client/episodes';
   public static readonly WEBSITE_FEATURED_PODCASTS = Config.API + '/featured-podcasts';
   public static readonly WEBSITE_PROMOTED_PODCASTS = Config.API + '/newest-podcast';
-  // public static readonly WEBSITE_FLAGGING = Config.API + '/flagging/bookmark';
-  public static readonly WEBSITE_FLAGGING = Config.API + '/flagging';
-  public static readonly WEBSITE_UNFLAGGING = Config.API + '/unflagging';
 
   // Blogs Api's
-  public static readonly WEBSITE_ALL_BLOGS = Config.API + '/blogs';
-
-  // Contact Webform Api
-  public static readonly WEBSITE_WEBFORM = Config.SITE_URL + '/webform_rest/submit';
+  public static readonly WEBSITE_ALL_BLOGS = Config.API + '/client/posts';
 
   // Category
-  public static readonly WEBSITE_PODCAST_CATEGORY = Config.API + '/podcast-category';
-  public static readonly WEBSITE_BLOG_CATEGORY = Config.API + '/blog-category';
+  public static readonly WEBSITE_ALL_CATEGORY = Config.API + '/client/category';
 
-  // Taxonomy List
-  public static readonly WEBSITE_BLOG_CATEGORY_LIST = Config.API + '/blog-taxonomies-list';
+
+  // Contact Api
+  public static readonly WEBSITE_CONTACT = Config.API + '/client/contact';
 
 
 

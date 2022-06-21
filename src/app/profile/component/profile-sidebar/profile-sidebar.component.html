@@ -5,8 +5,8 @@
       <img src="/assets/img/avatar.svg" alt="avatar" class="img-fluid">
     </div>
     <div class="name">
-      <h5 class="m-0" *ngIf="userData.name">{{ userData.name[0].value }}</h5>
-      <p class="m-0 text-12" *ngIf="userData.field_first_name[0]?.value && userData.field_last_name[0]?.value">{{ userData.field_first_name[0]?.value + ' ' + userData.field_last_name[0]?.value }}</p>
+      <h5 class="m-0" *ngIf="userData.full_name">{{ userData.full_name ? userData.full_name : 'بدون نام' }}</h5>
+      <p class="m-0 text-12" *ngIf="userData.mobile_number">{{ userData.mobile_number }}</p>
     </div>
 
   </div>

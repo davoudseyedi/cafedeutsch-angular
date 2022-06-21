@@ -7,27 +7,27 @@
           <article id="post-{{ i+1 }}" *ngFor="let item of blogs;let i = index">
             <div class="blog-item">
               <div class="image-wrapper">
-                <a routerLink="/blog/{{ item.field_blog_category_export?.name | slugify }}/{{ item.nid }}{{ item.slug }}">
-                  <img src="{{ item.field_image_export?.url }}" alt="{{ item.field_image_export?.url }}" class="img-fluid" />
+                <a routerLink="/blog/{{ item.category?.slug }}/{{ item.id }}/{{ item.slug }}">
+                  <img src="{{ item.mainImageUrl }}" alt="{{ item.title }}" class="img-fluid" />
                 </a>
               </div>
               <div class="content-wrapper">
                 <div class="d-flex align-items-center">
-                  <a routerLink="/blog/{{ item.field_blog_category_export?.name  | slugify }}" class="category">
-                    {{ item.field_blog_category_export?.name }}
+                  <a routerLink="/blog/{{ item.category?.slug  }}" class="category">
+                    {{ item.category?.title }}
                   </a>
-                  <span class="mr-auto mb-3"><i class="far fa-clock ml-2"></i> {{ item.created| jalaliDate }}</span>
+                  <span class="mr-auto mb-3"><i class="far fa-clock ml-2"></i> {{ item.createdAt| jalaliDate }}</span>
                 </div>
                 <h2>
-                  <a class="text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name }}/{{ item.nid }}{{ item.slug }}">
+                  <a class="text-dark" routerLink="/blog/{{ item.category?.slug }}/{{ item.id }}/{{ item.slug }}">
                     {{ item.title }}
                   </a>
                 </h2>
 
-                <div class="text-12" [innerHTML]="item.body | slice: 0: 200"></div>
+                <div class="text-12" [innerHTML]="item.content | slice: 0: 200"></div>
                 <hr>
                 <div class="view-more">
-                  <a class="text-uppercase text-12 text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name | slugify }}/{{ item.nid }}{{ item.slug }}">ادامه مطلب</a>
+                  <a class="text-uppercase text-12 text-dark" routerLink="/blog/{{ item.category?.slug }}/{{ item.id }}/{{ item.slug }}">ادامه مطلب</a>
                 </div>
               </div>
             </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import { NotifierService } from 'angular-notifier';
+import {AuthService} from "../../services/auth.service";
 
 
 @Component({
@@ -41,12 +42,16 @@ export class ContactComponent implements OnInit {
 
   constructor(private api: ApiService,
               private metaService: MetaService,
+              private authService : AuthService,
               private notifier: NotifierService) { }
 
   ngOnInit(): void {
 
     this.metaService.setTitle();
     this.metaService.clearMetaTags();
+
+    this.webformModel.name = this.authService.getUser() && this.authService.getUser()['full_name'].length > 0 ? this.authService.getUser()['full_name'] : '';
+    this.webformModel.email = this.authService.getUser() && this.authService.getUser()['email'].length > 0 ? this.authService.getUser()['email'] : '';
 
 
   }
@@ -56,10 +61,9 @@ export class ContactComponent implements OnInit {
     this.btnLoading = true;
 
     let webform = {
-      "webform_id" : 'contact',
-      "name" : this.webformModel.name,
+      "full_name" : this.webformModel.name,
       "email": this.webformModel.email,
-      "message": this.webformModel.message
+      "content": this.webformModel.message
     }
 
     this.api

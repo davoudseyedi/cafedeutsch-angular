@@ -10,6 +10,7 @@ import {ApiService} from './services/api.service';
 import {LocalStorageService} from './services/local-storage.service';
 import {Config} from './services/config';
 import {isPlatformBrowser} from '@angular/common';
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-root',
@@ -45,12 +46,12 @@ export class AppComponent {
               @Inject(PLATFORM_ID) private platformId: Object,
               private toastrService: ToastrService,
               private authService: AuthService,
+              private alert: NotifierService,
               private apiService: ApiService,
               private localStorage: LocalStorageService,
               private metaService: MetaService) {
 
-    if ( !!this.authService.getUserToken()  && this.userId) {
-      this.getLoginUserid();
+    if ( !!this.authService.getUserToken()) {
       this.getProfileData();
     }
 
@@ -124,16 +125,6 @@ export class AppComponent {
 
   }
 
-  private getLoginUserid() {
-
-    this.apiService
-      .getLoginStatus()
-      .subscribe({
-        next: this.getLoginUseridSuccess.bind(this),
-        error: this.getLoginUseridError.bind(this),
-      });
-
-  }
   private getProfileData() {
 
     this.apiService
@@ -145,19 +136,15 @@ export class AppComponent {
 
   }
 
-  private getLoginUseridSuccess(response) {
-
-    this.userId = response;
-
-  }
-
-  private getLoginUseridError(error) {
-    // console.log(error);
-  }
-
   private getProfileDataSuccess(response) {
 
-    this.authService.setUser(response);
+    this.userId = response.active;
+    if(response.active){
+      this.authService.setUser(response);
+    }else {
+      this.alert.notify('error','حساب کاربری شما مسدود شده است. با ادمین تماس بگیرید')
+    }
+
 
   }
 

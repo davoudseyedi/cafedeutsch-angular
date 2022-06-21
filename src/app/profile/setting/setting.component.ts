@@ -16,27 +16,22 @@ export class SettingComponent implements OnInit {
 
   public userId = 0;
 
-  public accountModel = {
-    username : '',
-    mail: '',
-    password: '',
-    current_password: ''
-  }
-
   public userModel = {
-    field_first_name: '',
-    field_last_name: '',
-    field_phone_number: ''
+    email: '',
+    password: '',
+    current_password: '',
+    first_name: '',
+    last_name: '',
+    mobile_number: ''
   }
 
   public userModelError = {
-    username: '',
-    mail: '',
+    email: '',
     password: '',
     current_password: '',
-    field_first_name: '',
-    field_last_name: '',
-    field_phone_number: ''
+    first_name: '',
+    last_name: '',
+    mobile_number: ''
   }
 
   constructor(private apiService: ApiService,
@@ -47,10 +42,12 @@ export class SettingComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.userId = this.authService.getUser()['uid'][0].value;
+    this.userId = this.authService.getUser() ?? this.authService.getUser()['id'];
 
+    if(this.userId){
+      this.getProfile();
+    }
 
-    this.getProfile();
   }
 
 
@@ -69,23 +66,17 @@ export class SettingComponent implements OnInit {
 
   public updateUser(){
 
-    if(this.accountModel.current_password){
+    if(this.userModel.current_password){
 
       this.loading = true;
       this.btnLoading = true;
 
       const form = {
-        'name': { value: this.accountModel.username },
-        'mail': { value: this.accountModel.mail },
-        'pass': [
-          {
-            value: this.accountModel.password,
-            existing: this.accountModel.current_password
-          }
-        ],
-        'field_first_name': { value: this.userModel.field_first_name },
-        'field_last_name': { value: this.userModel.field_last_name },
-        'field_phone_number': { value: this.userModel.field_phone_number },
+        'email': this.userModel.email,
+        'password': this.userModel.password,
+        'first_name': this.userModel.first_name,
+        'last_name': this.userModel.last_name,
+        'mobile_number': this.userModel.mobile_number,
       };
 
       this.apiService.updateProfileData(this.userId,form).subscribe({
@@ -117,8 +108,8 @@ export class SettingComponent implements OnInit {
     this.loading = false;
     this.btnLoading = false;
 
-    if(error.code == 422){
-      this.helperService.handleResponseError(error,this.userModelError,'username')
+    if(error.statusCode == 422){
+      this.helperService.handleResponseError(error,this.userModelError,'email')
     }else{
       this.alertService.notify('error','بروزرسانی پروفایل با خطا مواجه شد')
     }
@@ -131,17 +122,13 @@ export class SettingComponent implements OnInit {
     this.loading = false;
     this.btnLoading = false;
 
-    this.accountModel = {
-      username: response['name'][0]?.value,
-      mail: response['mail'][0]?.value,
-      password: '',
-      current_password: ''
-    }
-
     this.userModel = {
-      field_first_name: response['field_first_name'][0]?.value,
-      field_last_name: response['field_last_name'][0]?.value,
-      field_phone_number: response['field_phone_number'][0]?.value
+      email: response['email'],
+      password: response['password'],
+      current_password: '',
+      first_name: response['first_name'],
+      last_name: response['last_name'],
+      mobile_number: response['mobile_number']
     }
   }
 

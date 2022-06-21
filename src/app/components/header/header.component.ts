@@ -39,8 +39,8 @@ export class HeaderComponent implements OnInit {
 
           this.isUser = this.authService.isUser();
           this.userData = this.authService.getUser();
-          this.logoutToken = this.authService.getLogoutToken();
-          this.csrfToken = this.authService.getCsrfToken();
+          // this.logoutToken = this.authService.getLogoutToken();
+          // this.csrfToken = this.authService.getCsrfToken();
 
         }
 
@@ -52,8 +52,8 @@ export class HeaderComponent implements OnInit {
 
     this.isUser = this.authService.isUser();
     this.userData = this.authService.getUser();
-    this.logoutToken = this.authService.getLogoutToken();
-    this.csrfToken = this.authService.getCsrfToken();
+    // this.logoutToken = this.authService.getLogoutToken();
+    // this.csrfToken = this.authService.getCsrfToken();
 
   }
 
@@ -78,7 +78,7 @@ export class HeaderComponent implements OnInit {
   public logout() {
 
 
-    this.service.logout(this.logoutToken, this.csrfToken).subscribe();
+    this.service.logout().subscribe();
 
     this.authService.logoutUser();
     this.router.navigateByUrl('/');

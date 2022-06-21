@@ -1,9 +1,9 @@
 <app-cover [type]="'image'"
            [category]="blog.category"
-           [title]="blog.title" [categoryID]="'/blog/' + blog.category |slugify"
-           [bg]="blog.image"
+           [title]="blog.title" [categoryID]="'/blog/' + blog.category"
+           [bg]="blog.mainImageUrl"
            [breadcrumbs]="breadcrumb"
-           [created]="blog.created"
+           [created]="blog.createdAt"
            [publishDateNormal]="true"
 ></app-cover>
 
@@ -11,7 +11,7 @@
   <div class="container" >
     <div class="row" *ngIf="!loading">
       <div class="col-12 col-md-8 col-xs-12 order-0 order-md-0" >
-        <p [innerHTML]="blog.body"></p>
+        <p [innerHTML]="blog.content"></p>
       </div>
       <div class="col-12 col-md-4 col-xs-12 order-1 order-md-1">
         <div id="related-posts">
@@ -19,10 +19,10 @@
           <ul>
             <li class="mb-2" *ngFor="let post of related">
               <div class="media">
-                <img src="{{ post.image.url }}" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy">
+                <img src="{{ post.mainImageUrl }}" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy">
               </div>
               <div class="content">
-                <a routerLink="/blog/{{ post.category?.name | slugify }}/{{ post.nid }}{{ post.slug }}">
+                <a routerLink="/blog/{{ post.category?.slug }}/{{ post.id }}/{{ post.slug }}">
                   {{ post.title }}
                 </a>
               </div>

@@ -10,7 +10,7 @@
             <h4>فصل</h4>
 
             <ul class="p-0 list-unstyled">
-              <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+              <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: ''}" routerLinkActive="active">همه فصل ها</a></li>
               <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
               <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
             </ul>
@@ -28,7 +28,7 @@
                 <h4>فصل</h4>
 
                 <ul class="p-0 list-unstyled">
-                  <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+                  <li><a routerLink="/podcasts/{{ cat }}" routerLinkActive="active">همه فصل ها</a></li>
                   <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
                   <li><a routerLink="/podcasts/{{ cat }}" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
                 </ul>
@@ -52,41 +52,41 @@
                 <div class="row">
                   <div class="col-6 col-md-6">
                     <div class="img">
-                      <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">
-                        <img src="{{ item.field_podcast_image_export?.url }}" alt="{{ item.field_podcast_image_export?.alt }}" class="img-fluid" >
+                      <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}">
+                        <img src="{{ item.episodeImage }}" alt="{{ item.title }}" class="img-fluid" >
                       </a>
                     </div>
                   </div>
                   <div class="col-6 col-md-6">
                     <div class="desc">
                       <div class="podcast-title">
-                        <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
+                        <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.category?.slug }}/{{ item.nid }}/{{ item.slug }}">{{ item.title }}</a></h4>
                       </div>
                       <div class="podcast-cat">
                         <h5 class="d-flex align-items-center">
-                          <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name | lowercase }}">
+                          <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category?.slug }}">
                             <span class="badge badge-warning">
-                              سطح {{ item.field_podcast_category_export?.name }}
+                              سطح {{ item.category?.titile }}
                             </span>
                           </a>
                           <span class="badge badge-info mr-2" *ngIf="checkPublishDate(item.publish_date)">درحال انتشار</span>
                         </h5>
                       </div>
                       <div class="podcast-date mt-3">
-                        <p>{{ item.created | jalaliDate }}</p>
+                        <p>{{ item.createdAt | jalaliDate }}</p>
                       </div>
                       <div class="count-down mt-3" *ngIf="checkPublishDate(item.publish_date)">
                         <app-countdown [countdownDate]="item.publish_date"></app-countdown>
                       </div>
 <!--                      <div class="podcast-body d-none d-md-block d-xs-none" [innerHTML]="item.body | slice:0 : 100"></div>-->
                       <div class="view-more d-none d-md-block d-xs-none">
-                        <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">مشاهده</a>
+                        <a routerLink="/podcasts/{{item.category?.slug}}/{{ item.id }}/{{ item.slug }}" class="text-dark text-uppercase">مشاهده</a>
                       </div>
                     </div>
                   </div>
                   <div class="col-12 d-block d-md-none d-xs-block mt-3">
                     <div class="view-more">
-                      <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
+                      <a routerLink="/podcasts/{{item.category?.slug}}/{{ item.id }}/{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
                     </div>
                   </div>
                 </div>

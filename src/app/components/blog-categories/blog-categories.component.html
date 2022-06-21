@@ -3,8 +3,8 @@
   <ul class="ul-list">
 
     <li *ngFor="let item of categories">
-      <a class="text-dark" routerLink="/blog{{ item.term_slug }}" routerLinkActive="active">
-        {{ item.name }}
+      <a class="text-dark" routerLink="/blog/{{ item.slug }}" routerLinkActive="active">
+        {{ item.title }}
       </a>
     </li>
 

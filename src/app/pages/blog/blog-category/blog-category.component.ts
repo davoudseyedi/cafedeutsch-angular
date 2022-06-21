@@ -3,6 +3,7 @@ import {ApiService} from '../../../services/api.service';
 import {MetaService} from '../../../services/meta.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HelpersService} from '../../../services/helpers.service';
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-blog-category',
@@ -17,7 +18,7 @@ export class BlogCategoryComponent implements OnInit {
   public categoryLabel = '';
 
   public cat = '';
-  public season = 'all';
+  public season = '';
   public search = '';
   public category_url;
 
@@ -28,6 +29,7 @@ export class BlogCategoryComponent implements OnInit {
   constructor(private api: ApiService,
               private metaService: MetaService,
               private router: Router,
+              private alert: NotifierService,
               private helpersService: HelpersService,
               private route: ActivatedRoute) { }
 
@@ -100,7 +102,7 @@ export class BlogCategoryComponent implements OnInit {
     this.loading = false;
     this.blog = response;
 
-    this.categoryLabel = response[0]?.field_blog_category_export.name;
+    this.categoryLabel = response[0]?.category.title;
 
     this.breadcrumb = [
       {
@@ -117,7 +119,7 @@ export class BlogCategoryComponent implements OnInit {
 
   private onLoadBlogError(error) {
     this.loading = false;
-    console.error(error);
+    this.alert.notify('error',error.message)
   }
 
 }

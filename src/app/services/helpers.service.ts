@@ -75,12 +75,12 @@ export class HelpersService {
 
   public handleResponseError(error, formError, defaultField = 'name') {
 
-    if ( error.code !== 422 && error.message ) {
+    if ( error.statusCode !== 422 && error.message ) {
       formError[defaultField] = error.message;
       return false;
     }
 
-    if ( error.code === 422 && error.message ) {
+    if ( error.statusCode === 422 && error.message ) {
 
       for ( const key in formError ) {
 

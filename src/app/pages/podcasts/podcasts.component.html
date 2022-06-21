@@ -6,22 +6,22 @@
         <!--desktop -->
        <div class="desktop d-none d-md-block d-xs-none">
          <div id="all" class="filter">
-           <h4><a class="text-dark" routerLink="/podcasts" routerLinkActive="active" [queryParams]="{category: 'all',season: 'all'}" [queryParamsHandling]="'merge'">همه اپیزودها</a></h4>
+           <h4><a class="text-dark" routerLink="/podcasts" routerLinkActive="active">همه اپیزودها</a></h4>
          </div>
 
          <div id="level" class="filter">
            <h4>سطح</h4>
            <ul class="p-0 list-unstyled">
-             <li><a routerLink="/podcasts" [queryParams]="{category: 'all'}" routerLinkActive="active">همه سطوح</a></li>
-             <li><a routerLink="/podcasts" [queryParams]="{category: 'a'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح A</a></li>
-             <li><a routerLink="/podcasts" [queryParams]="{category: 'b'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح B</a></li>
+             <li><a routerLink="/podcasts" routerLinkActive="active">همه سطوح</a></li>
+             <li><a routerLink="/podcasts" [queryParams]="{category: 'level_a'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح A</a></li>
+             <li><a routerLink="/podcasts" [queryParams]="{category: 'level_b'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح B</a></li>
            </ul>
          </div>
 
          <div id="season" class="filter">
            <h4>فصل</h4>
            <ul class="p-0 list-unstyled">
-             <li><a routerLink="/podcasts" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+             <li><a routerLink="/podcasts" routerLinkActive="active">همه فصل ها</a></li>
              <li><a routerLink="/podcasts" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
              <li><a routerLink="/podcasts" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
            </ul>
@@ -36,22 +36,22 @@
           <div class="collapse mb-3" id="collapseCategory">
             <div class="card card-body">
               <div id="all-mobile" class="filter">
-                <h4><a class="text-dark" routerLink="/podcasts" routerLinkActive="active" [queryParams]="{category: 'all',season: 'all'}" [queryParamsHandling]="'merge'">همه اپیزودها</a></h4>
+                <h4><a class="text-dark" routerLink="/podcasts" routerLinkActive="active" [queryParamsHandling]="'merge'">همه اپیزودها</a></h4>
               </div>
 
               <div id="level-mobile" class="filter">
                 <h4>سطح</h4>
                 <ul class="p-0 list-unstyled">
-                  <li><a routerLink="/podcasts" [queryParams]="{category: 'all'}" routerLinkActive="active">همه سطوح</a></li>
-                  <li><a routerLink="/podcasts" [queryParams]="{category: 'a'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح A</a></li>
-                  <li><a routerLink="/podcasts" [queryParams]="{category: 'b'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح B</a></li>
+                  <li><a routerLink="/podcasts" routerLinkActive="active">همه سطوح</a></li>
+                  <li><a routerLink="/podcasts" [queryParams]="{category: 'level_a'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح A</a></li>
+                  <li><a routerLink="/podcasts" [queryParams]="{category: 'level_b'}" [queryParamsHandling]="'merge'" routerLinkActive="active">سطح B</a></li>
                 </ul>
               </div>
 
               <div id="season-mobile" class="filter">
                 <h4>فصل</h4>
                 <ul class="p-0 list-unstyled">
-                  <li><a routerLink="/podcasts" [queryParams]="{season: 'all'}" [queryParamsHandling]="'merge'" routerLinkActive="active">همه فصل ها</a></li>
+                  <li><a routerLink="/podcasts" routerLinkActive="active">همه فصل ها</a></li>
                   <li><a routerLink="/podcasts" [queryParams]="{season: '01'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 01</a></li>
                   <li><a routerLink="/podcasts" [queryParams]="{season: '02'}" [queryParamsHandling]="'merge'" routerLinkActive="active">فصل 02</a></li>
                 </ul>
@@ -68,41 +68,41 @@
                 <div class="row">
                   <div class="col-6 col-md-6">
                     <div class="img">
-                      <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">
-                        <img src="{{ item.field_podcast_image_export?.url }}" alt="{{ item.field_podcast_image_export?.alt }}" class="img-fluid" >
+                      <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}">
+                        <img src="{{ item.episodeImage }}" alt="{{ item.title }}" class="img-fluid" >
                       </a>
                     </div>
                   </div>
                   <div class="col-6 col-md-6">
                     <div class="desc">
                       <div class="podcast-title">
-                        <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
+                        <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}">{{ item.title }}</a></h4>
                       </div>
 
                       <div class="podcast-cat">
                         <h5 class="d-flex align-items-center">
-                          <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name | lowercase }}">
-                            <span class="badge badge-warning">سطح {{ item.field_podcast_category_export?.name }}</span>
+                          <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category?.slug }}">
+                            <span class="badge badge-warning">سطح {{ item.category?.title }}</span>
                           </a>
                           <span class="badge badge-info mr-2" *ngIf="checkPublishDate(item.publish_date)">درحال انتشار</span>
                         </h5>
                       </div>
                       <div class="podcast-date mt-3">
-                        <p>{{ item.created | jalaliDate }}</p>
+                        <p>{{ item.createdAt | jalaliDate }}</p>
                       </div>
                       <div class="count-down mt-3" *ngIf="checkPublishDate(item.publish_date)">
                         <app-countdown [countdownDate]="item.publish_date"></app-countdown>
                       </div>
-                      <div class="podcast-body d-none d-md-block d-xs-none mt-3" *ngIf="false" [innerHTML]="item.body | slice:0 : 100"></div>
+                      <div class="podcast-body d-none d-md-block d-xs-none mt-3" *ngIf="false" [innerHTML]="item.description | slice:0 : 100"></div>
                       <div class="view-more d-none d-md-block d-xs-none">
-                        <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">مشاهده</a>
+                        <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}" class="text-dark text-uppercase">مشاهده</a>
                       </div>
 
                     </div>
                   </div>
                   <div class="col-12 d-block d-md-none d-xs-block mt-3">
                     <div class="view-more">
-                      <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
+                      <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
                     </div>
                   </div>
                 </div>

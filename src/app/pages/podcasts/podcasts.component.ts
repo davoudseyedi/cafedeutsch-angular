@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import {ActivatedRoute} from '@angular/router';
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-podcasts',
@@ -12,8 +13,8 @@ export class PodcastsComponent implements OnInit {
 
   public loading = false;
 
-  public cat = 'all';
-  public season = 'all';
+  public cat = '';
+  public season = '';
 
   public breadcrumb = [
     {
@@ -33,6 +34,7 @@ export class PodcastsComponent implements OnInit {
 
   constructor(private api: ApiService,
               private metaService: MetaService,
+              private alert: NotifierService,
               private route: ActivatedRoute) { }
 
   public ngOnInit() {
@@ -75,7 +77,7 @@ export class PodcastsComponent implements OnInit {
 
   private onLoadPodcastsError(error) {
     this.loading = false;
-    console.error(error);
+    this.alert.notify('error',error.message)
   }
 
   public checkPublishDate(date: string | null){

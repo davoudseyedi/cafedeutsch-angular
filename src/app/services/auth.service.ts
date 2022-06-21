@@ -14,14 +14,6 @@ export class AuthService {
     this.localStorageService.setItem('user-token', tokenData);
   }
 
-  public setLogoutToken(tokenData) {
-    this.localStorageService.setItem('logout-token', tokenData);
-  }
-
-  public setCsrfToken(csrfToken) {
-    this.localStorageService.setItem('csrf-token', csrfToken);
-  }
-
 
   public setUser(userData: any) {
 
@@ -38,10 +30,6 @@ export class AuthService {
     return this.localStorageService.getItem('user-token');
   }
 
-  public getLogoutToken() {
-    return this.localStorageService.getItem('logout-token');
-  }
-
   public getCsrfToken() {
     return this.localStorageService.getItem('csrf-token');
   }
@@ -53,8 +41,8 @@ export class AuthService {
   public deleteUser() {
     this.localStorageService.removeItem('user-data');
     this.localStorageService.removeItem('user-token');
-    this.localStorageService.removeItem('logout-token');
-    this.localStorageService.removeItem('csrf-token');
+    // this.localStorageService.removeItem('logout-token');
+    // this.localStorageService.removeItem('csrf-token');
   }
 
   public logout() {

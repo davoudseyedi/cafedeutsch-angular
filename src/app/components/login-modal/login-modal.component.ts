@@ -62,8 +62,14 @@ export class LoginModalComponent implements OnInit {
 
     if ( this.validateModel() ) {
       this.btnLoading = true;
+
+      let form = {
+        email: this.formModel.email,
+        password: this.formModel.pass
+      }
+
       this.apiService
-        .userLogin(this.formModel)
+        .userLogin(form)
         .subscribe({
           next: this.loginApiSuccess.bind(this),
           error: this.loginApiError.bind(this)
@@ -94,9 +100,9 @@ export class LoginModalComponent implements OnInit {
       this.btnLoading = true;
 
       const form = {
-        name: { value: this.formModel.name },
-        mail: { value: this.formModel.email },
-        pass: { value: this.formModel.pass }
+        'email': this.formModel.email,
+        'password': this.formModel.pass,
+        'roles': 'Reader'
       };
 
       this.apiService
@@ -155,10 +161,10 @@ export class LoginModalComponent implements OnInit {
     let valid = true;
     const checkEmail = this.formModel.email.includes('@');
 
-    if ( !this.formModel.name || this.formModel.name.length === 0 ) {
+    if ( !this.formModel.email || this.formModel.email.length === 0 ) {
 
       valid = false;
-      this.errorModel.name = 'تکمیل این فیلد الزامی است';
+      this.errorModel.email = 'تکمیل این فیلد الزامی است';
 
     }
     else if ( !checkEmail && type === 'register' ) {
@@ -173,24 +179,19 @@ export class LoginModalComponent implements OnInit {
       valid = false;
       this.errorModel.pass = 'تکمیل این فیلد الزامی است';
 
-    } else if ( type === 'register' && (!this.formModel.name || this.formModel.name.length === 0)) {
+    } else if ( type === 'register' && (!this.formModel.confirmpass || this.formModel.confirmpass.length === 0)) {
 
       valid = false;
       this.errorModel.confirmpass = 'تکمیل این فیلد الزامی است';
 
     }
+    // else if ( type === 'register' && (this.formModel.confirmpass == this.formModel.pass )) {
+    //
+    //   valid = false;
+    //   this.errorModel.confirmpass = 'پسورد با تایید پسورد همخوانی ندارند';
+    //
+    // }
     return valid;
-
-  }
-
-
-  public getCsrf(){
-
-    this.apiService.getCsrfToken()
-      .subscribe({
-      next: this.getCsrfSuccess.bind(this),
-      error: this.getCsrfError.bind(this),
-    });
 
   }
 
@@ -207,14 +208,9 @@ export class LoginModalComponent implements OnInit {
   private loginApiSuccess(response) {
 
     this.authService.setUserToken(response.access_token);
-    this.authService.setLogoutToken(response.logout_token);
-    this.userId = response.current_user.uid;
-
-    if (this.userId !== 0){
-      this.getCsrf();
-      this.getProfileData();
-
-    }
+    this.authService.setUser(response['user']);
+    // this.authService.setLogoutToken(response.logout_token);
+    // this.userId = response.current_user.uid;
 
     this.closeModel();
 
@@ -222,24 +218,21 @@ export class LoginModalComponent implements OnInit {
     this.btnLoading = false;
     this.redirectUser();
 
-
-
-
   }
 
   private loginApiError(error) {
 
-    if (  error.code === 401 ) {
+    if (  error.statusCode === 401 ) {
 
-      this.errorModel.name = 'نام‌کاربری یا گذرواژه صحیح نیست';
+      this.errorModel.email = 'نام‌کاربری یا گذرواژه صحیح نیست';
 
-    } else if ( error.code === 404 ) {
+    } else if ( error.statusCode === 404 ) {
 
-      this.errorModel.name = 'کاربر مورد نظر وجود ندارد';
+      this.errorModel.email = 'کاربر مورد نظر وجود ندارد';
 
     } else {
 
-      this.helperService.handleResponseError(error, this.errorModel, 'name');
+      this.helperService.handleResponseError(error, this.errorModel, 'email');
 
     }
 
@@ -254,7 +247,7 @@ export class LoginModalComponent implements OnInit {
 
     this.setState('login');
 
-    // this.login();
+    this.login();
 
     this.btnLoading = false;
 
@@ -264,17 +257,17 @@ export class LoginModalComponent implements OnInit {
 
 
     this.btnLoading = false;
-    if (  error.code === 401 ) {
+    if (  error.statusCode === 401 ) {
 
-      this.errorModel.name = 'نام‌کاربری یا گذرواژه صحیح نیست';
+      this.errorModel.email = 'نام‌کاربری یا گذرواژه صحیح نیست';
 
-    } else if ( error.code === 404 ) {
+    } else if ( error.statusCode === 404 ) {
 
-      this.errorModel.name = 'کاربر مورد نظر وجود ندارد';
+      this.errorModel.email = 'کاربر مورد نظر وجود ندارد';
 
     } else {
 
-      this.helperService.handleResponseError(error, this.errorModel, 'name');
+      this.helperService.handleResponseError(error, this.errorModel, 'email');
 
     }
 
@@ -286,7 +279,7 @@ export class LoginModalComponent implements OnInit {
 
     this.userData = response;
 
-    this.authService.setUser(response);
+    this.authService.setUser(response['user']);
     this.closeModel();
 
     this.messageService.send('header', response);
@@ -297,13 +290,4 @@ export class LoginModalComponent implements OnInit {
     // console.log(error);
   }
 
-
-  private getCsrfSuccess(response){
-
-      this.authService.setCsrfToken(response);
-
-  }
-  private getCsrfError(error){
-
-  }
 }

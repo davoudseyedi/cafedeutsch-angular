@@ -3,6 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import {Track} from 'ngx-audio-player';
 import {OwlOptions} from 'ngx-owl-carousel-o';
+import {NotifierService} from "angular-notifier";
 
 
 @Component({
@@ -33,7 +34,6 @@ export class HomeComponent implements OnInit {
       artist: '',
       // duration: ''
     }
-
   ];
 
   customOptions: OwlOptions = {
@@ -93,26 +93,15 @@ export class HomeComponent implements OnInit {
   };
 
   constructor(private api: ApiService,
+              private alert: NotifierService,
               private metaService: MetaService) { }
 
   public ngOnInit() {
     this.metaService.setTitle();
     this.metaService.clearMetaTags();
 
-    this.loadNewestPodcast();
     this.loadPodcasts();
     this.loadBlogs();
-  }
-
-  private loadNewestPodcast(){
-    this.loading = true;
-
-    this.api
-      .loadPromotedPodcasts()
-      .subscribe({
-        next: this.onLoadNewestPodcastsSuccess.bind(this),
-        error: this.onLoadNewestPodcastsError.bind(this)
-      });
   }
 
   private loadPodcasts() {
@@ -120,7 +109,7 @@ export class HomeComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .loadFeaturedPodcasts()
+      .loadAllPodcasts()
       .subscribe({
         next: this.onLoadPodcastsSuccess.bind(this),
         error: this.onLoadPodcastsError.bind(this)
@@ -132,38 +121,31 @@ export class HomeComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .loadAllBlogs('all')
+      .loadAllBlogs()
       .subscribe({
         next: this.onLoadBlogsSuccess.bind(this),
         error: this.onLoadBlogsError.bind(this)
       });
   }
 
-  private onLoadNewestPodcastsSuccess(response) {
-    this.loading = false;
-    this.newest = response;
-    this.heroBG = response[0].field_podcast_image_export?.url;
-
-    this.playlist = [{
-      title: response[0].title,
-      link: 'https://core-test.cafedeutsch.net' + response[0].audio,
-      artist: 'داود سیدی'
-    }];
-  }
-
-  private onLoadNewestPodcastsError(error) {
-    this.loading = false;
-    console.error(error);
-  }
 
   private onLoadPodcastsSuccess(response) {
     this.loading = false;
     this.podcasts = response;
+
+    this.newest = response;
+    this.heroBG = response[0].episodeImage;
+
+    this.playlist = [{
+      title: response[0].title,
+      link: response[0].episodeAudioFile,
+      artist: 'داود سیدی'
+    }];
   }
 
   private onLoadPodcastsError(error) {
     this.loading = false;
-    console.error(error);
+    this.alert.notify('error',error.message)
   }
 
   private onLoadBlogsSuccess(response) {
@@ -173,7 +155,7 @@ export class HomeComponent implements OnInit {
 
   private onLoadBlogsError(error) {
     this.loading = false;
-    console.error(error);
+    this.alert.notify('error',error.message)
   }
 
   public checkPublishDate(date: string | null){

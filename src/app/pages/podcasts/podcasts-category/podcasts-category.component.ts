@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {MetaService} from '../../../services/meta.service';
 import {ActivatedRoute} from '@angular/router';
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-podcasts-category',
@@ -15,7 +16,7 @@ export class PodcastsCategoryComponent implements OnInit {
 
   public categoryLabel = '';
   public cat = '';
-  public season = 'all';
+  public season = '';
   public categoryUrl = '';
 
   public id;
@@ -24,6 +25,7 @@ export class PodcastsCategoryComponent implements OnInit {
 
   constructor(private api: ApiService,
               private metaService: MetaService,
+              private alert: NotifierService,
               private route: ActivatedRoute) { }
 
 
@@ -82,7 +84,7 @@ export class PodcastsCategoryComponent implements OnInit {
     this.loading = false;
     this.podcasts = response;
 
-    this.categoryLabel = 'سطح ' + response[0].field_podcast_category_export?.name;
+    this.categoryLabel = 'سطح ' + response[0].category?.title;
 
     this.breadcrumb = [
       {
@@ -98,7 +100,7 @@ export class PodcastsCategoryComponent implements OnInit {
 
   private onLoadPodcastsError(error) {
     this.loading = false;
-    console.error(error);
+    this.alert.notify('error',error.message)
   }
 
   public checkPublishDate(date: string | null){

@@ -21,7 +21,7 @@ export class BlogCategoriesComponent implements OnInit {
   private loadCategories() {
 
     this.api
-      .getBlogCategoriesList()
+      .getCategoriesList()
       .subscribe({
         next: this.onLoadSuccess.bind(this),
         error: this.onLoadError.bind(this)
@@ -30,7 +30,11 @@ export class BlogCategoriesComponent implements OnInit {
 
   private onLoadSuccess(response) {
 
-    this.categories = response;
+    for (let item of response){
+      if(item && item.slug.indexOf('blog_category') > -1){
+        this.categories = item.children;
+      }
+    }
   }
 
   private onLoadError(error) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-single-blog',
@@ -23,17 +24,17 @@ export class SingleBlogComponent implements OnInit {
   public breadcrumb = [];
 
   public blog = {
-    nid: 0,
+    id: 0,
     title: null,
-    body: '',
-    created: '',
-    image: '',
+    content: '',
+    createdAt: '',
+    mainImageUrl: '',
     category: '',
-    slug: '',
-    term_slug: ''
+    slug: ''
   };
 
   constructor(private api: ApiService,
+              private alert: NotifierService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -82,7 +83,7 @@ export class SingleBlogComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .getRelatedBlogPosts(this.id)
+      .loadAllBlogs(this.cat)
       .subscribe({
         next: this.onLoadRelatedPostSuccess.bind(this),
         error: this.onLoadRelatedPostError.bind(this)
@@ -92,14 +93,13 @@ export class SingleBlogComponent implements OnInit {
   private makePostItem(data){
 
     this.blog = {
-      nid: data[0].nid,
-      title: data[0].title,
-      body: data[0].body,
-      created: data[0].created,
-      image: data[0].field_image_export.url,
-      category: data[0].field_blog_category_export.name,
-      slug: data[0].slug,
-      term_slug: data[0].term_slug
+      id: data.id,
+      title: data.title,
+      content: data.content,
+      createdAt: data.createdAt,
+      mainImageUrl: data.mainImageUrl,
+      category: data.category.title,
+      slug: data.slug,
     };
 
 
@@ -114,7 +114,7 @@ export class SingleBlogComponent implements OnInit {
       },
       {
         name : this.blog.title,
-        url : this.categoryUrl + '/' + this.blog.nid + this.blog.slug
+        url : this.categoryUrl + '/' + this.blog.id + this.blog.slug
       }
     ];
   }
@@ -129,7 +129,7 @@ export class SingleBlogComponent implements OnInit {
   private onLoadPostError(error) {
     this.loading = false;
 
-    console.error(error);
+    this.alert.notify('error',error.message)
   }
 
   private onLoadRelatedPostSuccess(response) {
@@ -143,6 +143,6 @@ export class SingleBlogComponent implements OnInit {
   private onLoadRelatedPostError(error) {
 
     this.loading = false;
-    console.error(error);
+    this.alert.notify('error',error.message)
   }
 }

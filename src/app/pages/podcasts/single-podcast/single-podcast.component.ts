@@ -13,14 +13,11 @@ import {AuthService} from "../../../services/auth.service";
 export class SinglePodcastComponent implements OnInit {
 
   public loading = false;
-  public btnLoading = false;
   public isFlagged = false;
 
   public userId = 0;
 
   public displayVolumeControls = true;
-  public displayRepeatControls = true;
-  public displayDuration = true;
   public disablePositionSlider = false;
 
   public playlist: Track[] = [
@@ -39,24 +36,24 @@ export class SinglePodcastComponent implements OnInit {
   public categoryUrl;
 
   public podcast = {
-    nid: 0,
+    id: 0,
     title: null,
-    body: '',
-    created: '',
+    description: '',
+    createdAt: '',
     publish_date: null,
-    image: '',
+    episodeImage: '',
     category: '',
     season: '',
-    audio: '',
+    episodeAudioFile: '',
     slug: '',
     tag: [],
-    uuid: ''
+    user: ''
   };
 
   public publishDate;
 
-  public catId = 0;
-  public seasonId = 0;
+  public category = '';
+  public season = '';
 
   public podcasts = [];
 
@@ -70,8 +67,6 @@ export class SinglePodcastComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
-    // this.userId = this.authService.getUser()['uid'][0].value;
 
     this.route.paramMap.subscribe(event => {
 
@@ -90,7 +85,7 @@ export class SinglePodcastComponent implements OnInit {
             url: '/podcasts',
           },
           {
-            name : this.podcast.category,
+            name : this.podcast.category['title'],
             url : this.categoryUrl
           }
         ];
@@ -119,7 +114,7 @@ export class SinglePodcastComponent implements OnInit {
     this.loading = true;
 
     this.api
-      .loadRelatedPodcasts(this.seasonId, this.catId)
+      .loadAllPodcasts(this.category, this.season)
       .subscribe({
         next: this.onLoadRelatedPodcastSuccess.bind(this),
         error: this.onLoadRelatedPodcastError.bind(this)
@@ -131,28 +126,28 @@ export class SinglePodcastComponent implements OnInit {
     this.loading = false;
 
     this.podcast = {
-      nid: data[0].nid,
-      title: data[0].title,
-      body: data[0].body,
-      created: data[0].created,
-      image: data[0].field_podcast_image_export.url,
-      category: data[0].field_podcast_category_export.name,
-      publish_date: data[0].publish_date,
-      season: data[0].season.name,
-      audio: data[0].field_podcast,
-      slug: data[0].slug,
-      tag: data[0].tag,
-      uuid: data[0].uuid
+      id: data.id,
+      title: data.title,
+      description: data.description,
+      createdAt: data.createdAt,
+      episodeImage: data.episodeImage,
+      category: data.category['title'],
+      publish_date: data.publish_date,
+      season: data.season['title'],
+      episodeAudioFile: data.episodeAudioFile,
+      slug: data.slug,
+      tag: data.tag,
+      user: data.user
     };
 
-    this.publishDate = new Date(data[0].publish_date).getTime();
+    this.publishDate = new Date(data.publish_date).getTime();
 
-    this.catId = data[0].field_podcast_category_export.id;
-    this.seasonId = data[0].season.id;
+    this.category = data.category.slug;
+    this.season = data.season.slug;
 
     this.playlist = [{
       title: this.podcast.title,
-      link: 'https://core-test.cafedeutsch.net' + this.podcast.audio,
+      link: this.podcast.episodeAudioFile,
       artist: 'داود سیدی'
     }];
 
@@ -167,54 +162,10 @@ export class SinglePodcastComponent implements OnInit {
       },
       {
         name : this.podcast.title,
-        url : this.categoryUrl + '/' + this.podcast.nid + this.podcast.slug
+        url : this.categoryUrl + '/' + this.podcast.id + this.podcast.slug
       }
     ];
   }
-
-  // public addToBookmark(id){
-  //   this.btnLoading = true;
-  //   this.isFlagged = true;
-  //
-  //   let form = {
-  //     "uid": this.userId,
-  //     "flag_id": 'bookmark',
-  //     "entity_id": id,
-  //   }
-  //
-  //   // let form = {
-  //   //   "data": {
-  //   //     "type": "flagging--bookmark",
-  //   //     "attributes": {
-  //   //       "entity_type": 'node',
-  //   //       "entity_id": id,
-  //   //       "global": false
-  //   //     },
-  //   //     "relationships": {
-  //   //       "uid": {
-  //   //         "data": {
-  //   //           "type": "user--user",
-  //   //           "id": this.userId
-  //   //         }
-  //   //       },
-  //   //       "flagged_entity": {
-  //   //         "data": {
-  //   //           "type": "node--book",
-  //   //           "id": this.podcast.uuid
-  //   //         }
-  //   //       }
-  //   //     }
-  //   //   }
-  //   // }
-  //
-  //   this.api
-  //     .addBookmark(form)
-  //     .subscribe({
-  //       next: this.onAddBookmarkSuccess.bind(this),
-  //       error: this.onAddBookmarkError.bind(this)
-  //     });
-  // }
-
   private onLoadPodcastSuccess(response) {
 
     this.makePodcastItem(response);
@@ -224,8 +175,7 @@ export class SinglePodcastComponent implements OnInit {
 
   private onLoadPodcastError(error) {
     this.loading = false;
-    console.error('Error: ');
-    console.error(error);
+    this.notify.notify('error',error.message)
   }
 
   private onLoadRelatedPodcastSuccess(response) {
@@ -236,22 +186,9 @@ export class SinglePodcastComponent implements OnInit {
   }
 
   private onLoadRelatedPodcastError(error) {
-    console.error('Error: ');
-    console.error(error);
-  }
-
-  private onAddBookmarkSuccess(response) {
-
-    this.btnLoading = false;
-    this.notify.notify('success','با موفقیت ذخیره شد')
-
-  }
-
-  private onAddBookmarkError(error) {
-
-    this.btnLoading = false;
+    this.loading = false;
     this.notify.notify('error',error.message)
-
   }
+
 
 }

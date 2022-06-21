@@ -12,7 +12,7 @@ export class ApiService {
 
   // Podcasts
 
-  public loadAllPodcasts(category, season) {
+  public loadAllPodcasts(category = '', season = '') {
     return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '?category=' + category + '&season=' + season);
   }
 
@@ -35,18 +35,13 @@ export class ApiService {
 
   // Blog
 
-  public loadAllBlogs(category) {
+  public loadAllBlogs(category = '') {
     return this.http.get(this.config.WEBSITE_ALL_BLOGS + '?category=' + category);
   }
 
   public loadAllBlogsWithSearch(search) {
-    return this.http.get(this.config.WEBSITE_ALL_BLOGS + '?search=' + search );
+    return this.http.get(this.config.WEBSITE_ALL_BLOGS + '?title=' + search );
   }
-
-  public getRelatedBlogPosts(blogID) {
-    return this.http.get(this.config.WEBSITE_ALL_BLOGS + '/' + blogID + '/related' );
-  }
-
 
   public getPost(id) {
     return this.http.get(this.config.WEBSITE_ALL_BLOGS + '/' + id);
@@ -54,12 +49,12 @@ export class ApiService {
 
   // Contact
   public postWebform(webform){
-    return this.http.post(this.config.WEBSITE_WEBFORM, webform);
+    return this.http.post(this.config.WEBSITE_CONTACT, webform);
   }
 
-  // BLOG TAXONOMIES LIST
-  public getBlogCategoriesList(){
-    return this.http.get(this.config.WEBSITE_BLOG_CATEGORY_LIST);
+  // Category LIST
+  public getCategoriesList(){
+    return this.http.get(this.config.WEBSITE_ALL_CATEGORY);
   }
 
 
@@ -68,52 +63,23 @@ export class ApiService {
 
   public userLogin(form) {
 
-    const options = {
-      headers: {
-        'Content-type': 'application/json',
-      }
-    };
-
-    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/login?_format=json', form, options);
+    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/login', form);
   }
 
   public userRegister(form) {
-    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/register?_format=json', form);
+    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/register', form);
   }
 
-  public logout(token, csrfToken) {
-    const options = {
-      headers: {
-        'X-CSRF-Token': csrfToken,
-        'Content-type': 'application/json',
-      }
-    };
-    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + `/logout?_format=json&token=${token}`, null, options);
-  }
-
-  public getLoginStatus() {
-    return this.http.get(this.config.WEBSITE_AUTH_BASE_URL + '/login_status?_format=json');
-  }
-
-  public getCsrfToken() {
-    return this.http.get(this.config.SITE_URL + '/session/token', {responseType : 'text' as 'json'});
+  public logout() {
+    return this.http.post(this.config.WEBSITE_AUTH_BASE_URL + '/logout', {});
   }
 
   public getProfileData(id) {
-    return this.http.get(this.config.WEBSITE_AUTH_BASE_URL + '/' + id + '?_format=json');
+    return this.http.get(this.config.WEBSITE_AUTH_BASE_URL + '/profile/' + id);
   }
 
   public updateProfileData(id,form) {
-    return this.http.patch(this.config.WEBSITE_AUTH_BASE_URL + '/' + id + '?_format=json', form);
-  }
-
-  public addBookmark(form) {
-    const options = {
-      headers: {
-        'Content-type': 'application/json',
-      }
-    };
-    return this.http.post(this.config.WEBSITE_FLAGGING + '?_format=json', form,options);
+    return this.http.patch(this.config.WEBSITE_AUTH_BASE_URL + '/profile/' + id , form);
   }
 
 }

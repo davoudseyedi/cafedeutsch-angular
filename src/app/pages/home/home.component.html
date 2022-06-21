@@ -4,11 +4,11 @@
   <div id="hero" [style]="'background-image: url(' + heroBG + ') !important'">
     <div class="container">
      <div class="newest" *ngIf="!loading">
-       <div class="row justify-content-end" *ngFor="let item of newest">
+       <div class="row justify-content-end" *ngFor="let item of newest| slice: 0:1">
          <div class="col-12 col-md-5 col-xs-12 d-none d-md-block d-xs-none">
            <div class="img">
-             <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">
-               <img src="{{ item.field_podcast_image_export?.url }}" alt="{{ item.field_podcast_image_export?.alt }}" class="img-fluid" >
+             <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}">
+               <img src="{{ item.episodeImage }}" alt="{{ item.title }}" class="img-fluid" >
              </a>
            </div>
          </div>
@@ -17,14 +17,14 @@
              <div class="wrap" data-id="88fa2b2" data-element_type="widget" data-widget_type="heading.default">
                <div class="wrap-container">
                  <h1 class="podcast-title">
-                   <a  class="text-white" routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a>
+                   <a  class="text-white" routerLink="/podcasts/{{item.category?.slug}}/{{ item.id }}/{{ item.slug }}">{{ item.title }}</a>
                  </h1>
                  <div class="podcast-cat d-flex align-items-center">
-                   <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase}}">سطح {{ item.field_podcast_category_export?.name }}</a></h5>
-                   <span class="mr-2 text-white"> | <i class="far fa-clock ml-2 mr-2"></i>{{ item.created | jalaliRelative }}</span>
+                   <h5><a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category?.slug }}">سطح {{ item.category?.title }}</a></h5>
+                   <span class="mr-2 text-white"> | <i class="far fa-clock ml-2 mr-2"></i>{{ item.createdAt | jalaliRelative }}</span>
                  </div>
-                 <div class="podcast-body d-none d-lg-block d-md-block d-xs-none" [innerHTML]="item.body"></div>
-                 <div class="podcast-body d-block d-lg-none d-md-none d-xs-block" [innerHTML]="(item.body | slice: 0: 150 ) + '...'"></div>
+                 <div class="podcast-body d-none d-lg-block d-md-block d-xs-none" [innerHTML]="(item.description | slice: 0: 250 ) + '...'"></div>
+                 <div class="podcast-body d-block d-lg-none d-md-none d-xs-block" [innerHTML]="(item.description | slice: 0: 150 ) + '...'"></div>
 
                  <ngx-audio-player [playlist]="playlist"  [autoPlay]="false"
                                    muted="muted"
@@ -130,13 +130,13 @@
                   <div class="row">
                     <div class="col-12 col-md-6">
                       <div class="img">
-                        <a class="d-block" routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}">
-                          <img src="{{ item.field_podcast_image_export?.url }}" alt="{{ item.field_podcast_image_export?.alt }}" class="img-fluid" >
+                        <a class="d-block" routerLink="/podcasts/{{item.category?.slug}}/{{ item.id }}/{{ item.slug }}">
+                          <img src="{{ item.episodeImage }}" alt="{{ item.title }}" class="img-fluid" >
                         </a>
                         <div class="podcast-cat text-md-right text-center d-block d-md-none d-xs-block">
                           <h5 class="d-flex align-items-center">
-                            <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">
-                              <span class="badge badge-warning">سطح {{ item.field_podcast_category_export?.name }}</span>
+                            <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category?.slug  }}">
+                              <span class="badge badge-warning">سطح {{ item.category?.title }}</span>
                             </a>
                             <a><span class="badge badge-info mr-2" *ngIf="checkPublishDate(item.publish_date)">درحال انتشار</span></a>
 
@@ -149,12 +149,12 @@
                       <div class="desc">
                         <div class="podcast-title text-md-right text-center">
                           <h4>
-                            <a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.field_podcast_category_export?.name  | lowercase}}/{{ item.nid }}{{ item.slug }}">{{ item.title }}</a></h4>
+                            <a class="text-dark text-decoration-none" routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}">{{ item.title }}</a></h4>
                         </div>
                         <div class="podcast-cat text-md-right text-center d-none d-md-block d-xs-none">
                           <h5 class="d-flex align-items-center">
-                            <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.field_podcast_category_export?.name  | lowercase }}">
-                              <span class="badge badge-warning">سطح {{ item.field_podcast_category_export?.name }}</span>
+                            <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item.category?.slug  }}">
+                              <span class="badge badge-warning">سطح {{ item.category?.title }}</span>
                             </a>
                             <a><span class="badge badge-info mr-2" *ngIf="checkPublishDate(item.publish_date)">درحال انتشار</span></a>
                           </h5>
@@ -162,15 +162,15 @@
                         <div class="count-down mt-3" *ngIf="checkPublishDate(item.publish_date)">
                           <app-countdown [countdownDate]="item.publish_date"></app-countdown>
                         </div>
-                        <div class="podcast-body d-none d-md-block d-xs-none" [innerHTML]="item.body | slice:0 : 100"></div>
+                        <div class="podcast-body d-none d-md-block d-xs-none" [innerHTML]="item.description | slice:0 : 100"></div>
                         <div class="view-more d-none d-md-block d-xs-none">
-                          <a routerLink="/podcasts/{{item.field_podcast_category_export?.name  | lowercase}}/{{ item.nid }}{{ item.slug }}" class="text-dark text-uppercase">مشاهده</a>
+                          <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}" class="text-dark text-uppercase">مشاهده</a>
                         </div>
                       </div>
                     </div>
                     <div class="col-12 d-block d-md-none d-xs-block">
                       <div class="view-more">
-                        <a routerLink="/podcasts/{{item.field_podcast_category_export?.name | lowercase}}/{{ item.nid }}{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
+                        <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
                       </div>
                     </div>
                   </div>
@@ -197,27 +197,27 @@
 
       <ng-container  *ngFor="let item of blog| slice: 0: 5">
         <ng-template carouselSlide>
-          <div class="blog-item" [ngStyle]="{'background-image': ( item.field_image_export?.url) ? 'url(' +  item.field_image_export?.url + ')' : ''}">
+          <div class="blog-item" [ngStyle]="{'background-image': ( item.mainImageUrl) ? 'url(' +  item.mainImageUrl + ')' : ''}">
             <div class="container">
               <div class="row align-content-end">
                 <div class="col-12 col-md-4 col-xs-12">
                   <div class="content-wrapper">
                     <div class="d-flex align-items-center">
-                      <a routerLink="/blog/{{ item.field_blog_category_export?.name  | slugify }}" class="category">
-                        {{ item.field_blog_category_export?.name }}
+                      <a routerLink="/blog/{{ item.category?.slug }}" class="category">
+                        {{ item.category?.title }}
                       </a>
-                      <span class="mr-auto mb-3"><i class="far fa-clock ml-2"></i> {{ item.created| jalaliDate }}</span>
+                      <span class="mr-auto mb-3"><i class="far fa-clock ml-2"></i> {{ item.createdAt| jalaliDate }}</span>
                     </div>
                     <h2 class="blog-title">
-                      <a class="text-white" routerLink="/blog/{{ item.field_blog_category_export?.name }}/{{ item.nid }}{{ item.slug }}">
+                      <a class="text-white" routerLink="/blog/{{ item.category?.slug }}/{{ item.id }}/{{ item.slug }}">
                         {{ item.title }}
                       </a>
                     </h2>
 
-                    <div class="text-12" [innerHTML]="item.body | slice: 0: 200"></div>
+                    <div class="text-12" [innerHTML]="item.content | slice: 0: 200"></div>
                     <hr>
                     <div class="view-more">
-                      <a class="text-uppercase text-12 text-dark" routerLink="/blog/{{ item.field_blog_category_export?.name | slugify }}/{{ item.nid }}{{ item.slug }}">ادامه مطلب</a>
+                      <a class="text-uppercase text-12 text-dark" routerLink="/blog/{{ item.category?.slug  }}/{{ item.id }}/{{ item.slug }}">ادامه مطلب</a>
                     </div>
                   </div>
                 </div>

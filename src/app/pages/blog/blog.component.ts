@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-blog',
@@ -12,7 +13,7 @@ export class BlogComponent implements OnInit {
 
   public loading = false;
 
-  public cat = 'all';
+  public cat = '';
   public search = '';
 
   public breadcrumb = [
@@ -31,6 +32,7 @@ export class BlogComponent implements OnInit {
   constructor(private api: ApiService,
               private metaService: MetaService,
               private router: Router,
+              private alert: NotifierService,
               private route: ActivatedRoute) { }
 
   public ngOnInit() {
@@ -92,7 +94,7 @@ export class BlogComponent implements OnInit {
 
   private onLoadBlogsError(error) {
     this.loading = false;
-    console.error(error);
+    this.alert.notify('error',error.message)
   }
 
 
