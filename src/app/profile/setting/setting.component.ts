@@ -42,7 +42,7 @@ export class SettingComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.userId = this.authService.getUser() ?? this.authService.getUser()['id'];
+    this.userId = this.authService.getUser()['id'];
 
     if(this.userId){
       this.getProfile();
