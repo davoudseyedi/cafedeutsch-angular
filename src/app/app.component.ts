@@ -31,9 +31,9 @@ export class AppComponent {
   @ViewChild(LoginModalComponent, {static: true}) public accountModal: LoginModalComponent;
   @ViewChild(ToastContainerDirective, { static: false }) toastContainer: ToastContainerDirective;
 
-  public userId = parseInt(this.localStorage.getItem('user-data')['id']);
-
   public hideHeader = false;
+
+  public userId;
 
   public listener: Subscription;
 
@@ -52,6 +52,7 @@ export class AppComponent {
               private metaService: MetaService) {
 
     if ( !!this.authService.getUserToken()) {
+      this.userId = parseInt(this.localStorage.getItem('user-data')['id']);
       this.getProfileData();
     }
 
