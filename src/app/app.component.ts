@@ -31,7 +31,7 @@ export class AppComponent {
   @ViewChild(LoginModalComponent, {static: true}) public accountModal: LoginModalComponent;
   @ViewChild(ToastContainerDirective, { static: false }) toastContainer: ToastContainerDirective;
 
-  public userId = 0;
+  public userId = parseInt(this.localStorage.getItem('user-data')['id']);
 
   public hideHeader = false;
 
@@ -138,14 +138,7 @@ export class AppComponent {
 
   private getProfileDataSuccess(response) {
 
-    this.userId = response.active;
-    if(response.active){
-      this.authService.setUser(response);
-    }else {
-      this.alert.notify('error','حساب کاربری شما مسدود شده است. با ادمین تماس بگیرید')
-    }
-
-
+    this.authService.setUser(response);
   }
 
   private getProfileDataError(error) {

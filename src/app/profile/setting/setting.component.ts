@@ -3,6 +3,8 @@ import {ApiService} from "../../services/api.service";
 import {AuthService} from "../../services/auth.service";
 import {NotifierService} from "angular-notifier";
 import {HelpersService} from "../../services/helpers.service";
+import {Local} from "protractor/built/driverProviders";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 @Component({
   selector: 'app-setting',
@@ -14,7 +16,7 @@ export class SettingComponent implements OnInit {
   public btnLoading = false;
   public loading = false;
 
-  public userId = 0;
+  public userId;
 
   public userModel = {
     email: '',
@@ -35,18 +37,20 @@ export class SettingComponent implements OnInit {
   }
 
   constructor(private apiService: ApiService,
-              private authService: AuthService,
+              private localStorage: LocalStorageService,
               private helperService: HelpersService,
-              private alertService: NotifierService) { }
+              private alertService: NotifierService) {
+
+  }
 
   ngOnInit(): void {
 
-
-    this.userId = this.authService.getUser()['id'];
+   this.userId = parseInt(this.localStorage.getItem('user-data')['id']);
 
     if(this.userId){
       this.getProfile();
     }
+
 
   }
 
