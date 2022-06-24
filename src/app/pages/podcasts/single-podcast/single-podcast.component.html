@@ -10,6 +10,8 @@
            [loading]="loading"
            [publishDate]="publishDate"
            [flagged]="isFlagged"
+           (addBookmark)="addBookmark()"
+           (actionRemoveBookmark)="removeBookmark()"
 ></app-cover>
 
 <div id="podcast" *ngIf="!loading">

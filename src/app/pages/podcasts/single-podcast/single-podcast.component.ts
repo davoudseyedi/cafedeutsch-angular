@@ -61,6 +61,8 @@ export class SinglePodcastComponent implements OnInit {
 
   public breadcrumb = [];
 
+  public bookmark:any = {};
+
   constructor(private api: ApiService,
               private notify: NotifierService,
               private authService:AuthService,
@@ -121,6 +123,36 @@ export class SinglePodcastComponent implements OnInit {
       });
   }
 
+  public getBookmarkItem(){
+
+    this.api
+      .getBookmark(this.podcast.id)
+      .subscribe({
+        next: this.onLoadGetBookmarkSuccess.bind(this),
+        error: this.onLoadGetBookmarkError.bind(this)
+      });
+  }
+
+  public addBookmark(){
+
+    this.api
+      .bookmarkEpisode({'episodeId': this.podcast.id})
+      .subscribe({
+        next: this.onLoadAddBookmarkSuccess.bind(this),
+        error: this.onLoadAddBookmarkError.bind(this)
+      });
+  }
+
+  public removeBookmark(){
+
+    this.api
+      .unbookmarkEpisode(this.podcast.id)
+      .subscribe({
+        next: this.onLoadRemoveBookmarkSuccess.bind(this),
+        error: this.onLoadRemoveBookmarkError.bind(this)
+      });
+  }
+
   private makePodcastItem(data){
 
     this.loading = false;
@@ -165,6 +197,11 @@ export class SinglePodcastComponent implements OnInit {
         url : this.categoryUrl + '/' + this.podcast.id + this.podcast.slug
       }
     ];
+
+    if(this.authService.isUser()){
+      this.getBookmarkItem();
+    }
+
   }
   private onLoadPodcastSuccess(response) {
 
@@ -187,6 +224,43 @@ export class SinglePodcastComponent implements OnInit {
 
   private onLoadRelatedPodcastError(error) {
     this.loading = false;
+    this.notify.notify('error',error.message)
+  }
+
+  private onLoadGetBookmarkSuccess(response) {
+
+
+    this.bookmark = response;
+
+    this.isFlagged = response.episodeId == this.podcast.id;
+
+  }
+
+  private onLoadGetBookmarkError(error) {
+    this.isFlagged = false;
+    // this.notify.notify('error',error.message)
+  }
+
+  private onLoadAddBookmarkSuccess(response) {
+
+    this.isFlagged = true;
+
+  }
+
+  private onLoadAddBookmarkError(error) {
+    this.isFlagged = false;
+    this.notify.notify('error',error.message)
+  }
+
+
+  private onLoadRemoveBookmarkSuccess(response) {
+
+    this.isFlagged = false;
+
+  }
+
+  private onLoadRemoveBookmarkError(error) {
+    this.isFlagged = false;
     this.notify.notify('error',error.message)
   }
 

@@ -2,10 +2,43 @@
   <div class="profile-title">
     <h2>‌لیست علاقه‌‌مندی‌ها</h2>
   </div>
-  <div class="profile-data">
+  <div class="profile-data mt-3">
     <div class="card1">
       <div class="card-body1">
-
+        <div class="table-responsive" *ngIf="bookmarks && bookmarks.length > 0 && !loading">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>عنوان</th>
+              <th>سطح</th>
+              <th>فصل</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of bookmarks; let i = index">
+              <td>{{ i+1 }}</td>
+              <td>
+                <a routerLink="/podcasts/{{ item.episode['category']['slug'] }}/{{ item.episodeId }}/{{ item.episode['slug'] }}">{{ item.episode['title'] }}</a>
+              </td>
+              <td>{{ item.episode['category']['title'] }}</td>
+              <td>{{ item.episode['season']['title'] }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="container" *ngIf="!loading && bookmarks && bookmarks.length == 0">
+          <div class="alert alert-warning">
+            موردی یافت نشد
+          </div>
+        </div>
+        <div class="container" *ngIf="loading">
+          <div class="row">
+            <div class="col-12 text-center pt-5">
+              <app-loading [type]="1"></app-loading>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -32,6 +32,23 @@ export class ApiService {
     return this.http.get(this.config.WEBSITE_ALL_PODCASTS + '/' + id);
   }
 
+  // Bookmark
+  public bookmarkEpisode(form) {
+    return this.http.post(this.config.WEBSITE_BOOKMARK + '/flagging',form);
+  }
+
+  public unbookmarkEpisode(id) {
+    return this.http.delete(this.config.WEBSITE_BOOKMARK + '/unflagging/' + id);
+  }
+
+  public getBookmark(id) {
+    return this.http.get(this.config.WEBSITE_BOOKMARK + '/flagging/' + id);
+  }
+
+  public getBookmarksList() {
+    return this.http.get(this.config.WEBSITE_BOOKMARK + '/flagging');
+  }
+
 
   // Blog
 

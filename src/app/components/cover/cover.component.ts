@@ -1,4 +1,5 @@
 import {Component,EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-cover',
@@ -23,11 +24,13 @@ export class CoverComponent implements OnInit {
   @Input() public publishDateNormal = false;
   @Input() public flagged : boolean;
 
-  @Output() public action = new EventEmitter();
-  @Output() public actionRemove = new EventEmitter();
+  @Output() public addBookmark = new EventEmitter();
+  @Output() public actionRemoveBookmark = new EventEmitter();
 
   public now = new Date().getTime();
   public pubDate;
+
+  public isUser;
 
 
   public displayVolumeControls = true;
@@ -36,21 +39,24 @@ export class CoverComponent implements OnInit {
   public disablePositionSlider = false;
 
 
-  constructor() {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
-  }
 
-  public addBookmark(){
-
-    this.action.emit();
+    this.isUser = this.authService.isUser();
 
   }
 
-  public removeBookmark(){
+  public bookmark(){
 
-    this.actionRemove.emit();
+    this.addBookmark.emit();
+
+  }
+
+  public unBookmark(){
+
+    this.actionRemoveBookmark.emit();
 
   }
 

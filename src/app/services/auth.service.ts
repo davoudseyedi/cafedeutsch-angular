@@ -30,10 +30,6 @@ export class AuthService {
     return this.localStorageService.getItem('user-token');
   }
 
-  public getCsrfToken() {
-    return this.localStorageService.getItem('csrf-token');
-  }
-
   public isUser() {
     return !!this.getUser();
   }
@@ -41,8 +37,6 @@ export class AuthService {
   public deleteUser() {
     this.localStorageService.removeItem('user-data');
     this.localStorageService.removeItem('user-token');
-    // this.localStorageService.removeItem('logout-token');
-    // this.localStorageService.removeItem('csrf-token');
   }
 
   public logout() {

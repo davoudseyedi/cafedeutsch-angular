@@ -17,6 +17,9 @@ export class Config {
   // Category
   public static readonly WEBSITE_ALL_CATEGORY = Config.API + '/client/category';
 
+  // Bookmark
+  public static readonly WEBSITE_BOOKMARK = Config.API + '/client/bookmarks';
+
 
   // Contact Api
   public static readonly WEBSITE_CONTACT = Config.API + '/client/contact';

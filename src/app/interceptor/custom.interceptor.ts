@@ -23,7 +23,7 @@ export class CustomInterceptor implements HttpInterceptor {
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const userToken = this.authService.getUserToken();
-    if ( !!userToken && ( this.router.url.indexOf('/profile/panel') > -1 || request.url.indexOf('/user') > -1 )) {
+    if ( !!userToken && ( this.router.url.indexOf('/profile/panel') > -1 || request.url.indexOf('/user') > -1  || ( request.url.indexOf('api/auth') > -1 || request.url.indexOf('api/client') > -1) )) {
       request = request.clone({
         setHeaders: {
           Authorization: 'Bearer ' + userToken
@@ -33,7 +33,9 @@ export class CustomInterceptor implements HttpInterceptor {
     }
 
 
-    if ( isPlatformServer(this.platformId) && ( request.url.indexOf('/user') > -1 ) ) {
+    if ( isPlatformServer(this.platformId) &&
+      ( request.url.indexOf('/user') > -1 ) &&
+      ( request.url.indexOf('api/auth') > -1 || request.url.indexOf('api/client') > -1)  ) {
 
       return EMPTY;
 
