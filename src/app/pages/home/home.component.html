@@ -5,14 +5,14 @@
     <div class="container">
      <div class="newest" *ngIf="!loading">
        <div class="row justify-content-end" *ngFor="let item of newest| slice: 0:1">
-         <div class="col-12 col-md-5 col-xs-12 d-none d-md-block d-xs-none">
+         <div class="col-12 col-md-6 col-xs-12 d-none d-md-block d-xs-none">
            <div class="img">
              <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}">
                <img src="{{ item.episodeImage }}" alt="{{ item.title }}" class="img-fluid" >
              </a>
            </div>
          </div>
-         <div class="col-12 col-md-7 col-xs-12">
+         <div class="col-12 col-md-6 col-xs-12">
            <div class="hero-desc">
              <div class="wrap" data-id="88fa2b2" data-element_type="widget" data-widget_type="heading.default">
                <div class="wrap-container">
