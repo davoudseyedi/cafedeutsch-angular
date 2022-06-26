@@ -176,6 +176,10 @@ button[class*="btn-outline"], a[class*="btn-outline"], button[class*="btn-tertia
   //height: 40px;
   font-size: 0.875rem;
   border-radius: 30px;
+
+  @media screen and (max-width: 667px) {
+    padding: 6px 38px 6px 38px;
+  }
 }
 
 .btn-lg {

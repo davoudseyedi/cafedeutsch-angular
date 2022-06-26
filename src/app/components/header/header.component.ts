@@ -68,6 +68,7 @@ export class HeaderComponent implements OnInit {
 
   public changeMenuState() {
     this.showDropDown = false;
+    this.showDropDownAccount = false;
   }
 
   public openModal(){

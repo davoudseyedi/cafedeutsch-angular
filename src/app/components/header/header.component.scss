@@ -72,6 +72,16 @@
     background-image: linear-gradient(70deg, $primary,#333) !important;
   }
 }
+
+.profile-info{
+  .avatar{
+    img{
+      width: 110px;
+      height: 110px;
+    }
+  }
+}
+
 .navbar-toggler{
   border: none;
   &.active{

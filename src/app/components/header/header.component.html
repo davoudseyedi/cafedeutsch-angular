@@ -41,9 +41,15 @@
             <a class="dropdown-item menu-dropdown" routerLink="/profile/panel/dashboard">
               داشبورد
             </a>
+            <a class="dropdown-item menu-dropdown" routerLink="/profile/panel/favorite">
+              لیست علاقه مندی‌ها
+            </a>
+            <a class="dropdown-item menu-dropdown" routerLink="/profile/panel/setting">
+              تنظیمات
+            </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item menu-dropdown cursor-pointer" (click)="logout()">
-              <!--          <span class="icon-logout-line text-20 inline-middle"></span>-->
+                        <i class="fa fa-sign-out-alt text-20 inline-middle"></i>
               خروج از حساب کاربری
             </a>
 
@@ -108,9 +114,25 @@
     </div>
     <div class="mobile-dropdown collapse2 navbar-collapse2" id="navbar-collapse2" *ngIf="showDropDownAccount && isUser" [@slideRightAnimation]>
       <ul class="navbar-nav mr-auto">
+        <div class="profile-info d-flex align-items-center">
+          <div class="avatar">
+            <img src="/assets/img/avatar.svg" alt="avatar" class="img-fluid">
+          </div>
+          <div class="name">
+            <h5 class="m-0" *ngIf="userData.full_name">{{ userData.full_name ? userData.full_name : 'بدون نام' }}</h5>
+            <p class="m-0 text-12" *ngIf="userData.mobile_number">{{ userData.mobile_number }}</p>
+          </div>
 
+        </div>
+        <hr>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/profile/panel/settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">تنظیمات حساب</a>
+          <a class="nav-link" routerLink="/profile/panel/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">داشبورد</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile/panel/favorite" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">لیست علاقه مندی‌ها</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile/panel/setting" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="changeMenuState()">تنظیمات حساب</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" (click)="logout()">
