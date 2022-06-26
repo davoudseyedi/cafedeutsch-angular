@@ -162,7 +162,7 @@
                         <div class="count-down mt-3" *ngIf="checkPublishDate(item.publish_date)">
                           <app-countdown [countdownDate]="item.publish_date"></app-countdown>
                         </div>
-                        <div class="podcast-body d-none d-md-block d-xs-none" [innerHTML]="item.description | slice:0 : 100"></div>
+                        <div class="podcast-body d-none d-md-block d-xs-none" *ngIf="false" [innerHTML]="item.description | slice:0 : 100"></div>
                         <div class="view-more d-none d-md-block d-xs-none">
                           <a routerLink="/podcasts/{{item.category?.slug }}/{{ item.id }}/{{ item.slug }}" class="text-dark text-uppercase">مشاهده</a>
                         </div>
