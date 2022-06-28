@@ -3,6 +3,7 @@ import {ApiService} from '../../../services/api.service';
 import {MetaService} from '../../../services/meta.service';
 import {ActivatedRoute} from '@angular/router';
 import {NotifierService} from "angular-notifier";
+import {Language} from "../../../services/language";
 
 @Component({
   selector: 'app-podcasts-category',
@@ -30,8 +31,8 @@ export class PodcastsCategoryComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.metaService.setTitle();
-    this.metaService.clearMetaTags();
+
+    this.metaService.setDescription(Language.getDescription('PODCAST_CATEGORY'));
 
     this.route.paramMap.subscribe(event => {
 
@@ -96,6 +97,9 @@ export class PodcastsCategoryComponent implements OnInit {
         url : this.categoryUrl
       }
     ];
+
+    this.metaService.setTitle(Language.getTitle('SINGLE_EPISODE').replace('{{var}}',response[0].category?.title))
+
   }
 
   private onLoadPodcastsError(error) {

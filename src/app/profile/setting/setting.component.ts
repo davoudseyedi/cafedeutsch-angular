@@ -5,6 +5,8 @@ import {NotifierService} from "angular-notifier";
 import {HelpersService} from "../../services/helpers.service";
 import {Local} from "protractor/built/driverProviders";
 import {LocalStorageService} from "../../services/local-storage.service";
+import {Language} from "../../services/language";
+import {MetaService} from "../../services/meta.service";
 
 @Component({
   selector: 'app-setting',
@@ -39,13 +41,18 @@ export class SettingComponent implements OnInit {
   constructor(private apiService: ApiService,
               private localStorage: LocalStorageService,
               private helperService: HelpersService,
+              private metaService: MetaService,
               private alertService: NotifierService) {
 
   }
 
   ngOnInit(): void {
 
-   this.userId = parseInt(this.localStorage.getItem('user-data')['id']);
+
+    this.metaService.setTitle(Language.getTitle('SETTING'));
+    this.metaService.setDescription(Language.getDescription('SETTING'));
+
+    this.userId = parseInt(this.localStorage.getItem('user-data')['id']);
 
     if(this.userId){
       this.getProfile();

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {NotifierService} from "angular-notifier";
+import {MetaService} from "../../../services/meta.service";
+import {Language} from "../../../services/language";
 
 @Component({
   selector: 'app-single-blog',
@@ -35,9 +37,12 @@ export class SingleBlogComponent implements OnInit {
 
   constructor(private api: ApiService,
               private alert: NotifierService,
+              private metaService: MetaService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.metaService.setDescription(Language.getDescription('SINGLE_POST'))
 
     this.route.paramMap.subscribe(event => {
 
@@ -101,6 +106,8 @@ export class SingleBlogComponent implements OnInit {
       category: data.category.title,
       slug: data.slug,
     };
+
+    this.metaService.setTitle(Language.getTitle('SINGLE_POST').replace('{{var}}',data.title));
 
 
     this.breadcrumb = [

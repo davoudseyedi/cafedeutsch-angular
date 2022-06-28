@@ -4,6 +4,7 @@ import {MetaService} from '../../services/meta.service';
 import {Track} from 'ngx-audio-player';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {NotifierService} from "angular-notifier";
+import {Language} from "../../services/language";
 
 
 @Component({
@@ -97,8 +98,8 @@ export class HomeComponent implements OnInit {
               private metaService: MetaService) { }
 
   public ngOnInit() {
-    this.metaService.setTitle();
-    this.metaService.clearMetaTags();
+    this.metaService.setTitle(Language.getTitle('HOME'));
+    this.metaService.setDescription(Language.getDescription('HOME'));
 
     this.loadPodcasts();
     this.loadBlogs();

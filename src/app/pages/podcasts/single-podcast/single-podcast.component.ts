@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Track} from 'ngx-audio-player';
 import {NotifierService} from "angular-notifier";
 import {AuthService} from "../../../services/auth.service";
+import {MetaService} from "../../../services/meta.service";
+import {Language} from "../../../services/language";
 
 @Component({
   selector: 'app-single-podcast',
@@ -65,10 +67,13 @@ export class SinglePodcastComponent implements OnInit {
 
   constructor(private api: ApiService,
               private notify: NotifierService,
+              private metaService: MetaService,
               private authService:AuthService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.metaService.setDescription(Language.getDescription('SINGLE_EPISODE'))
 
     this.route.paramMap.subscribe(event => {
 
@@ -197,6 +202,9 @@ export class SinglePodcastComponent implements OnInit {
         url : this.categoryUrl + '/' + this.podcast.id + this.podcast.slug
       }
     ];
+
+    this.metaService.setTitle(Language.getTitle('SINGLE_EPISODE').replace('{{var}}',data.title))
+
 
     if(this.authService.isUser()){
       this.getBookmarkItem();

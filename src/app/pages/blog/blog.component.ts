@@ -3,6 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotifierService} from "angular-notifier";
+import {Language} from "../../services/language";
 
 @Component({
   selector: 'app-blog',
@@ -36,8 +37,8 @@ export class BlogComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   public ngOnInit() {
-    this.metaService.setTitle();
-    this.metaService.clearMetaTags();
+    this.metaService.setTitle(Language.getTitle('POSTS'));
+    this.metaService.setDescription(Language.getDescription('POSTS'));
 
     this.route.queryParamMap.subscribe(params => {
 

@@ -3,6 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import {ActivatedRoute} from '@angular/router';
 import {NotifierService} from "angular-notifier";
+import {Language} from "../../services/language";
 
 @Component({
   selector: 'app-podcasts',
@@ -38,8 +39,8 @@ export class PodcastsComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   public ngOnInit() {
-    this.metaService.setTitle();
-    this.metaService.clearMetaTags();
+    this.metaService.setTitle(Language.getTitle('EPISODES'));
+    this.metaService.setDescription(Language.getDescription('EPISODES'));
 
     this.route.queryParamMap.subscribe(params => {
 

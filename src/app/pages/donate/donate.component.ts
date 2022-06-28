@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Language} from "../../services/language";
+import {MetaService} from "../../services/meta.service";
 
 @Component({
   selector: 'app-donate',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private metaService: MetaService) { }
 
   ngOnInit(): void {
+    this.metaService.setTitle(Language.getTitle('DONATE'));
+    this.metaService.setDescription(Language.getDescription('DONATE'));
+
   }
 
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HelpersService } from '../../services/helpers.service';
 import { AuthService } from '../../services/auth.service';
 import {ApiService} from '../../services/api.service';
+import {Language} from "../../services/language";
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,10 @@ export class DashboardComponent implements OnInit {
                private authService: AuthService ) { }
 
   ngOnInit(): void {
+
+
+    this.metaService.setTitle(Language.getTitle('DASHBOARD'));
+    this.metaService.setDescription(Language.getDescription('DASHBOARD'));
 
     this.permission = this.authService.checkProfilePermission('authenticated');
   }

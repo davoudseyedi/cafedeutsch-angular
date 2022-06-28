@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MetaService} from "../../services/meta.service";
+import {Language} from "../../services/language";
 
 @Component({
   selector: 'app-about',
@@ -21,9 +23,16 @@ export class AboutComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private metaService: MetaService) { }
 
   ngOnInit(): void {
+
+    this.metaService.setTitle(Language.getTitle('ABOUT'))
+    this.metaService.setDescription(Language.getDescription('ABOUT'))
+
+    this.metaService.setTitle(Language.getTitle('ABOUT'))
+    this.metaService.setDescription(Language.getDescription('ABOUT'))
+
   }
 
 }

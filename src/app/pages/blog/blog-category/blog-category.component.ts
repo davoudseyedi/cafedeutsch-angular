@@ -4,6 +4,7 @@ import {MetaService} from '../../../services/meta.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HelpersService} from '../../../services/helpers.service';
 import {NotifierService} from "angular-notifier";
+import {Language} from "../../../services/language";
 
 @Component({
   selector: 'app-blog-category',
@@ -36,8 +37,7 @@ export class BlogCategoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.metaService.setTitle();
-    this.metaService.clearMetaTags();
+    this.metaService.setDescription(Language.getDescription('POST_CATEGORY'));
 
     this.route.paramMap.subscribe(event => {
 
@@ -103,6 +103,9 @@ export class BlogCategoryComponent implements OnInit {
     this.blog = response;
 
     this.categoryLabel = response[0]?.category.title;
+
+    this.metaService.setTitle(Language.getTitle('POST_CATEGORY').replace('{{var}}',response[0].category.title));
+
 
     this.breadcrumb = [
       {

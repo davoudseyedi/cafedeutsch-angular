@@ -3,6 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MetaService} from '../../services/meta.service';
 import { NotifierService } from 'angular-notifier';
 import {AuthService} from "../../services/auth.service";
+import {Language} from "../../services/language";
 
 
 @Component({
@@ -47,8 +48,8 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.metaService.setTitle();
-    this.metaService.clearMetaTags();
+    this.metaService.setTitle(Language.getTitle('CONTACT'));
+    this.metaService.setDescription(Language.getDescription('CONTACT'));
 
     this.webformModel.name = this.authService.getUser() && this.authService.getUser()['full_name'].length > 0 ? this.authService.getUser()['full_name'] : '';
     this.webformModel.email = this.authService.getUser() && this.authService.getUser()['email'].length > 0 ? this.authService.getUser()['email'] : '';

@@ -3,6 +3,8 @@ import {ApiService} from "../../services/api.service";
 import {LocalStorageService} from "../../services/local-storage.service";
 import {HelpersService} from "../../services/helpers.service";
 import {NotifierService} from "angular-notifier";
+import {Language} from "../../services/language";
+import {MetaService} from "../../services/meta.service";
 
 @Component({
   selector: 'app-favorite',
@@ -17,11 +19,16 @@ export class FavoriteComponent implements OnInit {
   constructor(private apiService: ApiService,
               private localStorage: LocalStorageService,
               private helperService: HelpersService,
+              private metaService: MetaService,
               private alertService: NotifierService) {
 
   }
 
   ngOnInit(): void {
+
+
+    this.metaService.setTitle(Language.getTitle('BOOKMARK'));
+    this.metaService.setDescription(Language.getDescription('BOOKMARK'));
 
     this.loadBookmarks();
 
