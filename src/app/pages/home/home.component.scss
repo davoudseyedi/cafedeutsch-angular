@@ -180,9 +180,15 @@
 
     .img{
       position: relative;
+      img{
+        min-height: 200px;
+      }
       @media (max-width: 667px) {
         max-height: 220px;
         overflow: hidden;
+        img{
+          min-height:unset;
+        }
       }
     }
     .podcast-cat{
@@ -201,6 +207,9 @@
         position: relative;
         left: inherit;
       }
+    }
+    .count-down{
+      min-height: 55px;
     }
   }
   .owl-nav{

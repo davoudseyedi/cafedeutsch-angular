@@ -9,49 +9,54 @@
           <div class="row" *ngIf="!loading && bookmarks.length > 0">
             <div class="col-md-6 col-xs-12" *ngFor="let item of bookmarks">
               <div class="podcast-item mb-3">
-                <div class="unbookmark">
-                  <a class="d-block cursor-pointer" (click)="unbookmark(item.episodeId)"><i class="fas fa-bookmark"></i></a>
-                </div>
                 <div class="row">
-                  <div class="col-6 col-md-6">
+                  <div class="unbookmark">
+                    <a class="d-block cursor-pointer" (click)="unbookmark(item.episodeId)"><i class="fas fa-bookmark"></i></a>
+                  </div>
+                  <div class="col-12 col-md-6">
                     <div class="img">
-                      <a routerLink="/podcasts/{{item['episode'].category?.slug }}/{{ item.episodeId }}/{{ item['episode'].slug }}">
+                      <a class="d-block" routerLink="/podcasts/{{item['episode'].category?.slug}}/{{ item['episode'].id }}/{{ item['episode'].slug }}">
                         <img src="{{ item['episode'].episodeImage }}" alt="{{ item['episode'].title }}" class="img-fluid" >
                       </a>
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-6">
-                    <div class="desc">
-                      <div class="podcast-title">
-                        <h4><a class="text-dark text-decoration-none" routerLink="/podcasts/{{item['episode'].category?.slug }}/{{ item.episodeId }}/{{ item['episode'].slug }}">{{ item['episode'].title }}</a></h4>
-                      </div>
-
-                      <div class="podcast-cat">
+                      <div class="podcast-cat text-md-right text-center d-block d-md-none d-xs-block">
                         <h5 class="d-flex align-items-center">
-                          <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item['episode'].category?.slug }}">
+                          <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item['episode'].category?.slug  }}">
                             <span class="badge badge-warning">سطح {{ item['episode'].category?.title }}</span>
                           </a>
-                          <span class="badge badge-info mr-2" *ngIf="checkPublishDate(item['episode'].publish_date)">درحال انتشار</span>
+                          <a><span class="badge badge-info mr-2" *ngIf="checkPublishDate(item['episode'].publish_date)">درحال انتشار</span></a>
+
                         </h5>
                       </div>
-                      <div class="podcast-date mt-3">
-                        <p>{{ item['episode'].createdAt | jalaliDate }}</p>
+                    </div>
+
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="desc">
+                      <div class="podcast-title text-md-right text-center">
+                        <h4>
+                          <a class="text-dark text-decoration-none" routerLink="/podcasts/{{item['episode'].category?.slug }}/{{ item['episode'].id }}/{{ item['episode'].slug }}">{{ item['episode'].title }}</a></h4>
+                      </div>
+                      <div class="podcast-cat text-md-right text-center d-none d-md-block d-xs-none">
+                        <h5 class="d-flex align-items-center">
+                          <a class="text-warning text-decoration-none" routerLink="/podcasts/{{ item['episode'].category?.slug  }}">
+                            <span class="badge badge-warning">سطح {{ item['episode'].category?.title }}</span>
+                          </a>
+                          <a><span class="badge badge-info mr-2" *ngIf="checkPublishDate(item['episode'].publish_date)">درحال انتشار</span></a>
+                        </h5>
                       </div>
                       <div class="count-down mt-3" *ngIf="checkPublishDate(item['episode'].publish_date)">
                         <app-countdown [countdownDate]="item['episode'].publish_date"></app-countdown>
                       </div>
-                      <div class="podcast-body d-none d-md-block d-xs-none mt-3" *ngIf="false" [innerHTML]="item['episode'].description | slice:0 : 100"></div>
-                      <div class="view-more d-none d-md-block d-xs-none">
-                        <a routerLink="/podcasts/{{item['episode'].category?.slug }}/{{ item['episode'].id }}/{{ item['episode'].slug }}" class="text-dark text-uppercase">مشاهده</a>
+                      <div class="podcast-body d-none d-md-block d-xs-none" *ngIf="false" [innerHTML]="item.description | slice:0 : 100"></div>
+                      <div class="view-more d-none d-md-flex d-xs-none">
+                        <a routerLink="/podcasts/{{item['episode'].category?.slug }}/{{ item['episode'].id }}/{{ item['episode'].slug }}" class="text-dark mr-auto text-uppercase">مشاهده</a>
                       </div>
-
                     </div>
                   </div>
-                  <div class="col-12 d-block d-md-none d-xs-block mt-3">
+                  <div class="col-12 d-block d-md-none d-xs-block">
                     <div class="view-more">
-                      <a routerLink="/podcasts/{{item['episode'].category?.slug }}/{{ item.episodeId }}/{{ item['episode'].slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
+                      <a routerLink="/podcasts/{{item['episode'].category?.slug }}/{{ item['episode'].id }}/{{ item['episode'].slug }}" class="btn btn-outline-dark d-block  text-dark text-uppercase">مشاهده</a>
                     </div>
-
                   </div>
                 </div>
               </div>
