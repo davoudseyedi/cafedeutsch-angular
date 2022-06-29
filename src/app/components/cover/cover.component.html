@@ -17,11 +17,13 @@
             <a routerLink="{{ categoryID }}">
               <span class="badge badge-warning">{{ category }}</span>
             </a>
+
+            <a><span class="badge badge-info mr-2" *ngIf="publishDate && publishDate > now">درحال انتشار</span></a>
+
             <ng-container *ngIf="page == 'podcast'">
               <a class="cursor-pointer" *ngIf="isUser && !flagged" (click)="bookmark()"><i class="far fa-bookmark mr-2 text-white"></i> </a>
               <a class="cursor-pointer" *ngIf="isUser && flagged" (click)="unBookmark()"><i class="fas fa-bookmark mr-2 text-white"></i> </a>
             </ng-container>
-            <a><span class="badge badge-info mr-2" *ngIf="publishDate && publishDate > now">درحال انتشار</span></a>
 
           </h5>
 

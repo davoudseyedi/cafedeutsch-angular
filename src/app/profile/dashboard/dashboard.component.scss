@@ -2,8 +2,23 @@
 
 .profile-card{
   padding: 1rem;
-  //background:$white;
+  background:$white;
   border-radius: 15px;
   margin-top: 1rem;
+  .wrap{
+    border-radius: 12px;
+    hr{
+      border-color: $white;
+    }
+  }
+  .black{
+    background-color: $primary;
+  }
+  .red{
+    background-color: $red-color;
+  }
 
+  .yellow{
+    background-color: $yellow-dark-color;
+  }
 }
