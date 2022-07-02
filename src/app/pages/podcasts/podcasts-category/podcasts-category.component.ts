@@ -83,9 +83,9 @@ export class PodcastsCategoryComponent implements OnInit {
 
   private onLoadPodcastsSuccess(response) {
     this.loading = false;
-    this.podcasts = response;
+    this.podcasts = response.data;
 
-    this.categoryLabel = 'سطح ' + response[0].category?.title;
+    this.categoryLabel = 'سطح ' + response.data[0].category?.title;
 
     this.breadcrumb = [
       {
@@ -98,7 +98,7 @@ export class PodcastsCategoryComponent implements OnInit {
       }
     ];
 
-    this.metaService.setTitle(Language.getTitle('SINGLE_EPISODE').replace('{{var}}',response[0].category?.title))
+    this.metaService.setTitle(Language.getTitle('SINGLE_EPISODE').replace('{{var}}',response.data[0].category?.title))
 
   }
 

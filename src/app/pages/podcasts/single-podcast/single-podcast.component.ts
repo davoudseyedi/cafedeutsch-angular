@@ -226,7 +226,7 @@ export class SinglePodcastComponent implements OnInit {
   private onLoadRelatedPodcastSuccess(response) {
 
     this.loading = false;
-    this.podcasts = response;
+    this.podcasts = response.data;
 
   }
 

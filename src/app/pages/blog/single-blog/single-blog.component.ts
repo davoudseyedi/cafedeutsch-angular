@@ -142,7 +142,7 @@ export class SingleBlogComponent implements OnInit {
   private onLoadRelatedPostSuccess(response) {
 
     this.loading = false;
-    this.related = response;
+    this.related = response.data;
 
   }
 

@@ -132,14 +132,14 @@ export class HomeComponent implements OnInit {
 
   private onLoadPodcastsSuccess(response) {
     this.loading = false;
-    this.podcasts = response;
+    this.podcasts = response.data;
 
-    this.newest = response;
-    this.heroBG = response[0].episodeImage;
+    this.newest = response.data;
+    this.heroBG = response.data[0].episodeImage;
 
     this.playlist = [{
-      title: response[0].title,
-      link: response[0].episodeAudioFile,
+      title: response.data[0].title,
+      link: response.data[0].episodeAudioFile,
       artist: 'داود سیدی'
     }];
   }
@@ -151,7 +151,7 @@ export class HomeComponent implements OnInit {
 
   private onLoadBlogsSuccess(response) {
     this.loading = false;
-    this.blog = response;
+    this.blog = response.data;
   }
 
   private onLoadBlogsError(error) {
