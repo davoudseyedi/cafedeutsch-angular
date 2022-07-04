@@ -83,9 +83,9 @@ export class PodcastsCategoryComponent implements OnInit {
 
   private onLoadPodcastsSuccess(response) {
     this.loading = false;
-    this.podcasts = response.data;
+    this.podcasts = response.items;
 
-    this.categoryLabel = 'سطح ' + response.data[0].category?.title;
+    this.categoryLabel = 'سطح ' + response.items[0].category?.title;
 
     this.breadcrumb = [
       {

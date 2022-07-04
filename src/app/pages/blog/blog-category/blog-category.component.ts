@@ -100,11 +100,11 @@ export class BlogCategoryComponent implements OnInit {
 
   private onLoadBlogSuccess(response) {
     this.loading = false;
-    this.blog = response.data;
+    this.blog = response.items;
 
-    this.categoryLabel = response.data[0]?.category.title;
+    this.categoryLabel = response.items[0]?.category.title;
 
-    this.metaService.setTitle(Language.getTitle('POST_CATEGORY').replace('{{var}}',response.data[0].category.title));
+    this.metaService.setTitle(Language.getTitle('POST_CATEGORY').replace('{{var}}',response.items[0].category.title));
 
 
     this.breadcrumb = [

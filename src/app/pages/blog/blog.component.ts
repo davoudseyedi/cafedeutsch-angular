@@ -90,7 +90,7 @@ export class BlogComponent implements OnInit {
 
   private onLoadBlogsSuccess(response) {
     this.loading = false;
-    this.blogs = response.data;
+    this.blogs = response.items;
   }
 
   private onLoadBlogsError(error) {
