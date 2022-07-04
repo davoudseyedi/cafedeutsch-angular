@@ -98,7 +98,7 @@ export class PodcastsCategoryComponent implements OnInit {
       }
     ];
 
-    this.metaService.setTitle(Language.getTitle('SINGLE_EPISODE').replace('{{var}}',response.data[0].category?.title))
+    this.metaService.setTitle(Language.getTitle('SINGLE_EPISODE').replace('{{var}}',response.items[0].category?.title))
 
   }
 
